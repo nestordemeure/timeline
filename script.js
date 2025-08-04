@@ -192,7 +192,7 @@ class Timeline {
         const startYear = Math.floor(minDate / interval) * interval;
         
         for (let year = startYear; year <= maxDate; year += interval) {
-            if (year >= minDate) {
+            if (year >= minDate && !this.hasNearbyEvent(year, minDate, maxDate, dateRange, timelineWidth)) {
                 const position = ((year - minDate) / dateRange) * (timelineWidth - 200) + 100;
                 
                 const marker = document.createElement('div');
@@ -203,6 +203,18 @@ class Timeline {
                 this.eventsContainer.appendChild(marker);
             }
         }
+    }
+    
+    hasNearbyEvent(markerYear, minDate, maxDate, dateRange, timelineWidth) {
+        const markerPosition = ((markerYear - minDate) / dateRange) * (timelineWidth - 200) + 100;
+        const minDistance = 150; // minimum distance in pixels to avoid overlap
+        
+        return this.events.some(event => {
+            const eventDate = this.parseDate(event.date);
+            const eventPosition = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
+            const distance = Math.abs(markerPosition - eventPosition);
+            return distance < minDistance;
+        });
     }
     
     setupScrollListener() {

@@ -57,13 +57,14 @@ body {
 }
 
 .timeline-line {
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: calc(100px + 200px);
     left: 0;
-    right: 0;
+    right: 36px;
     height: 8px;
     background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
     transform: translateY(-4px);
+    z-index: 0;
 }
 
 .timeline-arrow {
@@ -161,11 +162,11 @@ body {
 }
 
 .event.above .event-content {
-    bottom: 15px;
+    bottom: 30px;
 }
 
 .event.below .event-content {
-    top: 15px;
+    top: 30px;
 }
 
 .event-date {
