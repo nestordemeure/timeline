@@ -1,4 +1,8 @@
 const timelineData = {
+  "config": {
+    "fontFamily": "Georgia, 'Times New Roman', Times, serif",
+    "baseFontSize": "16px"
+  },
   "types": [
     {
       "name": "information",
@@ -161,16 +165,16 @@ const timelineData = {
       "description": "Alexander Fleming discovers penicillin, revolutionizing the treatment of bacterial infections."
     },
     {
-      "type": "information",
-      "date": 1969,
-      "title": "Internet created",
-      "description": "ARPANET, the precursor to the Internet, is established, connecting computers across vast distances."
-    },
-    {
       "type": "medicine",
       "date": 1953,
       "title": "DNA structure discovered",
       "description": "Watson and Crick discover the double helix structure of DNA, unlocking the secrets of heredity."
+    },
+    {
+      "type": "information",
+      "date": 1969,
+      "title": "Internet created",
+      "description": "ARPANET, the precursor to the Internet, is established, connecting computers across vast distances."
     },
     {
       "type": "science",

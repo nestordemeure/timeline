@@ -13,10 +13,17 @@ class Timeline {
     }
     
     init() {
+        this.applyFontConfig();
         this.processData();
         this.renderLegend();
         this.renderEvents();
         this.setupScrollListener();
+    }
+    
+    applyFontConfig() {
+        const config = this.data.config;
+        document.body.style.fontFamily = config.fontFamily;
+        document.body.style.fontSize = config.baseFontSize;
     }
     
     processData() {
@@ -86,11 +93,11 @@ class Timeline {
             
             eventElement.innerHTML = `
                 <div class="event-content">
-                    <div class="event-date">${this.formatDate(event.date)}</div>
                     <div class="event-title">${event.title}</div>
                     ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
                 </div>
                 <div class="event-marker" style="background-color: ${color}"></div>
+                <div class="event-date">${this.formatDate(event.date)}</div>
             `;
             
             this.eventsContainer.appendChild(eventElement);

@@ -4,7 +4,7 @@ This is a webpage containing a timeline of various events.
 
 ## Code Organization
 
-The code is kept consise and to the point, no need to try and handle problems we have not seen yet.
+The code is kept concise and to the point, no need to try and handle problems we have not seen yet.
 
 The code is split into a HTML, CSS (if needed), and javascript file (if neded).
 The idea is to split responsabilities accross files.
@@ -36,7 +36,7 @@ Here is a draft list for the the types of events:
 * politics (first code of law, democracy, human rights, french revolution, etc)
 * economics (invention of money, of banking, of capitalism, of the stock market, etc)
 * science (numbers, solving polynomials, first university, scientific method, theory of evolution, calculus, quantum computing, etc)
-* medecine (vaccine, gene editing, DNA understanding, antibiotics, etc)
+* medicine (vaccine, gene editing, DNA understanding, antibiotics, etc)
 * industry (steam machine, industrial revolution, etc)
 
 ### Titles
@@ -59,7 +59,7 @@ This is a dark mode type of web page designed to be seen on a computer screen.
 
 The chronology goes from left to right.
 Since it is long, we only see part of it, scrolling get it moving from left to right.
-When the date of a title reach the left of our screen it becomes the new title (you can see titles scroll them stabilize then scroll again as the new one comes)
+When the date of a title reach the left of our screen it becomes the new title with a smooth fading transition effect.
 
 ### Timeline Design
 
