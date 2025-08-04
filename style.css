@@ -41,7 +41,7 @@ body {
     flex: 1;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-top: 100px;
+    padding-top: 180px;
     padding-bottom: 150px;
 }
 
@@ -58,7 +58,7 @@ body {
 
 .timeline-line {
     position: fixed;
-    top: calc(100px + 200px);
+    top: calc(180px + 200px);
     left: 0;
     right: 36px;
     height: 8px;
@@ -70,7 +70,7 @@ body {
 .timeline-arrow {
     position: fixed;
     right: 20px;
-    top: calc(100px + 200px);
+    top: calc(180px + 200px);
     transform: translateY(-50%);
     width: 0;
     height: 0;
