@@ -74,30 +74,48 @@ class Timeline {
         const minDate = this.parseDate(this.events[0].date);
         const maxDate = this.parseDate(this.events[this.events.length - 1].date);
         const dateRange = maxDate - minDate;
-        const timelineWidth = Math.max(5000, dateRange * 2);
+        const pixelsPerYear = this.data.config.pixelsPerYear || 2;
+        const timelineWidth = Math.max(5000, dateRange * pixelsPerYear);
         
         this.eventsContainer.style.width = `${timelineWidth}px`;
         
         // Render time markers
         this.renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth);
         
-        this.events.forEach((event, index) => {
+        // Calculate initial positions and create event data with collision info
+        const eventData = this.events.map((event, index) => {
             const eventDate = this.parseDate(event.date);
-            const position = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
+            const basePosition = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
             
+            return {
+                ...event,
+                index,
+                basePosition,
+                finalPosition: basePosition,
+                side: index % 2 === 0 ? 'above' : 'below',
+                width: 267, // min-width from CSS
+                height: 150 // min-height from CSS
+            };
+        });
+        
+        // Apply collision detection
+        this.resolveCollisions(eventData);
+        
+        // Render events with adjusted positions
+        eventData.forEach(eventInfo => {
             const eventElement = document.createElement('div');
-            eventElement.className = `event ${index % 2 === 0 ? 'above' : 'below'}`;
-            eventElement.style.left = `${position}px`;
+            eventElement.className = `event ${eventInfo.side}`;
+            eventElement.style.left = `${eventInfo.finalPosition}px`;
             
-            const color = this.getTypeColor(event.type);
+            const color = this.getTypeColor(eventInfo.type);
             
             eventElement.innerHTML = `
                 <div class="event-content">
-                    <div class="event-title">${event.title}</div>
-                    ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                    <div class="event-title">${eventInfo.title}</div>
+                    ${eventInfo.description ? `<div class="event-description">${eventInfo.description}</div>` : ''}
                 </div>
                 <div class="event-marker" style="background-color: ${color}"></div>
-                <div class="event-date">${this.formatDate(event.date)}</div>
+                <div class="event-date">${this.formatDate(eventInfo.date)}</div>
             `;
             
             this.eventsContainer.appendChild(eventElement);
@@ -109,6 +127,53 @@ class Timeline {
             
             title.position = position;
         });
+    }
+    
+    resolveCollisions(eventData) {
+        const padding = 20; // minimum space between events
+        
+        // Separate events by side (above/below)
+        const aboveEvents = eventData.filter(e => e.side === 'above').sort((a, b) => a.basePosition - b.basePosition);
+        const belowEvents = eventData.filter(e => e.side === 'below').sort((a, b) => a.basePosition - b.basePosition);
+        
+        // Resolve collisions for each side separately
+        this.resolveCollisionsForSide(aboveEvents, padding);
+        this.resolveCollisionsForSide(belowEvents, padding);
+    }
+    
+    resolveCollisionsForSide(events, padding) {
+        if (events.length === 0) return;
+        
+        // First pass: push events to the right to avoid overlaps
+        for (let i = 1; i < events.length; i++) {
+            const current = events[i];
+            const previous = events[i - 1];
+            
+            const previousEnd = previous.finalPosition + previous.width / 2;
+            const currentStart = current.finalPosition - current.width / 2;
+            
+            if (currentStart < previousEnd + padding) {
+                current.finalPosition = previousEnd + padding + current.width / 2;
+            }
+        }
+        
+        // Second pass: try to pull events back towards their original positions
+        for (let i = events.length - 2; i >= 0; i--) {
+            const current = events[i];
+            const next = events[i + 1];
+            
+            const nextStart = next.finalPosition - next.width / 2;
+            const maxPosition = nextStart - padding - current.width / 2;
+            
+            if (current.finalPosition > maxPosition) {
+                current.finalPosition = maxPosition;
+            }
+            
+            // Don't pull back beyond the original position
+            if (current.finalPosition < current.basePosition) {
+                current.finalPosition = current.basePosition;
+            }
+        }
     }
     
     renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth) {

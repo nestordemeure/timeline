@@ -1,7 +1,8 @@
 const timelineData = {
   "config": {
     "fontFamily": "Georgia, 'Times New Roman', Times, serif",
-    "baseFontSize": "16px"
+    "baseFontSize": "16px",
+    "pixelsPerYear": 3
   },
   "types": [
     {
