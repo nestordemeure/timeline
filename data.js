@@ -1,4 +1,4 @@
-{
+const timelineData = {
   "types": [
     {
       "name": "information",
@@ -185,4 +185,4 @@
       "description": "CRISPR-Cas9 technology enables precise gene editing, opening new possibilities for treating genetic diseases."
     }
   ]
-}
+};

@@ -55,12 +55,41 @@ Here are basic title ideas:
 
 This is a dark mode type of web page designed to be seen on a computer screen.
 
+### Layout and Navigation
+
 The chronology goes from left to right.
 Since it is long, we only see part of it, scrolling get it moving from left to right.
 When the date of a title reach the left of our screen it becomes the new title (you can see titles scroll them stabilize then scroll again as the new one comes)
 
+### Timeline Design
+
+The timeline consists of a thick horizontal line (8px) with a gradient background.
+A directional arrow is fixed on the right side of the screen, positioned exactly on the timeline line to indicate the direction of time flow.
+
+### Time Markers
+
+Regular time markers are placed along the timeline at appropriate intervals (automatically calculated based on the time range):
+- Small vertical lines (2px wide, 20px tall) extending from the main timeline
+- Date labels positioned below each marker showing the year in BC/AD format
+- Intervals adjust dynamically (5, 10, 20, 50, 100, 200, 500, or 1000 years) to ensure several markers are always visible on screen
+
+### Events Display
+
 Events are displayed with colored markers (the color is a function of the type of event) ticking the chronology.
 Each marker has the date on one side and the title (in bold) and optional description on the other.
 They alternate between one side and the other (above and below the chronology).
+All event text is left-justified for better readability.
+
+### Typography
+
+All text uses serif fonts (Georgia, Times New Roman) with a 16px baseline for better readability:
+- Main title: 4rem (64px)
+- Event titles: 1.2rem (19.2px), bold
+- Event dates and descriptions: 1rem (16px)
+- Time marker labels: 1rem (16px)
+- Legend text: 1.1rem (17.6px)
+
+### Legend
 
 There is a legend below the timeline that has each type of event as a colored square followed by its title.
+The legend is fixed at the bottom of the screen and uses a semi-transparent background.
