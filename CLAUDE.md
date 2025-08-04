@@ -1,25 +1,30 @@
 # Timeline Project Development Notes
 
+## Project Overview
+Interactive timeline displaying human civilization's progress through categorized historical events with smooth scrolling navigation and era transitions.
+
 ## Getting Started
-- **Read the specification first**: Always start by reading `specification.md` to understand the project requirements
-- **Check visual changes**: When modifying anything for display purposes, always use Playwright MCP to visualize the results
+- **Read specification first**: Review `specification.md` for design philosophy and principles  
+- **Test visual changes**: Use Playwright MCP tools to verify display modifications
 
-## Code Organization
-The project follows a clean separation of concerns:
+## Architecture
+Clean separation of concerns across four main files:
 
-- **`index.html`**: Basic HTML structure with containers for title, timeline, and legend
-- **`style.css`**: All styling and layout, removed hardcoded fonts (now configured in data.js)
-- **`script.js`**: Timeline class that handles data processing, rendering, and interactions
-- **`data.js`**: Contains all timeline data (events, types, titles) and configuration (fonts, colors)
+- **`index.html`**: HTML structure with containers for title, timeline, and legend
+- **`style.css`**: Dark theme styling, layout, and responsive design
+- **`script.js`**: Timeline class handling data processing, rendering, and scroll interactions
+- **`data.js`**: All timeline data (events, types, era titles) plus configuration (fonts, colors, scaling)
 
-## Key Architecture Points
-- Events and titles are separate data structures, with titles used for section headers
-- Timeline positioning is calculated based on date ranges and viewport width
-- Events alternate above/below the timeline for better readability
-- Legend is dynamically generated from event types data
-- Font configuration is centralized in data.js and applied via JavaScript
+## Key Implementation Details
+- **Data Processing**: Events and titles separated at initialization, sorted chronologically
+- **Positioning**: Timeline uses calculated pixel-per-year scaling for accurate event placement
+- **Visual Flow**: Events alternate above/below timeline to prevent overlap and create rhythm
+- **Era Management**: Title transitions triggered by scroll position with smooth animations
+- **Legend Generation**: Dynamically built from event types data
+- **Font System**: Centralized configuration applied via JavaScript for consistency
 
-## Development Guidelines
-- Test all display changes with Playwright MCP browser tools
-- Keep data separate from logic - all content should be editable in data.js
-- Follow existing patterns for new event types or styling changes
+## Development Workflow
+- All content editable through `data.js` without touching logic
+- Visual changes require browser testing with Playwright MCP
+- Follow existing patterns for new event types or timeline modifications
+- Configuration changes (fonts, colors, scaling) handled through data.js config object

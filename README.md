@@ -1,35 +1,19 @@
 # Historical Timeline
 
-Interactive horizontal timeline with scrollable events.
+Interactive horizontal timeline displaying historical events with smooth scrolling and era transitions.
 
-## Files
+## Organization
 
-- `index.html` - Main page structure
-- `style.css` - Dark theme styling  
-- `script.js` - Timeline rendering logic
-- `data.js` - Event data and types
+- `index.html` - HTML structure
+- `style.css` - Styling and layout  
+- `script.js` - Timeline class and interactions
+- `data.js` - All timeline data and configuration
 
 ## Usage
 
 **Display**: Open `index.html` in browser
 
-**Add event types**: Edit `data.js` > `types` array:
-```js
-{
-  "name": "short_name",
-  "fullName": "Display Name", 
-  "color": "#hex_color"
-}
-```
-
-**Add events**: Edit `data.js` > `events` array:
-```js
-{
-  "type": "short_name",
-  "date": "ca -500" or 1066,
-  "title": "Event Name",
-  "description": "Optional details"
-}
-```
-
-**Add titles**: Use `"type": "title"` for era markers
+**Add content**: Edit `data.js` arrays:
+- Event types: `name`, `fullName`, `color`
+- Events: `type`, `date`, `title`, `description` 
+- Era titles: `type: "title"` for section headers
