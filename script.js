@@ -48,6 +48,32 @@ class Timeline {
         return parseInt(cleanDate);
     }
     
+    timeToPosition(year) {
+        const config = this.data.config;
+        const refYear = config.referenceYear;
+        const scale = config.linearScale;
+        const multiplier = config.logMultiplier;
+        
+        const distance = Math.abs(year - refYear);
+        const logValue = Math.log(distance + scale);
+        
+        return (year < refYear ? -1 : 1) * logValue * multiplier;
+    }
+    
+    positionToTime(position) {
+        const config = this.data.config;
+        const refYear = config.referenceYear;
+        const scale = config.linearScale;
+        const multiplier = config.logMultiplier;
+        
+        const sign = position < 0 ? -1 : 1;
+        const absPosition = Math.abs(position);
+        const logValue = absPosition / multiplier;
+        const distance = Math.exp(logValue) - scale;
+        
+        return refYear + sign * distance;
+    }
+    
     formatDate(dateStr) {
         if (typeof dateStr === 'number') {
             return dateStr < 0 ? `${Math.abs(dateStr)} BC` : `${dateStr} AD`;
@@ -79,10 +105,16 @@ class Timeline {
         const minDate = this.parseDate(this.events[0].date);
         const maxDate = this.parseDate(this.events[this.events.length - 1].date);
         const dateRange = maxDate - minDate;
-        const pixelsPerYear = this.data.config.pixelsPerYear || 2;
+        const pixelsPerYear = 3; // Back to linear scaling
         const timelineWidth = Math.max(5000, dateRange * pixelsPerYear);
         
         this.eventsContainer.style.width = `${timelineWidth}px`;
+        
+        // Store timeline info for scroll calculations
+        this.minDate = minDate;
+        this.maxDate = maxDate;
+        this.dateRange = dateRange;
+        this.timelineWidth = timelineWidth;
         
         // Render time markers
         this.renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth);
@@ -226,6 +258,46 @@ class Timeline {
         this.timelineContainer.addEventListener('scroll', () => {
             this.updateCurrentTitle();
         });
+        
+        // Add logarithmic scroll behavior
+        this.timelineContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            this.handleLogarithmicScroll(e);
+        }, { passive: false });
+    }
+    
+    handleLogarithmicScroll(event) {
+        const currentScrollLeft = this.timelineContainer.scrollLeft;
+        const currentYear = this.scrollPositionToYear(currentScrollLeft);
+        const scrollMultiplier = this.getScrollMultiplier(currentYear);
+        
+        // Calculate scroll delta with logarithmic scaling
+        const delta = event.deltaX || event.deltaY;
+        const adjustedDelta = delta * scrollMultiplier;
+        
+        // Apply the adjusted scroll
+        this.timelineContainer.scrollLeft = Math.max(0, 
+            Math.min(currentScrollLeft + adjustedDelta, 
+                    this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth));
+    }
+    
+    scrollPositionToYear(scrollLeft) {
+        const scrollRatio = scrollLeft / Math.max(1, this.timelineWidth - 200);
+        return this.minDate + (scrollRatio * this.dateRange);
+    }
+    
+    getScrollMultiplier(currentYear) {
+        const config = this.data.config;
+        const refYear = config.referenceYear;
+        const scale = config.linearScale;
+        
+        const distance = Math.abs(currentYear - refYear);
+        
+        // Logarithmic multiplier: closer to reference year = slower scrolling
+        // Further from reference year = faster scrolling
+        const multiplier = Math.log(distance + scale) / Math.log(scale);
+        
+        return Math.max(0.1, Math.min(10, multiplier));
     }
     
     updateCurrentTitle() {
@@ -263,5 +335,5 @@ class Timeline {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new Timeline();
+    window.timelineInstance = new Timeline();
 });

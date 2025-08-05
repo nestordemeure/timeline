@@ -2,8 +2,10 @@ const timelineData = {
   "config": {
     "fontFamily": "Georgia, 'Times New Roman', Times, serif",
     "baseFontSize": "24px",
-    "pixelsPerYear": 3,
-    "defaultTitle": "A Timeline of Human Progress"
+    "defaultTitle": "A Timeline of Human Progress",
+    "referenceYear": 1969,
+    "linearScale": 50,
+    "logMultiplier": 100
   },
   "types": [
     {
