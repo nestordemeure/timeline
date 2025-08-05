@@ -40,6 +40,15 @@ Serif fonts provide classical elegance and enhanced readability, reinforcing the
 
 ## Interaction Model
 
+### Scrolling Dynamics
+The timeline implements an adaptive scrolling system that optimizes navigation through dense and sparse historical periods:
+
+- **Event-Present Mode**: When events are visible on screen, scrolling operates at normal speed for detailed exploration
+- **Gap-Bridging Mode**: When no events are on screen (during large temporal gaps), scroll speed automatically increases proportionally to the distance between the previous and next events
+- **Consistent Navigation**: This adaptive approach ensures users require the same number of scroll actions to traverse between any two consecutive events, regardless of the temporal gap between them
+
+This creates an intuitive navigation experience where users can efficiently move through both densely populated historical periods and vast temporal gaps with equal ease.
+
 ### Configuration Parameters
 The system's behavior is controlled through `data.js` configuration:
 

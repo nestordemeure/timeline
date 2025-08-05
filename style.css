@@ -263,3 +263,17 @@ body {
         font-size: 0.8rem;
     }
 }
+
+.debug-display {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #e5e5e5;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    z-index: 1000;
+    border: 1px solid #333;
+}

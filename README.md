@@ -26,6 +26,11 @@ Timeline behavior can be customized via `data.js` config object:
 ### Event Visibility
 - `hidden: true`: Optional field on events to hide them from display while keeping them in data
 
+### Scrolling Behavior
+- **Adaptive Speed**: Timeline scrolls at normal speed when events are visible on screen
+- **Distance-Proportional**: When no events are on screen, scroll speed increases proportionally to the distance between the previous and next events
+- **Consistent Navigation**: This ensures a constant number of scroll actions between far-apart events, regardless of temporal gaps
+
 ### Other Settings
 - `fontFamily`: CSS font family for the timeline
 - `baseFontSize`: Base font size for timeline text  

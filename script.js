@@ -8,6 +8,7 @@ class Timeline {
         this.titleHeader = document.getElementById('current-title');
         this.legend = document.getElementById('legend');
         this.timelineContainer = document.querySelector('.timeline-container');
+        this.debugDisplay = document.getElementById('scroll-factor');
         
         this.init();
     }
@@ -139,6 +140,12 @@ class Timeline {
             
             title.position = position;
         });
+        
+        // Store event positions for scrolling factor calculations
+        this.eventPositions = this.events.map(event => {
+            const eventDate = this.parseDate(event.date);
+            return ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
+        });
     }
     
     resolveCollisions(eventData) {
@@ -232,7 +239,56 @@ class Timeline {
     setupScrollListener() {
         this.timelineContainer.addEventListener('scroll', () => {
             this.updateCurrentTitle();
+            this.updateScrollFactor();
         });
+    }
+    
+    computeScrollingFactor() {
+        const currentScrollLeft = this.timelineContainer.scrollLeft;
+        const containerWidth = this.timelineContainer.clientWidth;
+        const viewportLeft = currentScrollLeft;
+        const viewportRight = currentScrollLeft + containerWidth;
+        
+        // Check if any events are currently visible
+        const hasVisibleEvents = this.eventPositions.some(pos => 
+            pos >= viewportLeft - 100 && pos <= viewportRight + 100
+        );
+        
+        if (hasVisibleEvents) {
+            return 1.0;
+        }
+        
+        // No events visible - compute distance-based factor
+        const prevEventPos = this.getPreviousEventPosition(viewportLeft);
+        const nextEventPos = this.getNextEventPosition(viewportRight);
+        
+        if (prevEventPos !== null && nextEventPos !== null) {
+            const totalDistance = nextEventPos - prevEventPos;
+            return totalDistance / this.data.config.targetScrollDistance;
+        }
+        
+        return 1.0; // Default fallback
+    }
+    
+    getPreviousEventPosition(currentPosition) {
+        // Find the last event position before current viewport
+        for (let i = this.eventPositions.length - 1; i >= 0; i--) {
+            if (this.eventPositions[i] < currentPosition) {
+                return this.eventPositions[i];
+            }
+        }
+        return null;
+    }
+    
+    getNextEventPosition(currentPosition) {
+        // Find the next event position after current viewport
+        const nextEventPos = this.eventPositions.find(pos => pos > currentPosition);
+        return nextEventPos !== undefined ? nextEventPos : null;
+    }
+    
+    updateScrollFactor() {
+        const factor = this.computeScrollingFactor();
+        this.debugDisplay.textContent = factor.toFixed(2);
     }
     
     updateCurrentTitle() {
