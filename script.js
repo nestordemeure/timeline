@@ -9,10 +9,10 @@ class Timeline {
         this.legend = document.getElementById('legend');
         this.timelineContainer = document.querySelector('.timeline-container');
         this.debugDisplay = document.getElementById('scroll-factor');
-        
+
         this.init();
     }
-    
+
     init() {
         this.setInitialTitle();
         this.applyFontConfig();
@@ -21,52 +21,52 @@ class Timeline {
         this.renderEvents();
         this.setupScrollListener();
     }
-    
+
     setInitialTitle() {
         this.titleHeader.textContent = this.data.config.defaultTitle;
     }
-    
+
     applyFontConfig() {
         const config = this.data.config;
         document.body.style.fontFamily = config.fontFamily;
         document.body.style.fontSize = config.baseFontSize;
     }
-    
+
     processData() {
         this.events = this.data.events
             .filter(event => event.type !== 'title' && !event.hidden)
             .sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
-            
+
         this.titles = this.data.events
             .filter(event => event.type === 'title')
             .sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
     }
-    
+
     parseDate(dateStr) {
         if (typeof dateStr === 'number') return dateStr;
-        
+
         let cleanDate = dateStr.toString().replace('ca ', '');
         return parseInt(cleanDate);
     }
-    
-    
+
+
     formatDate(dateStr) {
         if (typeof dateStr === 'number') {
             return dateStr < 0 ? `${Math.abs(dateStr)} BC` : `${dateStr} AD`;
         }
-        
+
         const isApprox = dateStr.toString().includes('ca');
         const year = this.parseDate(dateStr);
         const formatted = year < 0 ? `${Math.abs(year)} BC` : `${year} AD`;
-        
+
         return isApprox ? `ca ${formatted}` : formatted;
     }
-    
+
     getTypeColor(typeName) {
         const type = this.data.types.find(t => t.name === typeName);
         return type ? type.color : '#666';
     }
-    
+
     renderLegend() {
         this.legend.innerHTML = this.data.types
             .map(type => `
@@ -76,30 +76,30 @@ class Timeline {
                 </div>
             `).join('');
     }
-    
+
     renderEvents() {
         const minDate = this.parseDate(this.events[0].date);
         const maxDate = this.parseDate(this.events[this.events.length - 1].date);
         const dateRange = maxDate - minDate;
         const pixelsPerYear = 3; // Back to linear scaling
         const timelineWidth = Math.max(5000, dateRange * pixelsPerYear);
-        
+
         this.eventsContainer.style.width = `${timelineWidth}px`;
-        
+
         // Store timeline info for scroll calculations
         this.minDate = minDate;
         this.maxDate = maxDate;
         this.dateRange = dateRange;
         this.timelineWidth = timelineWidth;
-        
+
         // Render time markers
         this.renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth);
-        
+
         // Calculate initial positions and create event data with collision info
         const eventData = this.events.map((event, index) => {
             const eventDate = this.parseDate(event.date);
             const basePosition = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
-            
+
             return {
                 ...event,
                 index,
@@ -110,18 +110,18 @@ class Timeline {
                 height: 150 // min-height from CSS
             };
         });
-        
+
         // Apply collision detection
         this.resolveCollisions(eventData);
-        
+
         // Render events with adjusted positions
         eventData.forEach(eventInfo => {
             const eventElement = document.createElement('div');
             eventElement.className = `event ${eventInfo.side}`;
             eventElement.style.left = `${eventInfo.finalPosition}px`;
-            
+
             const color = this.getTypeColor(eventInfo.type);
-            
+
             eventElement.innerHTML = `
                 <div class="event-content">
                     <div class="event-title">${eventInfo.title}</div>
@@ -130,71 +130,71 @@ class Timeline {
                 <div class="event-marker" style="background-color: ${color}"></div>
                 <div class="event-date">${this.formatDate(eventInfo.date)}</div>
             `;
-            
+
             this.eventsContainer.appendChild(eventElement);
         });
-        
+
         this.titles.forEach(title => {
             const titleDate = this.parseDate(title.date);
             const position = ((titleDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
-            
+
             title.position = position;
         });
-        
+
         // Store event positions for scrolling factor calculations
         this.eventPositions = this.events.map(event => {
             const eventDate = this.parseDate(event.date);
             return ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
         });
     }
-    
+
     resolveCollisions(eventData) {
         const padding = 20; // minimum space between events
-        
+
         // Separate events by side (above/below)
         const aboveEvents = eventData.filter(e => e.side === 'above').sort((a, b) => a.basePosition - b.basePosition);
         const belowEvents = eventData.filter(e => e.side === 'below').sort((a, b) => a.basePosition - b.basePosition);
-        
+
         // Resolve collisions for each side separately
         this.resolveCollisionsForSide(aboveEvents, padding);
         this.resolveCollisionsForSide(belowEvents, padding);
     }
-    
+
     resolveCollisionsForSide(events, padding) {
         if (events.length === 0) return;
-        
+
         // First pass: push events to the right to avoid overlaps
         for (let i = 1; i < events.length; i++) {
             const current = events[i];
             const previous = events[i - 1];
-            
+
             const previousEnd = previous.finalPosition + previous.width / 2;
             const currentStart = current.finalPosition - current.width / 2;
-            
+
             if (currentStart < previousEnd + padding) {
                 current.finalPosition = previousEnd + padding + current.width / 2;
             }
         }
-        
+
         // Second pass: try to pull events back towards their original positions
         for (let i = events.length - 2; i >= 0; i--) {
             const current = events[i];
             const next = events[i + 1];
-            
+
             const nextStart = next.finalPosition - next.width / 2;
             const maxPosition = nextStart - padding - current.width / 2;
-            
+
             if (current.finalPosition > maxPosition) {
                 current.finalPosition = maxPosition;
             }
-            
+
             // Don't pull back beyond the original position
             if (current.finalPosition < current.basePosition) {
                 current.finalPosition = current.basePosition;
             }
         }
     }
-    
+
     renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth) {
         const getMarkerInterval = (range) => {
             if (range <= 50) return 5;
@@ -206,28 +206,28 @@ class Timeline {
             if (range <= 5000) return 500;
             return 1000;
         };
-        
+
         const interval = getMarkerInterval(dateRange);
         const startYear = Math.floor(minDate / interval) * interval;
-        
+
         for (let year = startYear; year <= maxDate; year += interval) {
             if (year >= minDate && !this.hasNearbyEvent(year, minDate, maxDate, dateRange, timelineWidth)) {
                 const position = ((year - minDate) / dateRange) * (timelineWidth - 200) + 100;
-                
+
                 const marker = document.createElement('div');
                 marker.className = 'time-marker';
                 marker.style.left = `${position}px`;
                 marker.setAttribute('data-date', year < 0 ? `${Math.abs(year)} BC` : `${year} AD`);
-                
+
                 this.eventsContainer.appendChild(marker);
             }
         }
     }
-    
+
     hasNearbyEvent(markerYear, minDate, maxDate, dateRange, timelineWidth) {
         const markerPosition = ((markerYear - minDate) / dateRange) * (timelineWidth - 200) + 100;
         const minDistance = 150; // minimum distance in pixels to avoid overlap
-        
+
         return this.events.some(event => {
             const eventDate = this.parseDate(event.date);
             const eventPosition = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
@@ -235,53 +235,77 @@ class Timeline {
             return distance < minDistance;
         });
     }
-    
+
     setupScrollListener() {
         this.timelineContainer.addEventListener('scroll', () => {
             this.updateCurrentTitle();
             this.updateScrollFactor();
         });
     }
-    
+
     computeScrollingFactor() {
         const currentScrollLeft = this.timelineContainer.scrollLeft;
         const containerWidth = this.timelineContainer.clientWidth;
         const viewportLeft = currentScrollLeft;
         const viewportRight = currentScrollLeft + containerWidth;
-        const targetScrollDistance = this.data.config.targetScrollDistance;
-        
-        // Find previous and next event positions
+
+        // **BUG FIX: This check is essential and is now re-instated.**
+        // Explicitly check if any event is currently visible inside the viewport.
+        // If so, immediately return 1x speed to ensure stable viewing.
+        const eventInView = this.eventPositions.some(pos => pos >= viewportLeft && pos <= viewportRight);
+        if (eventInView) {
+            return 1.0;
+        }
+
+        // The 'targetScrollDistance' from data.js defines the size of the normal-speed zone around an event.
+        const slowZoneSize = this.data.config.targetScrollDistance;
+
+        // Find the positions of the events immediately preceding and succeeding the viewport.
         const prevEventPos = this.getPreviousEventPosition(viewportLeft);
         const nextEventPos = this.getNextEventPosition(viewportRight);
-        
+
+        // At the timeline's edges, or if no clear gap is found, use default speed.
         if (prevEventPos === null || nextEventPos === null) {
-            return 1.0; // Default fallback at timeline edges
+            return 1.0;
         }
-        
-        // Calculate distances
+
+        // --- Anti-Overshoot Logic ---
+
+        // Define the beginning of the next slow zone and our distance to it.
+        const nextSlowZoneStart = nextEventPos - slowZoneSize;
+        const distanceToNextSlowZone = nextSlowZoneStart - viewportRight;
+
+        // Also check against the previous event's slow zone.
+        const prevSlowZoneEnd = prevEventPos + slowZoneSize;
+        const distanceToPrevSlowZone = viewportLeft - prevSlowZoneEnd;
+
+        // If we are inside either slow zone, the factor is 1.0.
+        if (distanceToNextSlowZone < 0 || distanceToPrevSlowZone < 0) {
+            return 1.0;
+        }
+
+        // 1. Calculate the 'desired' unbounded scroll factor based on the gap size.
         const totalDistance = nextEventPos - prevEventPos;
-        const distanceFromPrev = viewportLeft - prevEventPos;
-        const distanceToNext = nextEventPos - viewportRight;
-        
-        // If we're within targetScrollDistance of either event, use 1x speed
-        if (distanceFromPrev < targetScrollDistance || distanceToNext < targetScrollDistance) {
-            return 1.0;
-        }
-        
-        // In the gap between events - calculate proportional speed
-        // The effective gap is total distance minus the two targetScrollDistance zones
-        const effectiveGap = totalDistance - (2 * targetScrollDistance);
-        
+        const effectiveGap = totalDistance - (2 * slowZoneSize);
         if (effectiveGap <= 0) {
-            // Events are too close together - use 1x speed throughout
-            return 1.0;
+            return 1.0; // Return normal speed if the gap is smaller than the slow zones.
         }
-        
-        // Return factor that ensures the gap can be traversed in the same time
-        // as targetScrollDistance at 1x speed
-        return effectiveGap / targetScrollDistance;
+        const desiredFactor = effectiveGap / slowZoneSize;
+
+        // 2. Predict if a scroll at this speed would overshoot the target.
+        const assumedScrollDelta = 100; // A reasonable approximation for a mouse wheel tick.
+        const potentialTravelDistance = assumedScrollDelta * desiredFactor;
+
+        // 3. If a potential overshoot is detected, calculate the perfect capped factor.
+        if (potentialTravelDistance > distanceToNextSlowZone) {
+            const cappedFactor = distanceToNextSlowZone / assumedScrollDelta;
+            return Math.max(1.0, cappedFactor);
+        }
+
+        // 4. If no overshoot is predicted, use the desired unbounded factor.
+        return desiredFactor;
     }
-    
+
     getPreviousEventPosition(currentPosition) {
         // Find the last event position before current viewport
         for (let i = this.eventPositions.length - 1; i >= 0; i--) {
@@ -291,24 +315,24 @@ class Timeline {
         }
         return null;
     }
-    
+
     getNextEventPosition(currentPosition) {
         // Find the next event position after current viewport
         const nextEventPos = this.eventPositions.find(pos => pos > currentPosition);
         return nextEventPos !== undefined ? nextEventPos : null;
     }
-    
+
     updateScrollFactor() {
         const factor = this.computeScrollingFactor();
         this.debugDisplay.textContent = factor.toFixed(2);
     }
-    
+
     updateCurrentTitle() {
         const scrollLeft = this.timelineContainer.scrollLeft;
         const maxScroll = this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth;
-        
+
         let newTitle = this.data.config.defaultTitle;
-        
+
         // If we're at the end of the timeline, show the last title
         if (scrollLeft >= maxScroll - 50) {
             if (this.titles.length > 0) {
@@ -324,11 +348,11 @@ class Timeline {
                 }
             }
         }
-        
+
         if (newTitle !== this.currentTitle) {
             this.currentTitle = newTitle;
             this.titleHeader.style.opacity = '0';
-            
+
             setTimeout(() => {
                 this.titleHeader.textContent = this.currentTitle;
                 this.titleHeader.style.opacity = '1';

@@ -3,7 +3,7 @@ const timelineData = {
     "fontFamily": "Georgia, 'Times New Roman', Times, serif",
     "baseFontSize": "24px",
     "defaultTitle": "A Timeline of Human Progress",
-    "targetScrollDistance": 2000
+    "targetScrollDistance": 3000
   },
   "types": [
     {
