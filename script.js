@@ -48,31 +48,6 @@ class Timeline {
         return parseInt(cleanDate);
     }
     
-    timeToPosition(year) {
-        const config = this.data.config;
-        const refYear = config.referenceYear;
-        const scale = config.linearScale;
-        const multiplier = config.logMultiplier;
-        
-        const distance = Math.abs(year - refYear);
-        const logValue = Math.log(distance + scale);
-        
-        return (year < refYear ? -1 : 1) * logValue * multiplier;
-    }
-    
-    positionToTime(position) {
-        const config = this.data.config;
-        const refYear = config.referenceYear;
-        const scale = config.linearScale;
-        const multiplier = config.logMultiplier;
-        
-        const sign = position < 0 ? -1 : 1;
-        const absPosition = Math.abs(position);
-        const logValue = absPosition / multiplier;
-        const distance = Math.exp(logValue) - scale;
-        
-        return refYear + sign * distance;
-    }
     
     formatDate(dateStr) {
         if (typeof dateStr === 'number') {
@@ -289,15 +264,15 @@ class Timeline {
     getScrollMultiplier(currentYear) {
         const config = this.data.config;
         const refYear = config.referenceYear;
-        const scale = config.linearScale;
+        const scrollScale = config.scrollSpeedScale;
         
         const distance = Math.abs(currentYear - refYear);
         
-        // Logarithmic multiplier: closer to reference year = slower scrolling
-        // Further from reference year = faster scrolling
-        const multiplier = Math.log(distance + scale) / Math.log(scale);
+        // Linear multiplier: distance from reference year directly affects scroll speed
+        // scrollSpeedScale controls the scaling: smaller values = more aggressive speed increase
+        const multiplier = Math.max(1, distance / scrollScale);
         
-        return Math.max(0.1, Math.min(10, multiplier));
+        return Math.max(0.1, Math.min(1000, multiplier));
     }
     
     updateCurrentTitle() {
