@@ -49,6 +49,18 @@ const timelineData = {
       "title": "Prehistory"
     },
     {
+      "type": "economics",
+      "date": "ca -8000",
+      "title": "Agriculture revolution",
+      "description": "Neolithic Revolution: humans transition from hunting-gathering to farming, enabling permanent settlements and population growth."
+    },
+    {
+      "type": "industry",
+      "date": "ca -3500",
+      "title": "Wheel invented",
+      "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
+    },
+    {
       "type": "information",
       "date": "ca -3200",
       "title": "Writing invented",
@@ -61,6 +73,24 @@ const timelineData = {
       "description": "One of the earliest and most complete legal codes, establishing laws and punishments in ancient Babylon."
     },
     {
+      "type": "religion",
+      "date": "ca -1500",
+      "title": "Hinduism/Vedas",
+      "description": "Composition of the Vedas begins in India, establishing foundational texts of Hinduism and one of the world's oldest religions."
+    },
+    {
+      "type": "religion",
+      "date": "ca -1350",
+      "title": "First Monotheism",
+      "description": "Akhenaten introduces monotheistic worship of Aten in ancient Egypt, marking the first known monotheistic religion."
+    },
+    {
+      "type": "information",
+      "date": "ca -1200",
+      "title": "Phoenician alphabet",
+      "description": "Phoenicians develop the first true alphabet with individual letters for sounds, becoming the foundation for Greek, Latin, and modern alphabets."
+    },
+    {
       "type": "title",
       "date": -800,
       "title": "Antiquity"
@@ -70,6 +100,18 @@ const timelineData = {
       "date": "ca -600",
       "title": "Invention of Money",
       "description": "First coins minted in Lydia, revolutionizing trade and commerce."
+    },
+    {
+      "type": "religion",
+      "date": "ca -500",
+      "title": "Buddhism founded",
+      "description": "Siddhartha Gautama (Buddha) achieves enlightenment and begins teaching, founding Buddhism and influencing millions."
+    },
+    {
+      "type": "religion",
+      "date": "ca -500",
+      "title": "Judaism codified",
+      "description": "Torah compilation during Babylonian exile codifies Jewish law and beliefs, establishing foundational texts of Judaism."
     },
     {
       "type": "politics",
@@ -84,6 +126,12 @@ const timelineData = {
       "description": "Mathematical treatise establishing the foundations of geometry and mathematical proof."
     },
     {
+      "type": "industry",
+      "date": "ca -200",
+      "title": "Compass invented",
+      "description": "Magnetic compass invented in China, revolutionizing navigation and enabling long-distance maritime exploration."
+    },
+    {
       "type": "religion",
       "date": "ca 30",
       "title": "Christianity begins",
@@ -94,6 +142,12 @@ const timelineData = {
       "date": "ca 105",
       "title": "Paper invented",
       "description": "Paper invented in China by Cai Lun, revolutionizing information storage and transmission."
+    },
+    {
+      "type": "information",
+      "date": "ca 500",
+      "title": "Hindu-Arabic numerals",
+      "description": "Hindu-Arabic numeral system with zero and decimal notation developed in India, revolutionizing mathematics and enabling complex calculations."
     },
     {
       "type": "title",
@@ -113,6 +167,12 @@ const timelineData = {
       "description": "University of Bologna established, marking the beginning of higher education institutions in Europe."
     },
     {
+      "type": "economics",
+      "date": "ca 1300",
+      "title": "Double-entry bookkeeping",
+      "description": "Double-entry bookkeeping system developed in Italian city-states, revolutionizing accounting and enabling modern capitalism."
+    },
+    {
       "type": "information",
       "date": "ca 1440",
       "title": "Printing Press",
@@ -128,6 +188,18 @@ const timelineData = {
       "date": 1517,
       "title": "Protestant Reformation",
       "description": "Martin Luther's 95 Theses spark the Protestant Reformation, challenging Catholic Church authority."
+    },
+    {
+      "type": "science",
+      "date": 1543,
+      "title": "Scientific Revolution",
+      "description": "Copernicus publishes 'On the Revolutions of Celestial Spheres', launching the Scientific Revolution with heliocentric theory."
+    },
+    {
+      "type": "science",
+      "date": 1608,
+      "title": "Telescope invented",
+      "description": "Hans Lippershey invents the telescope, revolutionizing astronomy and our understanding of the cosmos."
     },
     {
       "type": "science",
@@ -165,16 +237,58 @@ const timelineData = {
       "title": "Industrial Age"
     },
     {
+      "type": "information",
+      "date": 1844,
+      "title": "Telegraph System",
+      "description": "Samuel Morse demonstrates the first long-distance telegraph line, enabling near-instantaneous long-distance communication."
+    },
+    {
       "type": "science",
       "date": 1859,
       "title": "Theory of Evolution",
       "description": "Darwin publishes 'On the Origin of Species', revolutionizing our understanding of life and biology."
     },
     {
+      "type": "information",
+      "date": 1876,
+      "title": "Telephone Invented",
+      "description": "Alexander Graham Bell patents the telephone, revolutionizing voice communication over distances."
+    },
+    {
+      "type": "industry",
+      "date": 1879,
+      "title": "Electric Power Grid",
+      "description": "Edison develops the first practical electric power distribution system, bringing electricity to homes and businesses."
+    },
+    {
+      "type": "industry",
+      "date": 1913,
+      "title": "Assembly Line",
+      "description": "Henry Ford introduces the moving assembly line for automobile production, revolutionizing manufacturing efficiency."
+    },
+    {
       "type": "medicine",
       "date": 1928,
       "title": "Antibiotics discovered",
       "description": "Alexander Fleming discovers penicillin, revolutionizing the treatment of bacterial infections."
+    },
+    {
+      "type": "medicine",
+      "date": 1940,
+      "title": "Antibiotics mass production",
+      "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing."
+    },
+    {
+      "type": "science",
+      "date": 1943,
+      "title": "First Neural Network Model",
+      "description": "McCulloch and Pitts create the first mathematical model of neural networks, laying the foundation for artificial intelligence."
+    },
+    {
+      "type": "information",
+      "date": 1947,
+      "title": "Transistor invented",
+      "description": "Bell Labs invents the transistor, the fundamental building block that enables all modern electronics and computers."
     },
     {
       "type": "title",
@@ -188,10 +302,40 @@ const timelineData = {
       "description": "Watson and Crick discover the double helix structure of DNA, unlocking the secrets of heredity."
     },
     {
+      "type": "science",
+      "date": 1955,
+      "title": "Computerized Mathematical Modeling",
+      "description": "First computerized solutions to partial differential equations enable complex scientific simulations and engineering analysis."
+    },
+    {
+      "type": "science",
+      "date": 1958,
+      "title": "Perceptron Algorithm",
+      "description": "Frank Rosenblatt develops the perceptron, the first practical neural network algorithm capable of learning from data."
+    },
+    {
       "type": "information",
       "date": 1969,
       "title": "Internet created",
       "description": "ARPANET, the precursor to the Internet, is established, connecting computers across vast distances."
+    },
+    {
+      "type": "information",
+      "date": 1977,
+      "title": "Personal Computer Revolution",
+      "description": "Apple II and other personal computers bring computing power to homes and small businesses, democratizing access to technology."
+    },
+    {
+      "type": "information",
+      "date": 1983,
+      "title": "Mobile Phone Network",
+      "description": "First commercial cellular network launches, enabling portable wireless communication and transforming personal connectivity."
+    },
+    {
+      "type": "information",
+      "date": 1998,
+      "title": "Google Founded",
+      "description": "Larry Page and Sergey Brin launch Google, revolutionizing internet search and organizing the world's information."
     },
     {
       "type": "science",
@@ -201,9 +345,21 @@ const timelineData = {
     },
     {
       "type": "medicine",
+      "date": 2003,
+      "title": "Human Genome Project completed",
+      "description": "Complete mapping of human DNA is finished, revolutionizing medicine and our understanding of genetics."
+    },
+    {
+      "type": "medicine",
       "date": 2020,
       "title": "CRISPR Gene Editing",
       "description": "CRISPR-Cas9 technology enables precise gene editing, opening new possibilities for treating genetic diseases."
+    },
+    {
+      "type": "information",
+      "date": 2022,
+      "title": "ChatGPT Launch",
+      "description": "OpenAI releases ChatGPT, making advanced conversational AI accessible to the public and sparking the modern AI revolution."
     }
   ]
 };
