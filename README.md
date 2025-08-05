@@ -41,3 +41,9 @@ Timeline behavior can be customized via `data.js` config object:
 
 * have a line on the page inviting users to scroll right
 * move data to an actual json
+
+* develop the PDE item into a proper event
+* add turing machines or babbage as the first theory of computing / computers
+* scrolling is still too fast aorund events
+* cut the debugging scroll factor display
+  * replace it by a display of the current year?
