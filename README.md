@@ -1,6 +1,7 @@
 # Historical Timeline
 
-Interactive horizontal timeline displaying historical events with smooth scrolling and era transitions.
+Interactive horizontal timeline displaying historical events.
+Made to illustrate the exponential rate of human progress within a larger presentation.
 
 ## Organization
 
@@ -21,3 +22,4 @@ Interactive horizontal timeline displaying historical events with smooth scrolli
 ## TODO
 
 * skip long spans of nothing?
+* have a line on the page inviting users to scroll right

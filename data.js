@@ -135,7 +135,7 @@ const timelineData = {
       "type": "industry",
       "date": "ca -200",
       "title": "Compass invented",
-      "description": "Magnetic compass invented in China, revolutionizing navigation and enabling long-distance maritime exploration."
+      "description": "Magnetic compass invented in China for divination and feng shui practices, later revolutionizing navigation and maritime exploration."
     },
     {
       "type": "religion",
@@ -356,12 +356,6 @@ const timelineData = {
       "description": "Larry Page and Sergey Brin launch Google, revolutionizing internet search and organizing the world's information."
     },
     {
-      "type": "science",
-      "date": 2019,
-      "title": "Quantum Supremacy",
-      "description": "Google achieves quantum supremacy, demonstrating quantum computers can outperform classical computers."
-    },
-    {
       "type": "medicine",
       "date": 2003,
       "title": "Human Genome Project completed",
@@ -369,9 +363,15 @@ const timelineData = {
     },
     {
       "type": "medicine",
-      "date": 2020,
+      "date": 2012,
       "title": "CRISPR Gene Editing",
-      "description": "CRISPR-Cas9 technology enables precise gene editing, opening new possibilities for treating genetic diseases."
+      "description": "CRISPR-Cas9 gene editing technology developed by Charpentier and Doudna, enabling precise genetic modifications and revolutionizing biotechnology."
+    },
+    {
+      "type": "science",
+      "date": 2019,
+      "title": "Quantum Supremacy",
+      "description": "Google achieves quantum supremacy, demonstrating quantum computers can outperform classical computers."
     },
     {
       "type": "information",
