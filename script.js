@@ -265,14 +265,57 @@ class Timeline {
         const config = this.data.config;
         const refYear = config.referenceYear;
         const scrollScale = config.scrollSpeedScale;
+        const slowdownRange = config.eventSlowdownRange;
+        const eventReadingSpeed = config.eventReadingSpeed;
         
         const distance = Math.abs(currentYear - refYear);
         
-        // Linear multiplier: distance from reference year directly affects scroll speed
-        // scrollSpeedScale controls the scaling: smaller values = more aggressive speed increase
-        const multiplier = Math.max(1, distance / scrollScale);
+        // Base multiplier: distance from reference year directly affects scroll speed
+        const baseMultiplier = Math.max(1, distance / scrollScale);
         
-        return Math.max(0.1, Math.min(1000, multiplier));
+        // Check proximity to events and get target speed
+        const targetSpeed = this.getTargetScrollSpeed(baseMultiplier, eventReadingSpeed, slowdownRange);
+        
+        return Math.max(0.1, Math.min(1000, targetSpeed));
+    }
+    
+    getTargetScrollSpeed(baseSpeed, baselineSpeed, slowdownRange) {
+        const containerRect = this.timelineContainer.getBoundingClientRect();
+        const viewportLeft = this.timelineContainer.scrollLeft;
+        const viewportRight = viewportLeft + containerRect.width;
+        
+        let minDistanceToEvent = Infinity;
+        
+        // Check distance to all visible events
+        const eventElements = this.eventsContainer.querySelectorAll('.event');
+        eventElements.forEach(eventElement => {
+            const eventLeft = parseInt(eventElement.style.left) || 0;
+            const eventRight = eventLeft + 267; // event width from CSS
+            
+            let distanceToEvent;
+            
+            if (eventRight < viewportLeft) {
+                // Event is to the left of viewport
+                distanceToEvent = viewportLeft - eventRight;
+            } else if (eventLeft > viewportRight) {
+                // Event is to the right of viewport
+                distanceToEvent = eventLeft - viewportRight;
+            } else {
+                // Event is visible in viewport
+                distanceToEvent = 0;
+            }
+            
+            minDistanceToEvent = Math.min(minDistanceToEvent, distanceToEvent);
+        });
+        
+        // Return target speed based on proximity to events
+        if (minDistanceToEvent >= slowdownRange) {
+            return baseSpeed; // Use full base speed when far from events
+        }
+        
+        // Smooth interpolation from baselineSpeed to baseSpeed based on distance
+        const proximity = 1 - (minDistanceToEvent / slowdownRange);
+        return baselineSpeed + (baseSpeed - baselineSpeed) * (1 - proximity);
     }
     
     updateCurrentTitle() {

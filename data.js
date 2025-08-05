@@ -4,7 +4,9 @@ const timelineData = {
     "baseFontSize": "24px",
     "defaultTitle": "A Timeline of Human Progress",
     "referenceYear": 1969,
-    "scrollSpeedScale": 2000
+    "scrollSpeedScale": 1000,
+    "eventSlowdownRange": 1000,
+    "eventReadingSpeed": 0.05
   },
   "types": [
     {
