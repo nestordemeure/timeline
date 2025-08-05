@@ -185,6 +185,12 @@ const timelineData = {
       "description": "University of Bologna established, marking the beginning of higher education institutions in Europe."
     },
     {
+      "type": "politics",
+      "date": 1215,
+      "title": "Magna Carta",
+      "description": "English nobles force King John to sign the Magna Carta, establishing foundational principles of rule of law, due process, and limits on royal power."
+    },
+    {
       "type": "economics",
       "date": "ca 1300",
       "title": "Double-entry bookkeeping",
@@ -307,6 +313,12 @@ const timelineData = {
       "date": 1947,
       "title": "Transistor invented",
       "description": "Bell Labs invents the transistor, the fundamental building block that enables all modern electronics and computers."
+    },
+    {
+      "type": "information",
+      "date": 1948,
+      "title": "Information Theory",
+      "description": "Claude Shannon publishes 'A Mathematical Theory of Communication', establishing information theory and laying the mathematical foundation for the digital age."
     },
     {
       "type": "title",

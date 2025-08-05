@@ -26,6 +26,7 @@ Clean separation of concerns across four main files:
 ## Development Workflow
 - All content editable through `data.js` without touching logic
 - **IMPORTANT**: Any new events/titles added to `data.js` must be inserted in chronological order by date
+- **IMPORTANT**: Any new events must be fact-checked online for date and description accuracy before adding
 - Visual changes require browser testing with Playwright MCP
 - Follow existing patterns for new event types or timeline modifications
 - Configuration changes (fonts, colors, scaling) handled through data.js config object
