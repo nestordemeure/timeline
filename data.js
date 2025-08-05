@@ -51,10 +51,28 @@ const timelineData = {
       "title": "Prehistory"
     },
     {
+      "type": "science",
+      "date": "ca -400000",
+      "title": "Domestication of fire",
+      "description": "Control of fire becomes widespread among early humans, revolutionizing cooking, protection, and tool-making capabilities."
+    },
+    {
+      "type": "information",
+      "date": "ca -40000",
+      "title": "First cave art",
+      "description": "Earliest known cave paintings created in Indonesia and Europe, marking the beginning of symbolic artistic expression."
+    },
+    {
       "type": "economics",
       "date": "ca -8000",
       "title": "Agriculture revolution",
       "description": "Neolithic Revolution: humans transition from hunting-gathering to farming, enabling permanent settlements and population growth."
+    },
+    {
+      "type": "industry",
+      "date": "ca -5000",
+      "title": "The loom invented",
+      "description": "Early looms developed for weaving textiles, revolutionizing clothing production and trade in ancient civilizations."
     },
     {
       "type": "industry",
@@ -132,6 +150,12 @@ const timelineData = {
       "date": "ca -300",
       "title": "Euclid's Elements",
       "description": "Mathematical treatise establishing the foundations of geometry and mathematical proof."
+    },
+    {
+      "type": "science",
+      "date": "ca 100",
+      "title": "Linear algebra foundations",
+      "description": "Chinese mathematicians in 'Nine Chapters on Mathematical Art' develop systematic methods for solving linear equations, foundational to linear algebra."
     },
     {
       "type": "industry",
@@ -223,6 +247,12 @@ const timelineData = {
     },
     {
       "type": "science",
+      "date": 1654,
+      "title": "Probability theory",
+      "description": "Pascal and Fermat develop probability theory through correspondence about gambling problems, founding mathematical statistics."
+    },
+    {
+      "type": "science",
       "date": 1608,
       "title": "Telescope invented",
       "description": "Hans Lippershey invents the telescope, revolutionizing astronomy and our understanding of the cosmos."
@@ -263,6 +293,12 @@ const timelineData = {
       "title": "Industrial Age"
     },
     {
+      "type": "science",
+      "date": 1828,
+      "title": "Organic chemistry founded",
+      "description": "Friedrich Wöhler synthesizes urea from inorganic compounds, proving organic molecules can be created artificially and founding organic chemistry."
+    },
+    {
       "type": "information",
       "date": 1844,
       "title": "Telegraph System",
@@ -273,6 +309,18 @@ const timelineData = {
       "date": 1859,
       "title": "Theory of Evolution",
       "description": "Darwin publishes 'On the Origin of Species', revolutionizing our understanding of life and biology."
+    },
+    {
+      "type": "science",
+      "date": 1865,
+      "title": "Laws of entropy",
+      "description": "Rudolf Clausius formulates the second law of thermodynamics and introduces the concept of entropy, fundamentally changing our understanding of energy."
+    },
+    {
+      "type": "science",
+      "date": 1865,
+      "title": "Laws of electromagnetism",
+      "description": "James Clerk Maxwell publishes unified theory of electromagnetic field, demonstrating that light, electricity, and magnetism are manifestations of the same phenomenon."
     },
     {
       "type": "information",
@@ -287,6 +335,18 @@ const timelineData = {
       "description": "Edison develops the first practical electric power distribution system, bringing electricity to homes and businesses."
     },
     {
+      "type": "science",
+      "date": 1905,
+      "title": "Theory of relativity",
+      "description": "Einstein publishes special relativity, revolutionizing our understanding of space, time, and energy with E=mc²."
+    },
+    {
+      "type": "industry",
+      "date": 1909,
+      "title": "Artificial fertilizers",
+      "description": "Fritz Haber develops the Haber-Bosch process for synthesizing ammonia, enabling mass production of fertilizers and supporting global population growth."
+    },
+    {
       "type": "industry",
       "date": 1913,
       "title": "Assembly Line",
@@ -299,17 +359,28 @@ const timelineData = {
       "description": "Alexander Fleming discovers penicillin, revolutionizing the treatment of bacterial infections."
     },
     {
+      "type": "science",
+      "date": 1938,
+      "title": "Splitting the atom",
+      "description": "Otto Hahn and Fritz Strassmann achieve nuclear fission, splitting uranium atoms and ushering in the nuclear age."
+    },
+    {
       "type": "medicine",
       "date": 1940,
       "title": "Antibiotics mass production",
       "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing.",
-      "hidden": true
     },
     {
       "type": "science",
       "date": 1943,
       "title": "First Neural Network Model",
       "description": "McCulloch and Pitts create the first mathematical model of neural networks, laying the foundation for artificial intelligence."
+    },
+    {
+      "type": "information",
+      "date": 1946,
+      "title": "First computer",
+      "description": "ENIAC, the first programmable electronic general-purpose digital computer, is formally dedicated at the University of Pennsylvania."
     },
     {
       "type": "information",
