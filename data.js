@@ -102,6 +102,12 @@ const timelineData = {
       "description": "First coins minted in Lydia, revolutionizing trade and commerce."
     },
     {
+      "type": "science",
+      "date": "ca -600",
+      "title": "Babylonian astronomy",
+      "description": "Babylonians develop systematic astronomical observations, creating the zodiac and tracking planetary cycles with mathematical precision."
+    },
+    {
       "type": "religion",
       "date": "ca -500",
       "title": "Buddhism founded",
@@ -144,6 +150,12 @@ const timelineData = {
       "description": "Paper invented in China by Cai Lun, revolutionizing information storage and transmission."
     },
     {
+      "type": "science",
+      "date": "ca 150",
+      "title": "Ptolemaic model",
+      "description": "Ptolemy creates comprehensive geocentric model of the universe, dominating astronomical thought for over 1,400 years until Copernicus."
+    },
+    {
       "type": "information",
       "date": "ca 500",
       "title": "Hindu-Arabic numerals",
@@ -159,6 +171,12 @@ const timelineData = {
       "date": 622,
       "title": "Islam founded",
       "description": "Prophet Muhammad's Hijra marks the beginning of the Islamic calendar and the spread of Islam."
+    },
+    {
+      "type": "industry",
+      "date": "ca 900",
+      "title": "Gunpowder invented",
+      "description": "Gunpowder invented in China by alchemists, revolutionizing warfare, mining, and construction technology."
     },
     {
       "type": "science",
