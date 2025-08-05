@@ -248,26 +248,38 @@ class Timeline {
         const containerWidth = this.timelineContainer.clientWidth;
         const viewportLeft = currentScrollLeft;
         const viewportRight = currentScrollLeft + containerWidth;
+        const targetScrollDistance = this.data.config.targetScrollDistance;
         
-        // Check if any events are currently visible
-        const hasVisibleEvents = this.eventPositions.some(pos => 
-            pos >= viewportLeft - 100 && pos <= viewportRight + 100
-        );
-        
-        if (hasVisibleEvents) {
-            return 1.0;
-        }
-        
-        // No events visible - compute distance-based factor
+        // Find previous and next event positions
         const prevEventPos = this.getPreviousEventPosition(viewportLeft);
         const nextEventPos = this.getNextEventPosition(viewportRight);
         
-        if (prevEventPos !== null && nextEventPos !== null) {
-            const totalDistance = nextEventPos - prevEventPos;
-            return totalDistance / this.data.config.targetScrollDistance;
+        if (prevEventPos === null || nextEventPos === null) {
+            return 1.0; // Default fallback at timeline edges
         }
         
-        return 1.0; // Default fallback
+        // Calculate distances
+        const totalDistance = nextEventPos - prevEventPos;
+        const distanceFromPrev = viewportLeft - prevEventPos;
+        const distanceToNext = nextEventPos - viewportRight;
+        
+        // If we're within targetScrollDistance of either event, use 1x speed
+        if (distanceFromPrev < targetScrollDistance || distanceToNext < targetScrollDistance) {
+            return 1.0;
+        }
+        
+        // In the gap between events - calculate proportional speed
+        // The effective gap is total distance minus the two targetScrollDistance zones
+        const effectiveGap = totalDistance - (2 * targetScrollDistance);
+        
+        if (effectiveGap <= 0) {
+            // Events are too close together - use 1x speed throughout
+            return 1.0;
+        }
+        
+        // Return factor that ensures the gap can be traversed in the same time
+        // as targetScrollDistance at 1x speed
+        return effectiveGap / targetScrollDistance;
     }
     
     getPreviousEventPosition(currentPosition) {

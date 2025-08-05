@@ -11,64 +11,85 @@ class DynamicScrollScaler {
         this.initKeyboardScrolling();
     }
 
-    // Get current scroll factor from your function
+    // Get current scroll factor from the timeline instance
     getCurrentScrollFactor() {
         try {
-            // Call your function - adjust parameters as needed
-            return computeScrollingFactor() || 1;
+            if (window.timelineInstance && window.timelineInstance.computeScrollingFactor) {
+                return window.timelineInstance.computeScrollingFactor() || 1;
+            }
+            return 1;
         } catch (error) {
             console.warn('computeScrollingFactor failed:', error);
             return 1; // fallback to normal speed
         }
     }
+    
+    // Get the timeline container for scrolling
+    getScrollContainer() {
+        return document.querySelector('.timeline-container') || window;
+    }
 
     // Handle mouse wheel scrolling
     initWheelScrolling() {
+        const timelineContainer = this.getScrollContainer();
+        
         window.addEventListener('wheel', (e) => {
-            if (this.isScrolling) return;
-
+            // Only handle if the target is within the timeline container
+            if (!timelineContainer.contains(e.target)) return;
+            
             e.preventDefault();
-            this.isScrolling = true;
 
             // Get current scroll factor
             const scrollFactor = this.getCurrentScrollFactor();
 
-            // Scale the scroll delta
-            const scaledDeltaY = e.deltaY * scrollFactor;
-            const scaledDeltaX = e.deltaX * scrollFactor;
+            // Scale the scroll delta - use deltaX if it exists, otherwise deltaY
+            const scrollDelta = e.deltaX !== 0 ? e.deltaX : e.deltaY;
+            const scaledDeltaX = scrollDelta * scrollFactor;
 
             // Apply the scaled scroll
-            window.scrollBy(scaledDeltaX, scaledDeltaY);
-
-            // Reset flag on next frame
-            requestAnimationFrame(() => {
-                this.isScrolling = false;
-            });
-        }, { passive: false });
+            const currentScrollLeft = timelineContainer.scrollLeft;
+            const maxScrollLeft = timelineContainer.scrollWidth - timelineContainer.clientWidth;
+            const newScrollLeft = Math.max(0, Math.min(maxScrollLeft, currentScrollLeft + scaledDeltaX));
+            
+            timelineContainer.scrollLeft = newScrollLeft;
+        }, { passive: false, capture: true });
     }
 
     // Handle touch scrolling (mobile)
     initTouchScrolling() {
-        window.addEventListener('touchstart', (e) => {
+        const timelineContainer = this.getScrollContainer();
+        
+        timelineContainer.addEventListener('touchstart', (e) => {
             if (e.touches.length === 1) {
+                this.startX = e.touches[0].clientX;
                 this.startY = e.touches[0].clientY;
             }
         }, { passive: true });
 
-        window.addEventListener('touchmove', (e) => {
+        timelineContainer.addEventListener('touchmove', (e) => {
             if (e.touches.length === 1) {
                 e.preventDefault();
 
+                const currentX = e.touches[0].clientX;
                 const currentY = e.touches[0].clientY;
-                const deltaY = this.startY - currentY;
+                
+                // Use vertical swipe for horizontal scrolling on timeline
+                const deltaX = this.startY - currentY; // Swap Y movement for X scroll
 
                 // Get current scroll factor
                 const scrollFactor = this.getCurrentScrollFactor();
 
-                // Apply scaled scroll
-                const scaledDelta = deltaY * scrollFactor;
-                window.scrollBy(0, scaledDelta);
+                // Apply scaled scroll to timeline container
+                const scaledDelta = deltaX * scrollFactor;
+                if (timelineContainer.scrollLeft !== undefined) {
+                    const newScrollLeft = Math.max(0, Math.min(
+                        timelineContainer.scrollWidth - timelineContainer.clientWidth,
+                        timelineContainer.scrollLeft + scaledDelta
+                    ));
+                    timelineContainer.scrollLeft = newScrollLeft;
+                }
 
+                this.startX = currentX;
                 this.startY = currentY;
             }
         }, { passive: false });
@@ -77,17 +98,19 @@ class DynamicScrollScaler {
     // Handle keyboard scrolling (arrow keys, page up/down, etc.)
     initKeyboardScrolling() {
         window.addEventListener('keydown', (e) => {
-            // Define scroll amounts for different keys
+            const timelineContainer = this.getScrollContainer();
+            
+            // Define scroll amounts for different keys (all converted to horizontal)
             const scrollAmounts = {
-                'ArrowUp': -40,
-                'ArrowDown': 40,
-                'ArrowLeft': -40,
-                'ArrowRight': 40,
-                'PageUp': -window.innerHeight * 0.9,
-                'PageDown': window.innerHeight * 0.9,
-                'Home': -document.body.scrollHeight,
-                'End': document.body.scrollHeight,
-                'Space': window.innerHeight * 0.9
+                'ArrowUp': -200,     // Up arrow scrolls left
+                'ArrowDown': 200,    // Down arrow scrolls right  
+                'ArrowLeft': -200,   // Left arrow scrolls left
+                'ArrowRight': 200,   // Right arrow scrolls right
+                'PageUp': -timelineContainer.clientWidth * 0.8,    // Page up scrolls left
+                'PageDown': timelineContainer.clientWidth * 0.8,   // Page down scrolls right
+                'Home': -timelineContainer.scrollWidth,            // Home goes to start
+                'End': timelineContainer.scrollWidth,              // End goes to end
+                'Space': timelineContainer.clientWidth * 0.8       // Space scrolls right
             };
 
             const scrollAmount = scrollAmounts[e.code];
@@ -96,15 +119,15 @@ class DynamicScrollScaler {
 
                 // Get current scroll factor
                 const scrollFactor = this.getCurrentScrollFactor();
-
-                // Determine scroll direction
-                const isVertical = !['ArrowLeft', 'ArrowRight'].includes(e.code);
                 const scaledAmount = scrollAmount * scrollFactor;
 
-                if (isVertical) {
-                    window.scrollBy(0, scaledAmount);
-                } else {
-                    window.scrollBy(scaledAmount, 0);
+                // Apply horizontal scroll to timeline container
+                if (timelineContainer.scrollLeft !== undefined) {
+                    const newScrollLeft = Math.max(0, Math.min(
+                        timelineContainer.scrollWidth - timelineContainer.clientWidth,
+                        timelineContainer.scrollLeft + scaledAmount
+                    ));
+                    timelineContainer.scrollLeft = newScrollLeft;
                 }
             }
         });
@@ -130,24 +153,7 @@ class DynamicScrollScaler {
 
 // Initialize the scroller when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Create global instance
     window.dynamicScroller = new DynamicScrollScaler();
-
-    console.log('Dynamic scroll scaling initialized');
-
-    // Optional: Log scroll factor changes for debugging
-    let lastFactor = 1;
-    setInterval(() => {
-        try {
-            const currentFactor = computeScrollingFactor();
-            if (currentFactor !== lastFactor) {
-                console.log('Scroll factor changed:', lastFactor, '->', currentFactor);
-                lastFactor = currentFactor;
-            }
-        } catch (error) {
-            // Silently handle errors
-        }
-    }, 100); // Check every 100ms
 });
 
 // If DOM is already loaded, initialize immediately
@@ -156,5 +162,4 @@ if (document.readyState === 'loading') {
 } else {
     // DOM is already loaded
     window.dynamicScroller = new DynamicScrollScaler();
-    console.log('Dynamic scroll scaling initialized');
 }
