@@ -23,11 +23,6 @@ Made to illustrate the exponential rate of human progress within a larger presen
 
 Timeline behavior can be customized via `data.js` config object:
 
-### Logarithmic Scrolling Parameters
-- `referenceYear` (default: 1969): Year where scrolling speed is normal/linear
-- `linearScale` (default: 50): Size of linear zone around reference year in years
-- `logMultiplier` (default: 100): Overall timeline scale factor
-
 ### Event Visibility
 - `hidden: true`: Optional field on events to hide them from display while keeping them in data
 
@@ -36,13 +31,6 @@ Timeline behavior can be customized via `data.js` config object:
 - `baseFontSize`: Base font size for timeline text  
 - `defaultTitle`: Title shown when not in a specific era
 
-## Scrolling Behavior
-
-The timeline uses **logarithmic scrolling** for efficient navigation:
-- **Around reference year** (1969 ± linearScale): Normal scroll speed for precise navigation
-- **Ancient times**: Faster scrolling to quickly traverse millennia
-- **Future times**: Faster scrolling for rapid exploration
-- **Event spacing**: Remains linear (events keep proper historical distances)
 
 ## TODO
 
