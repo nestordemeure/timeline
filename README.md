@@ -22,4 +22,6 @@ Made to illustrate the exponential rate of human progress within a larger presen
 ## TODO
 
 * skip long spans of nothing?
+
 * have a line on the page inviting users to scroll right
+* move data to an actual json

@@ -300,7 +300,8 @@ const timelineData = {
       "type": "medicine",
       "date": 1940,
       "title": "Antibiotics mass production",
-      "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing."
+      "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing.",
+      "hidden": true
     },
     {
       "type": "science",

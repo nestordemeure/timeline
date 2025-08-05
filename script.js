@@ -33,7 +33,7 @@ class Timeline {
     
     processData() {
         this.events = this.data.events
-            .filter(event => event.type !== 'title')
+            .filter(event => event.type !== 'title' && !event.hidden)
             .sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
             
         this.titles = this.data.events
