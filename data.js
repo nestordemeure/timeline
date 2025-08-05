@@ -1,8 +1,9 @@
 const timelineData = {
   "config": {
     "fontFamily": "Georgia, 'Times New Roman', Times, serif",
-    "baseFontSize": "16px",
-    "pixelsPerYear": 3
+    "baseFontSize": "24px",
+    "pixelsPerYear": 3,
+    "defaultTitle": "A Timeline of Human Progress"
   },
   "types": [
     {
@@ -65,6 +66,12 @@ const timelineData = {
       "title": "Antiquity"
     },
     {
+      "type": "economics",
+      "date": "ca -600",
+      "title": "Invention of Money",
+      "description": "First coins minted in Lydia, revolutionizing trade and commerce."
+    },
+    {
       "type": "politics",
       "date": "ca -508",
       "title": "Athenian Democracy",
@@ -77,17 +84,6 @@ const timelineData = {
       "description": "Mathematical treatise establishing the foundations of geometry and mathematical proof."
     },
     {
-      "type": "economics",
-      "date": "ca -600",
-      "title": "Invention of Money",
-      "description": "First coins minted in Lydia, revolutionizing trade and commerce."
-    },
-    {
-      "type": "title",
-      "date": 1,
-      "title": "After Christ"
-    },
-    {
       "type": "religion",
       "date": "ca 30",
       "title": "Christianity begins",
@@ -98,6 +94,11 @@ const timelineData = {
       "date": "ca 105",
       "title": "Paper invented",
       "description": "Paper invented in China by Cai Lun, revolutionizing information storage and transmission."
+    },
+    {
+      "type": "title",
+      "date": 500,
+      "title": "Middle-Ages"
     },
     {
       "type": "religion",
@@ -116,6 +117,11 @@ const timelineData = {
       "date": "ca 1440",
       "title": "Printing Press",
       "description": "Gutenberg's printing press revolutionizes the mass production of books and spread of knowledge."
+    },
+    {
+      "type": "title",
+      "date": 1500,
+      "title": "Early Modern Period"
     },
     {
       "type": "religion",
@@ -154,6 +160,11 @@ const timelineData = {
       "description": "Edward Jenner develops the first vaccine against smallpox, founding the field of immunology."
     },
     {
+      "type": "title",
+      "date": 1800,
+      "title": "Industrial Age"
+    },
+    {
       "type": "science",
       "date": 1859,
       "title": "Theory of Evolution",
@@ -164,6 +175,11 @@ const timelineData = {
       "date": 1928,
       "title": "Antibiotics discovered",
       "description": "Alexander Fleming discovers penicillin, revolutionizing the treatment of bacterial infections."
+    },
+    {
+      "type": "title",
+      "date": 1950,
+      "title": "Modern Era"
     },
     {
       "type": "medicine",

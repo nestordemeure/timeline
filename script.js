@@ -3,7 +3,7 @@ class Timeline {
         this.data = timelineData;
         this.events = [];
         this.titles = [];
-        this.currentTitle = 'Timeline';
+        this.currentTitle = this.data.config.defaultTitle;
         this.eventsContainer = document.getElementById('events-container');
         this.titleHeader = document.getElementById('current-title');
         this.legend = document.getElementById('legend');
@@ -13,11 +13,16 @@ class Timeline {
     }
     
     init() {
+        this.setInitialTitle();
         this.applyFontConfig();
         this.processData();
         this.renderLegend();
         this.renderEvents();
         this.setupScrollListener();
+    }
+    
+    setInitialTitle() {
+        this.titleHeader.textContent = this.data.config.defaultTitle;
     }
     
     applyFontConfig() {
@@ -225,14 +230,23 @@ class Timeline {
     
     updateCurrentTitle() {
         const scrollLeft = this.timelineContainer.scrollLeft;
+        const maxScroll = this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth;
         
-        let newTitle = 'Timeline';
+        let newTitle = this.data.config.defaultTitle;
         
-        for (let i = this.titles.length - 1; i >= 0; i--) {
-            const title = this.titles[i];
-            if (scrollLeft >= title.position - 100) {
-                newTitle = title.title;
-                break;
+        // If we're at the end of the timeline, show the last title
+        if (scrollLeft >= maxScroll - 50) {
+            if (this.titles.length > 0) {
+                newTitle = this.titles[this.titles.length - 1].title;
+            }
+        } else {
+            // Normal title switching logic
+            for (let i = this.titles.length - 1; i >= 0; i--) {
+                const title = this.titles[i];
+                if (scrollLeft >= title.position - 100) {
+                    newTitle = title.title;
+                    break;
+                }
             }
         }
         

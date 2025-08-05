@@ -17,3 +17,8 @@ Interactive horizontal timeline displaying historical events with smooth scrolli
 - Event types: `name`, `fullName`, `color`
 - Events: `type`, `date`, `title`, `description` 
 - Era titles: `type: "title"` for section headers
+
+## TODO
+
+* add chatgpt, google, computerized PDE solving, personal computers, first monotheism, telegraph, phones, portabl phones
+* have claude brainstorm key events i might have ben missing
