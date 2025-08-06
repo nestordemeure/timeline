@@ -33,3 +33,5 @@ Scrolling behavior is tuned to accelerate over long spans of empty time for cons
 ## TODO
 
 * move `data.js` to an actual json
+* adjust line position on the scrolling bar to take the collision algorithm into account
+  * or... make the scrollbar non linear?

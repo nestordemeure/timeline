@@ -230,6 +230,12 @@ const timelineData = {
       "description": "Prophet Muhammad's Hijra marks the beginning of the Islamic calendar and the spread of Islam."
     },
     {
+      "type": "politics",
+      "date": 622,
+      "title": "First fundamental human rights charter",
+      "description": "Constitution of Medina establishes the first written document guaranteeing religious freedom, freedom of conscience, and equal rights for all citizens regardless of religion in a pluralistic society."
+    },
+    {
       "type": "medicine",
       "date": 707,
       "title": "First hospital system",
@@ -246,6 +252,12 @@ const timelineData = {
       "date": 825,
       "title": "Algebra founded",
       "description": "Al-Khwarizmi publishes 'Al-Jabr', systematically solving linear and quadratic equations and founding algebra as an independent mathematical discipline."
+    },
+    {
+      "type": "information",
+      "date": 794,
+      "title": "Paper revolution in Baghdad",
+      "description": "First paper mill established in Baghdad using Chinese techniques, making cheaper paper and revolutionizing book production in the Islamic world."
     },
     {
       "type": "industry",
@@ -319,6 +331,12 @@ const timelineData = {
       "date": 1543,
       "title": "Heliocentric model",
       "description": "Copernicus publishes 'On the Revolutions of Celestial Spheres', proving Earth orbits the Sun and revolutionizing astronomy."
+    },
+    {
+      "type": "politics",
+      "date": 1582,
+      "title": "First secular state established",
+      "description": "Mughal Emperor Akbar formally establishes Din-i Ilahi and implements Sulh-i Kul (universal peace), creating the first secular government that separates religion from state administration and promotes religious tolerance."
     },
     {
       "type": "title",
@@ -413,6 +431,7 @@ const timelineData = {
       "type": "industry",
       "date": 1807,
       "title": "Cheap paper production",
+      "hidden": true,
       "description": "Fourdrinier paper machine enables mass production of paper, making books and newspapers affordable for the masses."
     },
     {
