@@ -148,6 +148,7 @@ const timelineData = {
       "type": "industry",
       "date": "ca -500",
       "title": "Cast iron production",
+      "hidden": true,
       "description": "Chinese develop blast furnace technology enabling cast iron production, creating stronger and more versatile metal products."
     },
     {
@@ -280,6 +281,7 @@ const timelineData = {
       "type": "industry",
       "date": "ca 1275",
       "title": "Mechanical clock invented",
+      "hidden": true,
       "description": "First mechanical clocks with verge escapement mechanism built in medieval Europe, revolutionizing timekeeping and enabling precise scheduling."
     },
     {
@@ -356,6 +358,7 @@ const timelineData = {
       "type": "politics",
       "date": 1748,
       "title": "Separation of powers theory",
+      "hidden": true,
       "description": "Montesquieu publishes 'The Spirit of the Laws', theorizing division of government into executive, legislative, and judicial branches to prevent tyranny."
     },
     {
@@ -415,12 +418,14 @@ const timelineData = {
       "type": "industry",
       "date": 1825,
       "title": "First railway",
+      "hidden": true,
       "description": "Stockton and Darlington Railway opens as world's first public steam railway, revolutionizing transportation and commerce."
     },
     {
       "type": "information",
       "date": 1839,
       "title": "Photography invented",
+      "hidden": true,
       "description": "Daguerre announces the daguerreotype process, enabling permanent capture and reproduction of visual images."
     },
     {
@@ -528,7 +533,7 @@ const timelineData = {
       "type": "medicine",
       "date": 1940,
       "title": "Antibiotics mass production",
-      "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing.",
+      "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing."
     },
     {
       "type": "science",
