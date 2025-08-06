@@ -5,7 +5,7 @@ const timelineData = {
     "defaultTitle": "A Timeline of Human Progress",
     "targetScrollDistance": 3500,
     "scrollFactor": 10,
-    "displayYear": true
+    "displayYear": false
   },
   "types": [
     {
@@ -310,6 +310,12 @@ const timelineData = {
       "date": 1803,
       "title": "Atomic theory",
       "description": "John Dalton proposes that elements consist of indivisible atoms with characteristic weights, founding modern chemistry."
+    },
+    {
+      "type": "information",
+      "date": 1804,
+      "title": "Programmable machine",
+      "description": "Jacquard loom uses punch cards to automatically weave complex patterns, creating the first programmable machine and inspiring computer design."
     },
     {
       "type": "title",
