@@ -43,4 +43,6 @@ Timeline behavior can be customized via `data.js` config object:
 * have a line on the page inviting users to scroll right
 * move data to an actual json
 
+* hide items that can be skipped as well as items before writing (for efficiency sake)
+* add iron, bronze, cast iron, woodblock printing
 * line on scrollbar lightgrey rather than transparent
