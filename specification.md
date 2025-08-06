@@ -93,7 +93,6 @@ This ensures consistent navigation effort - the same amount of scrolling moves y
 
 ### Additional Features
 * **Time Markers**: Adaptive interval markers (5 to 1000 years) appear in empty areas to provide temporal reference
-* **Year Display**: Optional current year indicator that tracks viewport position
 * **Event Indicators**: Small markers on the scrollbar show event density across the timeline
 * **Scrollbar Navigation**: Click anywhere on the scrollbar to jump directly to that timeline position
 
@@ -104,4 +103,3 @@ All behavior is controlled through the `config` object in `data.js`:
 * `baseFontSize` - Base font size for all timeline elements
 * `defaultTitle` - Title shown before any era titles are reached
 * `targetScrollDistance` / `scrollFactor` - Control adaptive scrolling behavior
-* `displayYear` - Toggle year display on/off

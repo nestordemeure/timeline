@@ -283,16 +283,3 @@ body {
     }
 }
 
-.year-display {
-    position: fixed;
-    bottom: 26px;
-    right: 20px;
-    color: #e5e5e5;
-    padding: 10px 15px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
-    z-index: 1000;
-    display: none;
-    width: 160px;
-    text-align: left;
-}

@@ -8,8 +8,6 @@ class Timeline {
         this.titleHeader = document.getElementById('current-title');
         this.legend = document.getElementById('legend');
         this.timelineContainer = document.querySelector('.timeline-container');
-        this.yearDisplay = document.getElementById('year-display');
-        this.currentYearSpan = document.getElementById('current-year');
         this.scrollbarOverlay = document.getElementById('scrollbar-overlay');
 
         this.init();
@@ -166,9 +164,6 @@ class Timeline {
             return ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
         });
 
-        // Initialize year display
-        this.updateYearDisplay();
-
         // Render event indicators on scrollbar
         this.renderEventIndicators();
     }
@@ -272,7 +267,6 @@ class Timeline {
     setupScrollListener() {
         this.timelineContainer.addEventListener('scroll', () => {
             this.updateCurrentTitle();
-            this.updateYearDisplay();
         });
 
         // Make scrollbar area clickable for instant navigation
@@ -387,35 +381,6 @@ class Timeline {
         }
     }
 
-    updateYearDisplay() {
-        if (!this.data.config.displayYear) {
-            this.yearDisplay.style.display = 'none';
-            return;
-        }
-
-        this.yearDisplay.style.display = 'block';
-        const currentScrollLeft = this.timelineContainer.scrollLeft;
-        const containerWidth = this.timelineContainer.clientWidth;
-        const viewportCenter = currentScrollLeft + containerWidth / 2;
-
-        // Convert viewport center position to year
-        // Use actual date range for events, not timeline width which may be padded
-        const usableWidth = this.timelineWidth - 200; // 100px padding on each side
-        const yearProgress = (viewportCenter - 100) / usableWidth;
-        const calculatedYear = this.minDate + yearProgress * this.dateRange;
-        // Clamp to actual date range
-        const currentYear = Math.round(Math.max(this.minDate, Math.min(this.maxDate, calculatedYear)));
-
-        // Format year as BC/AD
-        let yearText;
-        if (currentYear <= 0) {
-            yearText = `${Math.abs(currentYear - 1)} BC`;
-        } else {
-            yearText = `${currentYear} AD`;
-        }
-
-        this.currentYearSpan.textContent = yearText;
-    }
 
     renderEventIndicators() {
         // Calculate the scroll container dimensions
