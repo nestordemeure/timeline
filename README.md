@@ -44,9 +44,9 @@ Timeline behavior can be customized via `data.js` config object:
 
 * develop the PDE item into a proper event
 * add turing machines or babbage as the first theory of computing / computers
-
-* scrolling is still too fast aorund events
-  * the fix should be focussed on `computeScrollingFactor`
+* add cheap paper production
+* go over items whose text or title need revewing
 
 * cut the debugging scroll factor display
   * replace it by a display of the current year?
+  * make it optional as a displayyear=true setting

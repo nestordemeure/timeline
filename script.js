@@ -249,61 +249,34 @@ class Timeline {
         const viewportLeft = currentScrollLeft;
         const viewportRight = currentScrollLeft + containerWidth;
 
-        // **BUG FIX: This check is essential and is now re-instated.**
-        // Explicitly check if any event is currently visible inside the viewport.
-        // If so, immediately return 1x speed to ensure stable viewing.
+        // If any event is currently visible, use normal speed
         const eventInView = this.eventPositions.some(pos => pos >= viewportLeft && pos <= viewportRight);
         if (eventInView) {
             return 1.0;
         }
 
-        // The 'targetScrollDistance' from data.js defines the size of the normal-speed zone around an event.
-        const slowZoneSize = this.data.config.targetScrollDistance;
+        // Find distance to closest event (in years/timeline units)
+        let closestDistance = Infinity;
+        for (const eventPos of this.eventPositions) {
+            const distanceToEvent = Math.min(
+                Math.abs(eventPos - viewportLeft),
+                Math.abs(eventPos - viewportRight)
+            );
+            closestDistance = Math.min(closestDistance, distanceToEvent);
+        }
 
-        // Find the positions of the events immediately preceding and succeeding the viewport.
-        const prevEventPos = this.getPreviousEventPosition(viewportLeft);
-        const nextEventPos = this.getNextEventPosition(viewportRight);
-
-        // At the timeline's edges, or if no clear gap is found, use default speed.
-        if (prevEventPos === null || nextEventPos === null) {
+        // If within target distance, use normal speed
+        const targetScrollDistance = this.data.config.targetScrollDistance;
+        if (closestDistance < targetScrollDistance) {
             return 1.0;
         }
 
-        // --- Anti-Overshoot Logic ---
-
-        // Define the beginning of the next slow zone and our distance to it.
-        const nextSlowZoneStart = nextEventPos - slowZoneSize;
-        const distanceToNextSlowZone = nextSlowZoneStart - viewportRight;
-
-        // Also check against the previous event's slow zone.
-        const prevSlowZoneEnd = prevEventPos + slowZoneSize;
-        const distanceToPrevSlowZone = viewportLeft - prevSlowZoneEnd;
-
-        // If we are inside either slow zone, the factor is 1.0.
-        if (distanceToNextSlowZone < 0 || distanceToPrevSlowZone < 0) {
-            return 1.0;
-        }
-
-        // 1. Calculate the 'desired' unbounded scroll factor based on the gap size.
-        const totalDistance = nextEventPos - prevEventPos;
-        const effectiveGap = totalDistance - (2 * slowZoneSize);
-        if (effectiveGap <= 0) {
-            return 1.0; // Return normal speed if the gap is smaller than the slow zones.
-        }
-        const desiredFactor = effectiveGap / slowZoneSize;
-
-        // 2. Predict if a scroll at this speed would overshoot the target.
-        const assumedScrollDelta = 100; // A reasonable approximation for a mouse wheel tick.
-        const potentialTravelDistance = assumedScrollDelta * desiredFactor;
-
-        // 3. If a potential overshoot is detected, calculate the perfect capped factor.
-        if (potentialTravelDistance > distanceToNextSlowZone) {
-            const cappedFactor = distanceToNextSlowZone / assumedScrollDelta;
-            return Math.max(1.0, cappedFactor);
-        }
-
-        // 4. If no overshoot is predicted, use the desired unbounded factor.
-        return desiredFactor;
+        // Calculate factor based on distance beyond target
+        // Tried various formula to find one that gets speed without risking overshooting too much
+        const scrollFactor = this.data.config.scrollFactor;
+        //return 1 + (closestDistance / targetScrollDistance - 1) * scrollFactor; // 5000 and 4
+        //return 1 + Math.log10(closestDistance / targetScrollDistance) * scrollFactor; // 4000 and 20
+        return 1 + Math.sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor; // 3500 and 10
     }
 
     getPreviousEventPosition(currentPosition) {
