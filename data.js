@@ -86,6 +86,12 @@ const timelineData = {
       "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
     },
     {
+      "type": "industry",
+      "date": "ca -3000",
+      "title": "Bronze working invented",
+      "description": "Mesopotamians develop copper-tin alloys creating bronze, a harder and more durable metal enabling better tools, weapons, and agricultural implements."
+    },
+    {
       "type": "information",
       "date": "ca -3200",
       "title": "Writing invented",
@@ -96,6 +102,12 @@ const timelineData = {
       "date": "ca -1750",
       "title": "Code of Hammurabi",
       "description": "One of the earliest and most complete legal codes, establishing laws and punishments in ancient Babylon."
+    },
+    {
+      "type": "industry",
+      "date": "ca -1500",
+      "title": "Iron smelting invented",
+      "description": "Hittites in Anatolia develop iron smelting technology, creating stronger metals that revolutionize tools, weapons, and agriculture."
     },
     {
       "type": "religion",
@@ -131,6 +143,12 @@ const timelineData = {
       "date": "ca -600",
       "title": "Babylonian astronomy",
       "description": "Babylonians develop systematic astronomical observations, creating the zodiac and tracking planetary cycles with mathematical precision."
+    },
+    {
+      "type": "industry",
+      "date": "ca -500",
+      "title": "Cast iron production",
+      "description": "Chinese develop blast furnace technology enabling cast iron production, creating stronger and more versatile metal products."
     },
     {
       "type": "religion",
@@ -201,7 +219,7 @@ const timelineData = {
     {
       "type": "title",
       "date": 500,
-      "title": "Middle-Ages"
+      "title": "Medieval Period"
     },
     {
       "type": "religion",
@@ -240,6 +258,12 @@ const timelineData = {
       "description": "University of Al-Qarawiyyin founded in Fez, Morocco by Fatima al-Fihri, recognized as world's oldest continuously operating university."
     },
     {
+      "type": "information",
+      "date": 868,
+      "title": "Woodblock printing invented",
+      "description": "Chinese print the Diamond Sutra, world's oldest dated printed book, using woodblock printing technology."
+    },
+    {
       "type": "science",
       "date": 1088,
       "title": "First European University",
@@ -271,15 +295,15 @@ const timelineData = {
       "description": "Banco di San Giorgio founded in Genoa as world's first modern public bank, pioneering debt management, deposit banking, and paper money systems."
     },
     {
+      "type": "title",
+      "date": 1400,
+      "title": "Renaissance"
+    },
+    {
       "type": "information",
       "date": "ca 1440",
       "title": "Printing Press",
       "description": "Gutenberg's printing press revolutionizes the mass production of books and spread of knowledge."
-    },
-    {
-      "type": "title",
-      "date": 1500,
-      "title": "Early Modern Period"
     },
     {
       "type": "religion",
@@ -292,6 +316,11 @@ const timelineData = {
       "date": 1543,
       "title": "Heliocentric model",
       "description": "Copernicus publishes 'On the Revolutions of Celestial Spheres', proving Earth orbits the Sun and revolutionizing astronomy."
+    },
+    {
+      "type": "title",
+      "date": 1650,
+      "title": "Enlightenment"
     },
     {
       "type": "science",
@@ -461,6 +490,11 @@ const timelineData = {
       "description": "Edison develops the first practical electric power distribution system, bringing electricity to homes and businesses."
     },
     {
+      "type": "title",
+      "date": 1900,
+      "title": "20th Century"
+    },
+    {
       "type": "science",
       "date": 1905,
       "title": "Theory of relativity",
@@ -522,8 +556,8 @@ const timelineData = {
     },
     {
       "type": "title",
-      "date": 1950,
-      "title": "Modern Era"
+      "date": 1970,
+      "title": "Information Age"
     },
     {
       "type": "medicine",
