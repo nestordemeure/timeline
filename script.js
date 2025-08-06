@@ -383,14 +383,19 @@ class Timeline {
     }
     
     renderEventIndicators() {
-        // Calculate the scroll container's total scrollable width
+        // Calculate the scroll container dimensions
         const containerWidth = this.timelineContainer.clientWidth;
         const scrollableWidth = this.timelineContainer.scrollWidth;
         
+        // Find the actual leftmost and rightmost event positions
+        const minEventPos = Math.min(...this.eventPositions);
+        const maxEventPos = Math.max(...this.eventPositions);
+        
         this.eventPositions.forEach(eventPosition => {
-            // Convert event position to scrollbar position, accounting for viewport center
-            const scrollPosition = eventPosition - containerWidth / 2;
-            const scrollbarPosition = (scrollPosition / (scrollableWidth - containerWidth)) * containerWidth;
+            // Map event position proportionally across the scrollbar width
+            // Leave a small margin to avoid creating additional scrollbars
+            const scrollbarWidth = containerWidth - 2; // Small margin
+            const scrollbarPosition = ((eventPosition - minEventPos) / (maxEventPos - minEventPos)) * scrollbarWidth;
             
             const indicator = document.createElement('div');
             indicator.className = 'event-indicator';
