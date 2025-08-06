@@ -10,6 +10,7 @@ class Timeline {
         this.timelineContainer = document.querySelector('.timeline-container');
         this.yearDisplay = document.getElementById('year-display');
         this.currentYearSpan = document.getElementById('current-year');
+        this.scrollbarOverlay = document.getElementById('scrollbar-overlay');
 
         this.init();
     }
@@ -247,6 +248,21 @@ class Timeline {
         this.timelineContainer.addEventListener('scroll', () => {
             this.updateCurrentTitle();
             this.updateYearDisplay();
+        });
+        
+        // Make scrollbar clickable for instant navigation
+        this.scrollbarOverlay.addEventListener('click', (e) => {
+            const rect = this.scrollbarOverlay.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const containerWidth = this.timelineContainer.clientWidth;
+            const scrollableWidth = this.timelineContainer.scrollWidth;
+            
+            // Calculate target scroll position based on click position
+            const clickRatio = clickX / rect.width;
+            const maxScrollLeft = scrollableWidth - containerWidth;
+            const targetScrollLeft = clickRatio * maxScrollLeft;
+            
+            this.timelineContainer.scrollLeft = targetScrollLeft;
         });
     }
 

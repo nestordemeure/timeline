@@ -255,6 +255,16 @@ body {
     z-index: 200;
 }
 
+.scrollbar-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    cursor: pointer;
+    z-index: 300;
+}
+
 @media (max-width: 768px) {
     .timeline {
         padding: 0 50px;
