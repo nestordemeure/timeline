@@ -47,7 +47,3 @@ Timeline behavior can be customized via `data.js` config object:
 * add turing machines or babbage as the first theory of computing / computers
 * add cheap paper production
 * go over items whose text or title need revewing
-
-* cut the debugging scroll factor display
-  * replace it by a display of the current year?
-  * make it optional as a displayyear=true setting
