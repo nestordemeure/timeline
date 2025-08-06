@@ -188,6 +188,12 @@ const timelineData = {
       "description": "Hindu-Arabic numeral system with zero and decimal notation developed in India, revolutionizing mathematics and enabling complex calculations."
     },
     {
+      "type": "science",
+      "date": "ca 1020",
+      "title": "Scientific method founded",
+      "description": "Ibn al-Haytham develops the modern scientific method with systematic experimentation and verification."
+    },
+    {
       "type": "title",
       "date": 500,
       "title": "Middle-Ages"
@@ -199,6 +205,24 @@ const timelineData = {
       "description": "Prophet Muhammad's Hijra marks the beginning of the Islamic calendar and the spread of Islam."
     },
     {
+      "type": "medicine",
+      "date": 707,
+      "title": "First hospital system",
+      "description": "Caliph Al-Walid establishes the first bimaristan in Damascus, creating organized medical care with specialized wards, patient records, and free treatment regardless of background."
+    },
+    {
+      "type": "economics",
+      "date": "ca 800",
+      "title": "Banking system invented",
+      "description": "Hawala system developed in Islamic world enables long-distance money transfer without physical movement of cash, based on trust networks among merchants."
+    },
+    {
+      "type": "science",
+      "date": 825,
+      "title": "Algebra founded",
+      "description": "Al-Khwarizmi publishes 'Al-Jabr', systematically solving linear and quadratic equations and founding algebra as an independent mathematical discipline."
+    },
+    {
       "type": "industry",
       "date": "ca 900",
       "title": "Gunpowder invented",
@@ -206,9 +230,16 @@ const timelineData = {
     },
     {
       "type": "science",
-      "date": 1088,
+      "date": 859,
       "title": "First University",
-      "description": "University of Bologna established, marking the beginning of higher education institutions in Europe."
+      "description": "University of Al-Qarawiyyin founded in Fez, Morocco by Fatima al-Fihri, recognized as world's oldest continuously operating university."
+    },
+    {
+      "type": "science",
+      "date": 1088,
+      "title": "First European University",
+      "description": "University of Bologna established, marking the beginning of higher education institutions in Europe.",
+      "hidden": true
     },
     {
       "type": "politics",
@@ -217,10 +248,22 @@ const timelineData = {
       "description": "English nobles force King John to sign the Magna Carta, establishing foundational principles of rule of law, due process, and limits on royal power."
     },
     {
+      "type": "industry",
+      "date": "ca 1275",
+      "title": "Mechanical clock invented",
+      "description": "First mechanical clocks with verge escapement mechanism built in medieval Europe, revolutionizing timekeeping and enabling precise scheduling."
+    },
+    {
       "type": "economics",
       "date": "ca 1300",
       "title": "Double-entry bookkeeping",
       "description": "Double-entry bookkeeping system developed in Italian city-states, revolutionizing accounting and enabling modern capitalism."
+    },
+    {
+      "type": "economics",
+      "date": 1407,
+      "title": "Modern banking established",
+      "description": "Banco di San Giorgio founded in Genoa as world's first modern public bank, pioneering debt management, deposit banking, and paper money systems."
     },
     {
       "type": "information",
@@ -280,6 +323,12 @@ const timelineData = {
       "date": 1748,
       "title": "Separation of powers theory",
       "description": "Montesquieu publishes 'The Spirit of the Laws', theorizing division of government into executive, legislative, and judicial branches to prevent tyranny."
+    },
+    {
+      "type": "science",
+      "date": 1789,
+      "title": "Modern chemistry founded",
+      "description": "Lavoisier publishes 'Elements of Chemistry', the first modern chemistry textbook, establishing conservation of mass and systematic chemical nomenclature."
     },
     {
       "type": "politics",
@@ -393,6 +442,12 @@ const timelineData = {
       "date": 1876,
       "title": "Telephone Invented",
       "description": "Alexander Graham Bell patents the telephone, revolutionizing voice communication over distances."
+    },
+    {
+      "type": "information",
+      "date": 1895,
+      "title": "Radio invented",
+      "description": "Marconi develops the first practical wireless telegraph system, enabling long-distance radio communication and earning the 1909 Nobel Prize."
     },
     {
       "type": "industry",
