@@ -250,19 +250,27 @@ class Timeline {
             this.updateYearDisplay();
         });
         
-        // Make scrollbar clickable for instant navigation
-        this.scrollbarOverlay.addEventListener('click', (e) => {
-            const rect = this.scrollbarOverlay.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const containerWidth = this.timelineContainer.clientWidth;
-            const scrollableWidth = this.timelineContainer.scrollWidth;
+        // Make scrollbar area clickable for instant navigation
+        document.addEventListener('click', (e) => {
+            // Check if click is in the scrollbar area
+            const containerRect = this.timelineContainer.getBoundingClientRect();
+            const isInScrollbarArea = e.clientY >= containerRect.bottom - 24 && 
+                                    e.clientY <= containerRect.bottom &&
+                                    e.clientX >= containerRect.left && 
+                                    e.clientX <= containerRect.right;
             
-            // Calculate target scroll position based on click position
-            const clickRatio = clickX / rect.width;
-            const maxScrollLeft = scrollableWidth - containerWidth;
-            const targetScrollLeft = clickRatio * maxScrollLeft;
-            
-            this.timelineContainer.scrollLeft = targetScrollLeft;
+            if (isInScrollbarArea) {
+                const clickX = e.clientX - containerRect.left;
+                const containerWidth = this.timelineContainer.clientWidth;
+                const scrollableWidth = this.timelineContainer.scrollWidth;
+                
+                // Calculate target scroll position based on click position
+                const clickRatio = clickX / containerWidth;
+                const maxScrollLeft = scrollableWidth - containerWidth;
+                const targetScrollLeft = clickRatio * maxScrollLeft;
+                
+                this.timelineContainer.scrollLeft = targetScrollLeft;
+            }
         });
     }
 
