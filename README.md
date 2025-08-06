@@ -5,22 +5,22 @@ Made to illustrate the exponential rate of human progress within a larger presen
 
 ## Organization
 
-- `index.html` - HTML structure
-- `style.css` - Styling and layout  
-- `script.js` - Timeline class and interactions
-- `scrolling.js` - Scrolling behavior and logic
-- `data.js` - All timeline data and configuration
+- [`index.html`](index.html) - HTML structure
+- [`style.css`](style.css) - Styling and layout  
+- [`script.js`](script.js) - Timeline class and interactions
+- [`scrolling.js`](scrolling.js) - Scrolling behavior and logic
+- [`data.js`](data.js) - All timeline data and configuration
 
 ## Usage
 
-**Display**: Open `index.html` in browser
+**Display**: Open [`index.html`](index.html) in browser
 
-**Add content**: Edit `data.js` arrays:
+**Add content**: Edit [`data.js`](data.js) arrays:
 - Event types: `name`, `fullName`, `color`
 - Events: `type`, `date`, `title`, `description`, optional `hidden: true`
 - Era titles: `type: "title"` for section headers
 
-**Configure**: Edit `data.js` config object:
+**Configure**: Edit [`data.js`](data.js) config object:
 - `fontFamily`: CSS font family for timeline text
 - `baseFontSize`: Base font size for timeline elements
 - `defaultTitle`: Title displayed before scrolling begins
@@ -31,4 +31,4 @@ Scrolling behavior is tuned to accelerate over long spans of empty time for cons
 
 ## TODO
 
-* move data to an actual json
+* move `data.js` to an actual json
