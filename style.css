@@ -199,7 +199,7 @@ body {
 
 .legend {
     position: fixed;
-    bottom: 10px;
+    bottom: 16px;
     left: 0;
     right: 0;
     background-color: transparent;
@@ -285,7 +285,7 @@ body {
 
 .year-display {
     position: fixed;
-    bottom: 20px;
+    bottom: 26px;
     right: 20px;
     color: #e5e5e5;
     padding: 10px 15px;
