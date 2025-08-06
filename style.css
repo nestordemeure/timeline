@@ -245,6 +245,16 @@ body {
     background: #666;
 }
 
+.event-indicator {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    z-index: 200;
+}
+
 @media (max-width: 768px) {
     .timeline {
         padding: 0 50px;

@@ -150,6 +150,9 @@ class Timeline {
 
         // Initialize year display
         this.updateYearDisplay();
+        
+        // Render event indicators on scrollbar
+        this.renderEventIndicators();
     }
 
     resolveCollisions(eventData) {
@@ -361,6 +364,24 @@ class Timeline {
         }
         
         this.currentYearSpan.textContent = yearText;
+    }
+    
+    renderEventIndicators() {
+        // Calculate the scroll container's total scrollable width
+        const containerWidth = this.timelineContainer.clientWidth;
+        const scrollableWidth = this.timelineContainer.scrollWidth;
+        
+        this.eventPositions.forEach(eventPosition => {
+            // Convert event position to scrollbar position, accounting for viewport center
+            const scrollPosition = eventPosition - containerWidth / 2;
+            const scrollbarPosition = (scrollPosition / (scrollableWidth - containerWidth)) * containerWidth;
+            
+            const indicator = document.createElement('div');
+            indicator.className = 'event-indicator';
+            indicator.style.left = `${scrollbarPosition}px`;
+            
+            this.timelineContainer.appendChild(indicator);
+        });
     }
 }
 
