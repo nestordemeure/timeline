@@ -1,62 +1,107 @@
-# Timeline Specification
+# Specification
 
-An interactive horizontal timeline displaying the progression of human civilization through historical events.
+This is an interactive horizontal timeline displaying the progression of human civilization through historical events.
 
-## Philosophy
+## Code Organization
 
-This timeline embodies the concept of human progress as a continuous flow from left to right, where time itself becomes a navigable dimension. The design emphasizes the interconnectedness of different domains of human achievement - from the invention of writing to quantum computing, from democracy to gene editing.
+The code is kept concise and focused. No premature optimization - we handle the problems we actually encounter.
 
-## Design Principles
+The code is split across five files with clear separation of responsibilities:
+* `index.html` - HTML structure with containers for title, timeline, and legend
+* `style.css` - Dark theme styling and responsive layout
+* `script.js` - Timeline class handling rendering and interactions
+* `scroll.js` - Scrolling behavior and adaptive speed logic
+* `data.js` - All timeline data plus configuration parameters
 
-### Temporal Navigation
-Time flows horizontally from left to right. Users navigate through millennia by scrolling, creating an immersive sense of traveling through history. Era transitions are marked by smooth title changes that reflect our journey through different periods of civilization.
+## Data Structure
 
-### Visual Hierarchy
-- **Timeline as Foundation**: A prominent horizontal line serves as the backbone of history
-- **Event Alternation**: Events alternate above and below the timeline to create visual rhythm and prevent overlap
-- **Color Coding**: Each domain of human achievement has its distinct color, creating visual patterns that reveal the density and distribution of progress across different fields
+### Events
 
-### Dark Mode Aesthetic
-Designed for comfortable computer screen viewing with a sophisticated dark theme that emphasizes content over interface, allowing the historical narrative to take center stage.
+Each event is characterized by:
+* A type (see event types below)
+* A date (year, can be negative for BC, can have `ca` prefix for approximation)
+* A title (expected to be one line or less)
+* An optional description paragraph
+* An optional `hidden: true` flag to exclude from display while preserving in dataset
 
-## Content Structure
+### Event Types
 
-### Event Domains
-Events are categorized into fundamental domains of human progress:
-- **Information Technologies**: From writing to the internet
-- **Religion**: Spiritual and philosophical developments
-- **Politics**: Governance and social organization
-- **Economics**: Trade, commerce, and financial systems  
-- **Science**: Knowledge and understanding of the natural world
-- **Medicine**: Health and biological sciences
-- **Industry**: Technology and manufacturing
+Event types are characterized by:
+* A short name (used in events, eg "information")
+* A full name (eg "Information Technologies")  
+* A color (for visual coding)
 
-### Temporal Organization
-- **Events**: Specific historical moments with dates, titles, and descriptions. Events can be marked as `hidden: true` to exclude them from display while preserving them in the dataset
-- **Era Titles**: Broad historical periods (Prehistory, Antiquity, After Christ) that provide context as users navigate
+The implemented types cover fundamental domains of human progress:
+* **information** - Information Technologies (writing, printing, internet, computing)
+* **religion** - Religion (monotheism, major religions, spiritual movements)
+* **politics** - Politics (law codes, democracy, revolutions, governance)
+* **economics** - Economics (money, banking, capitalism, trade systems)
+* **science** - Science (mathematics, scientific method, major discoveries)
+* **medicine** - Medicine (vaccines, antibiotics, gene editing, medical advances)
+* **industry** - Industry (steam power, industrial revolution, manufacturing)
 
-### Typography and Readability
-Serif fonts provide classical elegance and enhanced readability, reinforcing the historical nature of the content while maintaining modern usability standards.
+### Era Titles
 
-## Interaction Model
+There is one special kind of event with `type: "title"` that doesn't appear in the types list.
 
-### Scrolling Dynamics
-The timeline implements an adaptive scrolling system that optimizes navigation through dense and sparse historical periods:
+These are not displayed as events on the timeline itself. Instead, they appear as the main title at the top of the page when the timeline scrolls past their date (until the next title in chronology is reached).
 
-- **Event-Present Mode**: When events are visible on screen, scrolling operates at normal speed for detailed exploration
-- **Gap-Bridging Mode**: When no events are on screen (during large temporal gaps), scroll speed automatically increases proportionally to the distance between the previous and next events
-- **Consistent Navigation**: This adaptive approach ensures users require the same number of scroll actions to traverse between any two consecutive events, regardless of the temporal gap between them
+Example era titles:
+* Prehistory
+* Antiquity  
+* After Christ
 
-The scroll speed calculation uses the formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
+## Appearance
 
-Where:
-- `closestDistance`: Distance to the nearest event outside current viewport
-- `targetScrollDistance`: Configurable threshold distance (default: 3500px)
-- `scrollFactor`: Configurable multiplier for speed adjustment (default: 10)
+This is a dark mode webpage designed for computer screen viewing.
 
-This square root-based formula provides smooth acceleration that increases scroll speed without excessive overshooting, creating an intuitive navigation experience through both densely populated historical periods and vast temporal gaps.
+The timeline flows horizontally from left to right. Since it spans millennia, only a portion is visible at once. Scrolling moves through time from left to right.
 
-### Configuration Parameters
-The system's behavior is controlled through `data.js` configuration:
+### Event Display
+Events are displayed with colored circular markers on the timeline. Each event shows:
+* The date on one side of the marker
+* The title (in bold) and optional description on the other side
+* Events alternate above and below the timeline to prevent overlap and create visual rhythm
 
-- **`hidden`** (event property): Boolean flag to exclude specific events from display while preserving data integrity
+### Era Transitions
+When scrolling past a title's date, it smoothly fades in as the new main title at the top. The transition has a subtle animation - fade out the old title, change the text, then fade in the new one.
+
+### Legend
+Below the timeline is a legend showing each event type as a colored circle followed by its full name.
+
+## Timeline Mechanics
+
+### Positioning System
+Events are positioned using a pixel-per-year scale (minimum 3 pixels per year). The timeline dynamically sizes itself based on the date range of all events.
+
+### Collision Detection
+Since events alternate above/below but can still overlap horizontally, the system implements two-pass collision detection:
+1. **Forward pass**: Push overlapping events rightward with minimum padding
+2. **Backward pass**: Pull events back toward their original chronological positions when possible
+
+This ensures events stay as close as possible to their actual historical positions while remaining readable.
+
+### Adaptive Scrolling
+The timeline implements intelligent scrolling that adapts to event density:
+
+**Normal Speed**: When events are visible or within a target distance
+**Accelerated Speed**: When scrolling through empty millennia, speed increases proportionally to the distance to the nearest events
+
+The formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
+
+This ensures consistent navigation effort - the same amount of scrolling moves you between any two consecutive events, whether they're 10 years or 1000 years apart.
+
+### Additional Features
+* **Time Markers**: Adaptive interval markers (5 to 1000 years) appear in empty areas to provide temporal reference
+* **Year Display**: Optional current year indicator that tracks viewport position
+* **Event Indicators**: Small markers on the scrollbar show event density across the timeline
+* **Scrollbar Navigation**: Click anywhere on the scrollbar to jump directly to that timeline position
+
+## Configuration
+
+All behavior is controlled through the `config` object in `data.js`:
+* `fontFamily` - Typography choice (serif fonts for classical feel)
+* `baseFontSize` - Base font size for all timeline elements
+* `defaultTitle` - Title shown before any era titles are reached
+* `targetScrollDistance` / `scrollFactor` - Control adaptive scrolling behavior
+* `displayYear` - Toggle year display on/off
