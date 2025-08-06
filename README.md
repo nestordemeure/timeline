@@ -8,6 +8,7 @@ Made to illustrate the exponential rate of human progress within a larger presen
 - `index.html` - HTML structure
 - `style.css` - Styling and layout  
 - `script.js` - Timeline class and interactions
+- `scrolling.js` - Scrolling behavior and logic
 - `data.js` - All timeline data and configuration
 
 ## Usage
@@ -19,27 +20,15 @@ Made to illustrate the exponential rate of human progress within a larger presen
 - Events: `type`, `date`, `title`, `description`, optional `hidden: true`
 - Era titles: `type: "title"` for section headers
 
-## Configuration
+**Configure**: Edit `data.js` config object:
+- `fontFamily`: CSS font family for timeline text
+- `baseFontSize`: Base font size for timeline elements
+- `defaultTitle`: Title displayed before scrolling begins
+- `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
+- `displayYear`: Show/hide current year indicator
 
-Timeline behavior can be customized via `data.js` config object:
-
-### Event Visibility
-- `hidden: true`: Optional field on events to hide them from display while keeping them in data
-
-### Scrolling Behavior
-- **Adaptive Speed**: Timeline scrolls at normal speed when events are visible on screen
-- **Distance-Proportional**: When no events are on screen, scroll speed increases proportionally to the distance between the previous and next events
-- **Consistent Navigation**: This ensures a constant number of scroll actions between far-apart events, regardless of temporal gaps
-- **Formula**: Speed factor calculated as `1 + sqrt((distance - target) / target) * scrollFactor` where scrollFactor is configurable in data.js
-
-### Other Settings
-- `fontFamily`: CSS font family for the timeline
-- `baseFontSize`: Base font size for timeline text  
-- `defaultTitle`: Title shown when not in a specific era
-
+Scrolling behavior is tuned to accelerate over long spans of empty time for consistent navigation.
 
 ## TODO
 
 * move data to an actual json
-
-* hide items that can be skipped for a clearer overall picture
