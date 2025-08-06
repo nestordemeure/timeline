@@ -253,6 +253,12 @@ const timelineData = {
     },
     {
       "type": "science",
+      "date": 1665,
+      "title": "Calculus invented",
+      "description": "Newton and Leibniz independently develop calculus, providing mathematical tools for analyzing continuous change and motion."
+    },
+    {
+      "type": "science",
       "date": 1608,
       "title": "Telescope invented",
       "description": "Hans Lippershey invents the telescope; Galileo and Kepler soon use it to discover Jupiter's moons and prove planetary motion laws."
@@ -294,6 +300,18 @@ const timelineData = {
       "description": "Edward Jenner develops the first vaccine against smallpox, founding the field of immunology."
     },
     {
+      "type": "science",
+      "date": 1800,
+      "title": "Electric battery invented",
+      "description": "Volta creates the first reliable source of electric current, enabling electrochemistry and all future electrical research."
+    },
+    {
+      "type": "science",
+      "date": 1803,
+      "title": "Atomic theory",
+      "description": "John Dalton proposes that elements consist of indivisible atoms with characteristic weights, founding modern chemistry."
+    },
+    {
       "type": "title",
       "date": 1800,
       "title": "Industrial Age"
@@ -303,6 +321,18 @@ const timelineData = {
       "date": 1807,
       "title": "Cheap paper production",
       "description": "Fourdrinier paper machine enables mass production of paper, making books and newspapers affordable for the masses."
+    },
+    {
+      "type": "industry",
+      "date": 1825,
+      "title": "First railway",
+      "description": "Stockton and Darlington Railway opens as world's first public steam railway, revolutionizing transportation and commerce."
+    },
+    {
+      "type": "information",
+      "date": 1839,
+      "title": "Photography invented",
+      "description": "Daguerre announces the daguerreotype process, enabling permanent capture and reproduction of visual images."
     },
     {
       "type": "information",
@@ -339,6 +369,18 @@ const timelineData = {
       "date": 1865,
       "title": "Laws of electromagnetism",
       "description": "James Clerk Maxwell publishes unified theory of electromagnetic field, demonstrating that light, electricity, and magnetism are manifestations of the same phenomenon."
+    },
+    {
+      "type": "medicine",
+      "date": 1867,
+      "title": "Germ theory of disease",
+      "description": "Pasteur proves microorganisms cause disease, revolutionizing medicine and leading to antiseptic practices."
+    },
+    {
+      "type": "science",
+      "date": 1869,
+      "title": "Periodic table",
+      "description": "Mendeleev organizes chemical elements by atomic weight, predicting undiscovered elements and founding modern chemistry."
     },
     {
       "type": "information",
