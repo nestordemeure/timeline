@@ -43,5 +43,3 @@ Timeline behavior can be customized via `data.js` config object:
 * move data to an actual json
 
 * hide items that can be skipped for a clearer overall picture
-
-* period title not quite displayed at the right time

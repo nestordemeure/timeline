@@ -83,7 +83,7 @@ class Timeline {
         const minDate = this.parseDate(this.events[0].date);
         const maxDate = this.parseDate(this.events[this.events.length - 1].date);
         const dateRange = maxDate - minDate;
-        const pixelsPerYear = 3; // Back to linear scaling
+        const pixelsPerYear = 3;
         const timelineWidth = Math.max(5000, dateRange * pixelsPerYear);
 
         this.eventsContainer.style.width = `${timelineWidth}px`;
@@ -136,11 +136,28 @@ class Timeline {
             this.eventsContainer.appendChild(eventElement);
         });
 
+        // Store event data for title adjustment calculations
+        this.eventData = eventData;
+
         this.titles.forEach(title => {
             const titleDate = this.parseDate(title.date);
-            const position = ((titleDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
-
-            title.position = position;
+            const basePosition = ((titleDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
+            
+            // Find nearby events to calculate average shift
+            const nearbyEvents = eventData.filter(event => {
+                const distance = Math.abs(event.basePosition - basePosition);
+                return distance <= 500; // Within 500px range
+            });
+            
+            if (nearbyEvents.length > 0) {
+                // Calculate average shift of nearby events
+                const totalShift = nearbyEvents.reduce((sum, event) => 
+                    sum + (event.finalPosition - event.basePosition), 0);
+                const avgShift = totalShift / nearbyEvents.length;
+                title.position = basePosition + avgShift;
+            } else {
+                title.position = basePosition;
+            }
         });
 
         // Store event positions for scrolling factor calculations
@@ -151,7 +168,7 @@ class Timeline {
 
         // Initialize year display
         this.updateYearDisplay();
-        
+
         // Render event indicators on scrollbar
         this.renderEventIndicators();
     }
@@ -249,26 +266,26 @@ class Timeline {
             this.updateCurrentTitle();
             this.updateYearDisplay();
         });
-        
+
         // Make scrollbar area clickable for instant navigation
         document.addEventListener('click', (e) => {
             // Check if click is in the scrollbar area
             const containerRect = this.timelineContainer.getBoundingClientRect();
-            const isInScrollbarArea = e.clientY >= containerRect.bottom - 24 && 
-                                    e.clientY <= containerRect.bottom &&
-                                    e.clientX >= containerRect.left && 
-                                    e.clientX <= containerRect.right;
-            
+            const isInScrollbarArea = e.clientY >= containerRect.bottom - 24 &&
+                e.clientY <= containerRect.bottom &&
+                e.clientX >= containerRect.left &&
+                e.clientX <= containerRect.right;
+
             if (isInScrollbarArea) {
                 const clickX = e.clientX - containerRect.left;
                 const containerWidth = this.timelineContainer.clientWidth;
                 const scrollableWidth = this.timelineContainer.scrollWidth;
-                
+
                 // Calculate target scroll position based on click position
                 const clickRatio = clickX / containerWidth;
                 const maxScrollLeft = scrollableWidth - containerWidth;
                 const targetScrollLeft = clickRatio * maxScrollLeft;
-                
+
                 this.timelineContainer.scrollLeft = targetScrollLeft;
             }
         });
@@ -329,6 +346,8 @@ class Timeline {
 
     updateCurrentTitle() {
         const scrollLeft = this.timelineContainer.scrollLeft;
+        const containerWidth = this.timelineContainer.clientWidth;
+        const viewportCenter = scrollLeft + containerWidth / 2;
         const maxScroll = this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth;
 
         let newTitle = this.data.config.defaultTitle;
@@ -339,10 +358,10 @@ class Timeline {
                 newTitle = this.titles[this.titles.length - 1].title;
             }
         } else {
-            // Normal title switching logic
+            // Normal title switching logic - use viewport center instead of scroll left
             for (let i = this.titles.length - 1; i >= 0; i--) {
                 const title = this.titles[i];
-                if (scrollLeft >= title.position - 100) {
+                if (viewportCenter >= title.position) {
                     newTitle = title.title;
                     break;
                 }
@@ -370,7 +389,7 @@ class Timeline {
         const currentScrollLeft = this.timelineContainer.scrollLeft;
         const containerWidth = this.timelineContainer.clientWidth;
         const viewportCenter = currentScrollLeft + containerWidth / 2;
-        
+
         // Convert viewport center position to year
         // Use actual date range for events, not timeline width which may be padded
         const usableWidth = this.timelineWidth - 200; // 100px padding on each side
@@ -378,7 +397,7 @@ class Timeline {
         const calculatedYear = this.minDate + yearProgress * this.dateRange;
         // Clamp to actual date range
         const currentYear = Math.round(Math.max(this.minDate, Math.min(this.maxDate, calculatedYear)));
-        
+
         // Format year as BC/AD
         let yearText;
         if (currentYear <= 0) {
@@ -386,29 +405,29 @@ class Timeline {
         } else {
             yearText = `${currentYear} AD`;
         }
-        
+
         this.currentYearSpan.textContent = yearText;
     }
-    
+
     renderEventIndicators() {
         // Calculate the scroll container dimensions
         const containerWidth = this.timelineContainer.clientWidth;
         const scrollableWidth = this.timelineContainer.scrollWidth;
-        
+
         // Find the actual leftmost and rightmost event positions
         const minEventPos = Math.min(...this.eventPositions);
         const maxEventPos = Math.max(...this.eventPositions);
-        
+
         this.eventPositions.forEach(eventPosition => {
             // Map event position proportionally across the scrollbar width
             // Leave a small margin to avoid creating additional scrollbars
             const scrollbarWidth = containerWidth - 2; // Small margin
             const scrollbarPosition = ((eventPosition - minEventPos) / (maxEventPos - minEventPos)) * scrollbarWidth;
-            
+
             const indicator = document.createElement('div');
             indicator.className = 'event-indicator';
             indicator.style.left = `${scrollbarPosition}px`;
-            
+
             this.timelineContainer.appendChild(indicator);
         });
     }
