@@ -174,7 +174,12 @@ class Timeline {
     }
 
     resolveCollisions(eventData) {
-        const padding = 20; // minimum space between events
+        const padding = this.data.config.eventSpacing; // minimum space between events
+
+        // If spacing is exactly 0, allow complete overlap - skip collision detection
+        if (padding === 0) {
+            return;
+        }
 
         // Separate events by side (above/below)
         const aboveEvents = eventData.filter(e => e.side === 'above').sort((a, b) => a.basePosition - b.basePosition);
