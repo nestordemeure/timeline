@@ -293,6 +293,18 @@ const timelineData = {
       "title": "Industrial Age"
     },
     {
+      "type": "industry",
+      "date": 1807,
+      "title": "Cheap paper production",
+      "description": "Fourdrinier paper machine enables mass production of paper, reducing costs by 75% and making books and newspapers affordable for the masses."
+    },
+    {
+      "type": "information",
+      "date": 1834,
+      "title": "First theory of computing",
+      "description": "Charles Babbage designs the Analytical Engine, the first theoretical general-purpose computer with memory, control flow, and programmability."
+    },
+    {
       "type": "science",
       "date": 1828,
       "title": "Organic chemistry founded",

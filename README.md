@@ -44,6 +44,4 @@ Timeline behavior can be customized via `data.js` config object:
 * move data to an actual json
 
 * develop the PDE item into a proper event
-* add turing machines or babbage as the first theory of computing / computers
-* add cheap paper production
 * go over items whose text or title need revewing
