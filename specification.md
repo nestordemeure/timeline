@@ -47,7 +47,14 @@ The timeline implements an adaptive scrolling system that optimizes navigation t
 - **Gap-Bridging Mode**: When no events are on screen (during large temporal gaps), scroll speed automatically increases proportionally to the distance between the previous and next events
 - **Consistent Navigation**: This adaptive approach ensures users require the same number of scroll actions to traverse between any two consecutive events, regardless of the temporal gap between them
 
-This creates an intuitive navigation experience where users can efficiently move through both densely populated historical periods and vast temporal gaps with equal ease.
+The scroll speed calculation uses the formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
+
+Where:
+- `closestDistance`: Distance to the nearest event outside current viewport
+- `targetScrollDistance`: Configurable threshold distance (default: 3500px)
+- `scrollFactor`: Configurable multiplier for speed adjustment (default: 10)
+
+This square root-based formula provides smooth acceleration that increases scroll speed without excessive overshooting, creating an intuitive navigation experience through both densely populated historical periods and vast temporal gaps.
 
 ### Configuration Parameters
 The system's behavior is controlled through `data.js` configuration:
