@@ -54,30 +54,35 @@ const timelineData = {
       "type": "science",
       "date": "ca -400000",
       "title": "Domestication of fire",
+      "hidden": true,
       "description": "Control of fire becomes widespread among early humans, revolutionizing cooking, protection, and tool-making capabilities."
     },
     {
       "type": "information",
       "date": "ca -40000",
       "title": "First cave art",
+      "hidden": true,
       "description": "Earliest known cave paintings created in Indonesia and Europe, marking the beginning of symbolic artistic expression."
     },
     {
       "type": "economics",
       "date": "ca -8000",
       "title": "Agriculture revolution",
+      "hidden": true,
       "description": "Neolithic Revolution: humans transition from hunting-gathering to farming, enabling permanent settlements and population growth."
     },
     {
       "type": "industry",
       "date": "ca -5000",
       "title": "The loom invented",
+      "hidden": true,
       "description": "Early looms developed for weaving textiles, revolutionizing clothing production and trade in ancient civilizations."
     },
     {
       "type": "industry",
       "date": "ca -3500",
       "title": "Wheel invented",
+      "hidden": true,
       "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
     },
     {
