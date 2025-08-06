@@ -25,6 +25,7 @@ Made to illustrate the exponential rate of human progress within a larger presen
 - `baseFontSize`: Base font size for timeline elements
 - `defaultTitle`: Title displayed before scrolling begins
 - `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
+- `eventSpacing`: Minimal distance between text blocks
 - `displayYear`: Show/hide current year indicator
 
 Scrolling behavior is tuned to accelerate over long spans of empty time for consistent navigation.

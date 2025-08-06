@@ -174,12 +174,7 @@ class Timeline {
     }
 
     resolveCollisions(eventData) {
-        const padding = this.data.config.eventSpacing; // minimum space between events
-
-        // If spacing is exactly 0, allow complete overlap - skip collision detection
-        if (padding === 0) {
-            return;
-        }
+        const padding = this.data.config.eventSpacing; // space between content areas
 
         // Separate events by side (above/below)
         const aboveEvents = eventData.filter(e => e.side === 'above').sort((a, b) => a.basePosition - b.basePosition);
@@ -193,16 +188,23 @@ class Timeline {
     resolveCollisionsForSide(events, padding) {
         if (events.length === 0) return;
 
+        // Content area is the visible text area (excluding element padding)
+        // event-content has 30px padding on each side, so content width = total width - 60px
+        const contentPadding = 30; // CSS padding from .event-content
+        const contentWidth = events[0].width - (2 * contentPadding);
+
         // First pass: push events to the right to avoid overlaps
         for (let i = 1; i < events.length; i++) {
             const current = events[i];
             const previous = events[i - 1];
 
-            const previousEnd = previous.finalPosition + previous.width / 2;
-            const currentStart = current.finalPosition - current.width / 2;
+            // Calculate content area boundaries (not full element boundaries)
+            const previousContentEnd = previous.finalPosition + contentWidth / 2;
+            const currentContentStart = current.finalPosition - contentWidth / 2;
 
-            if (currentStart < previousEnd + padding) {
-                current.finalPosition = previousEnd + padding + current.width / 2;
+            // Add user-specified spacing between content areas
+            if (currentContentStart < previousContentEnd + padding) {
+                current.finalPosition = previousContentEnd + padding + contentWidth / 2;
             }
         }
 
@@ -211,8 +213,9 @@ class Timeline {
             const current = events[i];
             const next = events[i + 1];
 
-            const nextStart = next.finalPosition - next.width / 2;
-            const maxPosition = nextStart - padding - current.width / 2;
+            // Calculate content area boundaries
+            const nextContentStart = next.finalPosition - contentWidth / 2;
+            const maxPosition = nextContentStart - padding - contentWidth / 2;
 
             if (current.finalPosition > maxPosition) {
                 current.finalPosition = maxPosition;
