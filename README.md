@@ -43,8 +43,6 @@ Timeline behavior can be customized via `data.js` config object:
 * have a line on the page inviting users to scroll right
 * move data to an actual json
 
-* no scrolling tweaks on phone
-
 * hide items that can be skipped for a clearer overall picture
 
 * period title not quite displayed at the right time

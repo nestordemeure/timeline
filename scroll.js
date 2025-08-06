@@ -76,15 +76,11 @@ class DynamicScrollScaler {
                 // Use vertical swipe for horizontal scrolling on timeline
                 const deltaX = this.startY - currentY; // Swap Y movement for X scroll
 
-                // Get current scroll factor
-                const scrollFactor = this.getCurrentScrollFactor();
-
-                // Apply scaled scroll to timeline container
-                const scaledDelta = deltaX * scrollFactor;
+                // Apply normal scroll without scaling for touch devices
                 if (timelineContainer.scrollLeft !== undefined) {
                     const newScrollLeft = Math.max(0, Math.min(
                         timelineContainer.scrollWidth - timelineContainer.clientWidth,
-                        timelineContainer.scrollLeft + scaledDelta
+                        timelineContainer.scrollLeft + deltaX
                     ));
                     timelineContainer.scrollLeft = newScrollLeft;
                 }
