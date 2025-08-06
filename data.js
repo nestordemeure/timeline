@@ -242,8 +242,8 @@ const timelineData = {
     {
       "type": "science",
       "date": 1543,
-      "title": "Scientific Revolution",
-      "description": "Copernicus publishes 'On the Revolutions of Celestial Spheres', launching the Scientific Revolution with heliocentric theory."
+      "title": "Heliocentric model",
+      "description": "Copernicus publishes 'On the Revolutions of Celestial Spheres', proving Earth orbits the Sun and revolutionizing astronomy."
     },
     {
       "type": "science",
@@ -255,13 +255,13 @@ const timelineData = {
       "type": "science",
       "date": 1608,
       "title": "Telescope invented",
-      "description": "Hans Lippershey invents the telescope, revolutionizing astronomy and our understanding of the cosmos."
+      "description": "Hans Lippershey invents the telescope; Galileo and Kepler soon use it to discover Jupiter's moons and prove planetary motion laws."
     },
     {
       "type": "science",
       "date": 1687,
-      "title": "Scientific Method",
-      "description": "Newton's Principia establishes the foundation of modern scientific methodology and physics."
+      "title": "Laws of motion and gravity",
+      "description": "Newton's Principia mathematically describes universal gravitation and laws of motion, unifying terrestrial and celestial mechanics."
     },
     {
       "type": "industry",
@@ -271,9 +271,15 @@ const timelineData = {
     },
     {
       "type": "politics",
+      "date": 1748,
+      "title": "Separation of powers theory",
+      "description": "Montesquieu publishes 'The Spirit of the Laws', theorizing division of government into executive, legislative, and judicial branches to prevent tyranny."
+    },
+    {
+      "type": "politics",
       "date": 1789,
       "title": "French Revolution",
-      "description": "French Revolution begins, spreading ideas of liberty, equality, and fraternity across Europe."
+      "description": "French Revolution overthrows monarchy and establishes democratic principles, inspiring democratic movements worldwide."
     },
     {
       "type": "economics",
@@ -296,7 +302,7 @@ const timelineData = {
       "type": "industry",
       "date": 1807,
       "title": "Cheap paper production",
-      "description": "Fourdrinier paper machine enables mass production of paper, reducing costs by 75% and making books and newspapers affordable for the masses."
+      "description": "Fourdrinier paper machine enables mass production of paper, making books and newspapers affordable for the masses."
     },
     {
       "type": "information",
@@ -420,8 +426,8 @@ const timelineData = {
     {
       "type": "science",
       "date": 1955,
-      "title": "Computerized Mathematical Modeling",
-      "description": "First computerized solutions to partial differential equations enable complex scientific simulations and engineering analysis."
+      "title": "Operational weather prediction",
+      "description": "First operational computerized weather forecasting begins using IBM 701, proving computers can solve complex mathematical models for practical use."
     },
     {
       "type": "science",

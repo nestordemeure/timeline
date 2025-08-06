@@ -42,6 +42,3 @@ Timeline behavior can be customized via `data.js` config object:
 
 * have a line on the page inviting users to scroll right
 * move data to an actual json
-
-* develop the PDE item into a proper event
-* go over items whose text or title need revewing
