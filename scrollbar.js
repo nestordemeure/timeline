@@ -41,7 +41,7 @@ class CustomScrollbar {
         this.scrollbarThumb = this.scrollbarContainer.querySelector('.scrollbar-thumb');
     }
 
-    // Simple linear mapping functions (identity function)
+    // Map from timeline scroll position to scrollbar position using interpolation
     timelineToScrollbar(timelinePosition) {
         const containerWidth = this.container.clientWidth;
         const scrollableWidth = this.container.scrollWidth;
@@ -53,8 +53,68 @@ class CustomScrollbar {
         const thumbWidth = this.scrollbarThumb.offsetWidth;
         const maxThumbPosition = trackWidth - thumbWidth;
         
-        const ratio = timelinePosition / maxScrollLeft;
-        return ratio * maxThumbPosition;
+        // If no event data available, fall back to linear mapping
+        if (!this.timeline.eventData || this.timeline.eventData.length === 0) {
+            const ratio = timelinePosition / maxScrollLeft;
+            return ratio * maxThumbPosition;
+        }
+        
+        // Find the current viewport center position in timeline coordinates
+        const viewportCenterPosition = timelinePosition + containerWidth / 2;
+        
+        // Find the two events that bracket this viewport center
+        let beforeEvent = null;
+        let afterEvent = null;
+        
+        for (let i = 0; i < this.timeline.eventData.length - 1; i++) {
+            const currentEvent = this.timeline.eventData[i];
+            const nextEvent = this.timeline.eventData[i + 1];
+            
+            if (viewportCenterPosition >= currentEvent.finalPosition && 
+                viewportCenterPosition <= nextEvent.finalPosition) {
+                beforeEvent = currentEvent;
+                afterEvent = nextEvent;
+                break;
+            }
+        }
+        
+        // Handle edge cases
+        if (!beforeEvent || !afterEvent) {
+            if (viewportCenterPosition <= this.timeline.eventData[0].finalPosition) {
+                // Before first event - map to start of scrollbar
+                return 0;
+            } else {
+                // After last event - map to end of scrollbar
+                return maxThumbPosition;
+            }
+        }
+        
+        // Interpolate to find chronological position
+        const positionSpan = afterEvent.finalPosition - beforeEvent.finalPosition;
+        if (positionSpan === 0) {
+            // Same position, use the before event's chronological position
+            const beforeDate = this.timeline.parseDate(beforeEvent.date);
+            const firstEventDate = this.timeline.parseDate(this.timeline.events[0].date);
+            const lastEventDate = this.timeline.parseDate(this.timeline.events[this.timeline.events.length - 1].date);
+            const dateRange = lastEventDate - firstEventDate;
+            const chronologicalRatio = (beforeDate - firstEventDate) / dateRange;
+            return chronologicalRatio * maxThumbPosition;
+        }
+        
+        const interpolationFactor = (viewportCenterPosition - beforeEvent.finalPosition) / positionSpan;
+        
+        // Get chronological dates
+        const beforeDate = this.timeline.parseDate(beforeEvent.date);
+        const afterDate = this.timeline.parseDate(afterEvent.date);
+        const interpolatedDate = beforeDate + interpolationFactor * (afterDate - beforeDate);
+        
+        // Convert to scrollbar position using chronological mapping
+        const firstEventDate = this.timeline.parseDate(this.timeline.events[0].date);
+        const lastEventDate = this.timeline.parseDate(this.timeline.events[this.timeline.events.length - 1].date);
+        const dateRange = lastEventDate - firstEventDate;
+        const chronologicalRatio = (interpolatedDate - firstEventDate) / dateRange;
+        
+        return Math.max(0, Math.min(maxThumbPosition, chronologicalRatio * maxThumbPosition));
     }
 
     scrollbarToTimeline(scrollbarPosition) {
@@ -68,8 +128,68 @@ class CustomScrollbar {
         
         if (maxThumbPosition === 0) return 0;
         
-        const ratio = scrollbarPosition / maxThumbPosition;
-        return ratio * maxScrollLeft;
+        // Convert scrollbar position to chronological ratio
+        const chronologicalRatio = scrollbarPosition / maxThumbPosition;
+        
+        // Use interpolation between events to map from chronological to shifted positions
+        if (!this.timeline.eventData || this.timeline.eventData.length === 0) {
+            // Fallback to linear mapping if no event data
+            return chronologicalRatio * maxScrollLeft;
+        }
+        
+        // Get first and last event dates for chronological mapping
+        const firstEventDate = this.timeline.parseDate(this.timeline.events[0].date);
+        const lastEventDate = this.timeline.parseDate(this.timeline.events[this.timeline.events.length - 1].date);
+        const dateRange = lastEventDate - firstEventDate;
+        
+        // Convert chronological ratio to target date
+        const targetDate = firstEventDate + (chronologicalRatio * dateRange);
+        
+        // Find the two events that bracket this date
+        let beforeEvent = null;
+        let afterEvent = null;
+        
+        for (let i = 0; i < this.timeline.eventData.length - 1; i++) {
+            const currentEventDate = this.timeline.parseDate(this.timeline.eventData[i].date);
+            const nextEventDate = this.timeline.parseDate(this.timeline.eventData[i + 1].date);
+            
+            if (targetDate >= currentEventDate && targetDate <= nextEventDate) {
+                beforeEvent = this.timeline.eventData[i];
+                afterEvent = this.timeline.eventData[i + 1];
+                break;
+            }
+        }
+        
+        // If we couldn't find bracketing events, use linear interpolation at edges
+        if (!beforeEvent || !afterEvent) {
+            if (targetDate <= firstEventDate) {
+                // Before first event
+                return Math.max(0, this.timeline.eventData[0].finalPosition - containerWidth / 2);
+            } else {
+                // After last event
+                const lastEvent = this.timeline.eventData[this.timeline.eventData.length - 1];
+                return Math.min(maxScrollLeft, lastEvent.finalPosition - containerWidth / 2);
+            }
+        }
+        
+        // Interpolate between the shifted positions of the bracketing events
+        const beforeDate = this.timeline.parseDate(beforeEvent.date);
+        const afterDate = this.timeline.parseDate(afterEvent.date);
+        const dateSpan = afterDate - beforeDate;
+        
+        if (dateSpan === 0) {
+            // Same date, use the before event position
+            return Math.max(0, Math.min(maxScrollLeft, beforeEvent.finalPosition - containerWidth / 2));
+        }
+        
+        const interpolationFactor = (targetDate - beforeDate) / dateSpan;
+        const interpolatedPosition = beforeEvent.finalPosition + 
+            interpolationFactor * (afterEvent.finalPosition - beforeEvent.finalPosition);
+        
+        // Convert from event position to scroll position (center the event in viewport)
+        const scrollPosition = interpolatedPosition - containerWidth / 2;
+        
+        return Math.max(0, Math.min(maxScrollLeft, scrollPosition));
     }
 
     renderEventIndicators() {
