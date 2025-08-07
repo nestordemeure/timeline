@@ -38,3 +38,5 @@ It features specialized navigation to smooth out the historical experience:
 
 * move `data.js` to an actual json
 * clicking on the plot should center me on where i click, unless its too close to an edge
+* take screnshot and have model discuss it
+  * have model add whimsy
