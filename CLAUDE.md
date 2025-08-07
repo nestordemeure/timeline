@@ -5,7 +5,7 @@ Interactive timeline displaying human civilization's progress through categorize
 
 ## Getting Started
 - **Read specification first**: Review `specification.md` for design philosophy and principles  
-- **Test visual changes**: Use Playwright MCP tools to verify display modifications
+- **IMPORTANT**: Only use Playwright MCP tools when explicitly requested by user for testing - never use proactively
 
 ## Architecture
 Clean separation of concerns across four main files:
@@ -27,6 +27,6 @@ Clean separation of concerns across four main files:
 - All content editable through `data.js` without touching logic
 - **IMPORTANT**: Any new events/titles added to `data.js` must be inserted in chronological order by date
 - **IMPORTANT**: Any new events must be fact-checked online for date and description accuracy before adding
-- Visual changes require browser testing with Playwright MCP
+- **IMPORTANT**: Never use Playwright MCP tools unless explicitly requested by user for testing
 - Follow existing patterns for new event types or timeline modifications
 - Configuration changes (fonts, colors, scaling) handled through data.js config object

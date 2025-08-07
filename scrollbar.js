@@ -255,10 +255,23 @@ class CustomScrollbar {
             if (e.target === this.scrollbarThumb) return;
 
             const trackRect = this.scrollbarTrack.getBoundingClientRect();
-            // Jump based on click position on the track, not centering the thumb.
-            const clickPosition = e.clientX - trackRect.left;
+            const thumbWidth = this.scrollbarThumb.offsetWidth;
+            const trackWidth = trackRect.width;
+            
+            // Calculate click position relative to track
+            const rawClickPosition = e.clientX - trackRect.left;
+            
+            // Center the thumb on the click position, but respect track boundaries
+            const halfThumbWidth = thumbWidth / 2;
+            const centeredPosition = Math.max(
+                halfThumbWidth,
+                Math.min(trackWidth - halfThumbWidth, rawClickPosition)
+            );
+            
+            // The scrollbar position is offset by half thumb width to center it
+            const scrollbarPosition = centeredPosition - halfThumbWidth;
 
-            this.updateScrollFromScrollbar(clickPosition);
+            this.updateScrollFromScrollbar(scrollbarPosition);
         });
 
         this.container.addEventListener('scroll', () => {
