@@ -111,7 +111,7 @@ const timelineData = {
       "date": "c. -1500",
       "title": "Iron smelting invented",
       "description": "Hittites in Anatolia develop iron smelting technology, creating stronger metals that revolutionize tools, weapons, and agriculture.",
-      "link": "https://en.wikipedia.org/wiki/Ferrous_metallurgy#History"
+      "link": "https://en.wikipedia.org/wiki/Iron_Age#Iron_metallurgy"
     },
     {
       "type": "religion",
@@ -165,7 +165,7 @@ const timelineData = {
       "date": "c. -500",
       "title": "Buddhism founded",
       "description": "Siddhartha Gautama (Buddha) achieves enlightenment and begins teaching, founding Buddhism and influencing millions.",
-      "link": "https://en.wikipedia.org/wiki/The_Buddha#Enlightenment"
+      "link": "https://en.wikipedia.org/wiki/The_Buddha#Teaching_career"
     },
     {
       "type": "religion",
@@ -207,7 +207,7 @@ const timelineData = {
       "date": "c. 30",
       "title": "Christianity begins",
       "description": "Death and resurrection of Jesus Christ, leading to the spread of Christianity throughout the Roman Empire.",
-      "link": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus#Resurrection"
+      "link": "https://en.wikipedia.org/wiki/Early_Christianity#Origins"
     },
     {
       "type": "information",
@@ -296,7 +296,7 @@ const timelineData = {
       "date": 859,
       "title": "First University",
       "description": "University of Al-Qarawiyyin founded in Fez, Morocco by Fatima al-Fihri, recognized as world's oldest continuously operating university.",
-      "link": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin"
+      "link": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin#History"
     },
     {
       "type": "information",
@@ -691,7 +691,7 @@ const timelineData = {
       "type": "information",
       "date": 1983,
       "title": "Mobile Phone Network",
-      "description": "First commercial cellular network launches, enabling portable wireless communication and transforming personal connectivity.",
+      "description": "First commercial cellular network launches in the US, enabling portable wireless communication and transforming personal connectivity.",
       "link": "https://en.wikipedia.org/wiki/1G#History"
     },
     {
