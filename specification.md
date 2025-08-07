@@ -6,11 +6,12 @@ This is an interactive horizontal timeline displaying the progression of human c
 
 The code is kept concise and focused. No premature optimization - we handle the problems we actually encounter.
 
-The code is split across five files with clear separation of responsibilities:
+The code is split across six files with clear separation of responsibilities:
 * `index.html` - HTML structure with containers for title, timeline, and legend
 * `style.css` - Dark theme styling and responsive layout
 * `script.js` - Timeline class handling rendering and interactions
-* `scroll.js` - Scrolling behavior and adaptive speed logic
+* `scroll.js` - Dynamic scroll speed scaling based on event density
+* `scrollbar.js` - Custom scrollbar with chronological position mapping
 * `data.js` - All timeline data plus configuration parameters
 
 ## Data Structure
@@ -91,10 +92,35 @@ The formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDi
 
 This ensures consistent navigation effort - the same amount of scrolling moves you between any two consecutive events, whether they're 10 years or 1000 years apart.
 
+## Scrolling System
+
+The timeline implements a sophisticated two-part scrolling system:
+
+### Dynamic Speed Scaling (`scroll.js`)
+Automatically adjusts scroll speed based on proximity to historical events:
+* **Adaptive Speed**: Uses `computeScrollingFactor()` from timeline instance to scale scroll velocity
+* **Multi-Input Support**: Handles mouse wheel, touch gestures, and keyboard navigation consistently  
+* **Event Density Awareness**: Accelerates through empty millennia, maintains normal speed near events
+* **Cross-Platform**: Touch scrolling uses vertical swipes for horizontal timeline navigation
+
+Formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
+
+### Chronological Scrollbar (`scrollbar.js`)
+Custom scrollbar where position represents chronological time rather than pixel distance:
+* **Chronological Mapping**: Scrollbar position corresponds to historical dates, not timeline pixels
+* **Bi-directional Interpolation**: Converts between timeline scroll position and chronological dates
+* **Variable Thumb Size**: Thumb width reflects event density in the visible viewport
+* **Event Indicators**: Visual markers show historical event distribution across full timeline
+* **Interactive Navigation**: Click-to-jump and drag-to-scrub through historical periods
+
+The scrollbar uses interpolation between adjacent events to maintain chronological accuracy:
+- Maps viewport position to chronological dates using event boundaries
+- Calculates thumb position and size based on date ranges rather than pixel positions  
+- Handles edge cases (before first event, after last event, identical event positions)
+
 ### Additional Features
 * **Time Markers**: Adaptive interval markers (5 to 1000 years) appear in empty areas to provide temporal reference
-* **Event Indicators**: Small markers on the scrollbar show event density across the timeline
-* **Scrollbar Navigation**: Click anywhere on the scrollbar to jump directly to that timeline position
+* **Consistent Navigation**: Same scrolling effort moves between any two consecutive events regardless of time span
 
 ## Configuration
 

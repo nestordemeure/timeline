@@ -3,13 +3,20 @@
 Interactive horizontal timeline displaying historical events.
 Made to illustrate the exponential rate of human progress within a larger presentation.
 
-## Organization
+## Code
 
+The code is organized as follows:
 - [`index.html`](index.html) - HTML structure
 - [`style.css`](style.css) - Styling and layout  
 - [`script.js`](script.js) - Timeline class and interactions
-- [`scrolling.js`](scrolling.js) - Scrolling behavior and logic
+- [`scroll.js`](scroll.js) - Dynamic scroll speed scaling for adaptive navigation
+- [`scrollbar.js`](scrollbar.js) - Custom scrollbar with chronological position mapping
 - [`data.js`](data.js) - All timeline data and configuration
+
+It features specialized navigation to smooth out the historical experience:
+- Events are spread on screen to avoid overlap
+- Dynamic speed scaling accelerates through empty millennia for consistent navigation
+- Custom scrollbar position maps to historical dates (not pixels) with event indicators and click-to-jump navigation
 
 ## Usage
 
@@ -26,8 +33,6 @@ Made to illustrate the exponential rate of human progress within a larger presen
 - `defaultTitle`: Title displayed before scrolling begins
 - `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
 - `eventSpacing`: Minimal distance between text blocks
-
-Scrolling behavior is tuned to accelerate over long spans of empty time for consistent navigation.
 
 ## TODO
 
