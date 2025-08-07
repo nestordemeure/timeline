@@ -52,84 +52,84 @@ const timelineData = {
     },
     {
       "type": "science",
-      "date": "ca -400000",
+      "date": "c. -400000",
       "title": "Domestication of fire",
       "hidden": true,
       "description": "Control of fire becomes widespread among early humans, revolutionizing cooking, protection, and tool-making capabilities."
     },
     {
       "type": "information",
-      "date": "ca -40000",
+      "date": "c. -40000",
       "title": "First cave art",
       "hidden": true,
       "description": "Earliest known cave paintings created in Indonesia and Europe, marking the beginning of symbolic artistic expression."
     },
     {
       "type": "economics",
-      "date": "ca -8000",
+      "date": "c. -8000",
       "title": "Agriculture revolution",
       "hidden": true,
       "description": "Neolithic Revolution: humans transition from hunting-gathering to farming, enabling permanent settlements and population growth."
     },
     {
       "type": "industry",
-      "date": "ca -5000",
+      "date": "c. -5000",
       "title": "The loom invented",
       "hidden": true,
       "description": "Early looms developed for weaving textiles, revolutionizing clothing production and trade in ancient civilizations."
     },
     {
       "type": "industry",
-      "date": "ca -3500",
+      "date": "c. -3500",
       "title": "Wheel invented",
       "hidden": true,
       "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
     },
     {
       "type": "industry",
-      "date": "ca -3000",
+      "date": "c. -3000",
       "title": "Bronze working invented",
       "description": "Mesopotamians develop copper-tin alloys creating bronze, a harder and more durable metal enabling better tools, weapons, and agricultural implements.",
       "link": "https://en.wikipedia.org/wiki/Bronze_Age"
     },
     {
       "type": "information",
-      "date": "ca -3200",
+      "date": "c. -3200",
       "title": "Writing invented",
       "description": "First writing systems developed in Mesopotamia and Egypt, marking the beginning of recorded history.",
       "link": "https://en.wikipedia.org/wiki/History_of_writing"
     },
     {
       "type": "politics",
-      "date": "ca -1750",
+      "date": "c. -1750",
       "title": "Code of Hammurabi",
       "description": "One of the earliest and most complete legal codes, establishing laws and punishments in ancient Babylon.",
       "link": "https://en.wikipedia.org/wiki/Code_of_Hammurabi"
     },
     {
       "type": "industry",
-      "date": "ca -1500",
+      "date": "c. -1500",
       "title": "Iron smelting invented",
       "description": "Hittites in Anatolia develop iron smelting technology, creating stronger metals that revolutionize tools, weapons, and agriculture.",
       "link": "https://en.wikipedia.org/wiki/Ferrous_metallurgy"
     },
     {
       "type": "religion",
-      "date": "ca -1500",
+      "date": "c. -1500",
       "title": "Hinduism/Vedas",
       "description": "Composition of the Vedas begins in India, establishing foundational texts of Hinduism and one of the world's oldest religions.",
       "link": "https://en.wikipedia.org/wiki/Vedas"
     },
     {
       "type": "religion",
-      "date": "ca -1350",
+      "date": "c. -1350",
       "title": "First Monotheism",
       "description": "Akhenaten introduces monotheistic worship of Aten in ancient Egypt, marking the first known monotheistic religion.",
       "link": "https://en.wikipedia.org/wiki/Atenism"
     },
     {
       "type": "information",
-      "date": "ca -1200",
+      "date": "c. -1200",
       "title": "Phoenician alphabet",
       "description": "Phoenicians develop the first true alphabet with individual letters for sounds, becoming the foundation for Greek, Latin, and modern alphabets.",
       "link": "https://en.wikipedia.org/wiki/Phoenician_alphabet"
@@ -141,98 +141,98 @@ const timelineData = {
     },
     {
       "type": "economics",
-      "date": "ca -600",
+      "date": "c. -600",
       "title": "Invention of Money",
       "description": "First coins minted in Lydia, revolutionizing trade and commerce.",
       "link": "https://en.wikipedia.org/wiki/History_of_coins"
     },
     {
       "type": "science",
-      "date": "ca -600",
+      "date": "c. -600",
       "title": "Babylonian astronomy",
       "description": "Babylonians develop systematic astronomical observations, creating the zodiac and tracking planetary cycles with mathematical precision.",
       "link": "https://en.wikipedia.org/wiki/Babylonian_astronomy"
     },
     {
       "type": "industry",
-      "date": "ca -500",
+      "date": "c. -500",
       "title": "Cast iron production",
       "hidden": true,
       "description": "Chinese develop blast furnace technology enabling cast iron production, creating stronger and more versatile metal products."
     },
     {
       "type": "religion",
-      "date": "ca -500",
+      "date": "c. -500",
       "title": "Buddhism founded",
       "description": "Siddhartha Gautama (Buddha) achieves enlightenment and begins teaching, founding Buddhism and influencing millions.",
       "link": "https://en.wikipedia.org/wiki/The_Buddha"
     },
     {
       "type": "religion",
-      "date": "ca -500",
+      "date": "c. -500",
       "title": "Judaism codified",
       "description": "Torah compilation during Babylonian exile codifies Jewish law and beliefs, establishing foundational texts of Judaism.",
       "link": "https://en.wikipedia.org/wiki/Babylonian_captivity"
     },
     {
       "type": "politics",
-      "date": "ca -508",
+      "date": "c. -508",
       "title": "Athenian Democracy",
       "description": "Birth of democracy in Athens, establishing the foundation for citizen participation in government.",
       "link": "https://en.wikipedia.org/wiki/Athenian_democracy"
     },
     {
       "type": "science",
-      "date": "ca -300",
+      "date": "c. -300",
       "title": "Euclid's Elements",
       "description": "Mathematical treatise establishing the foundations of geometry and mathematical proof.",
       "link": "https://en.wikipedia.org/wiki/Euclid%27s_Elements"
     },
     {
       "type": "science",
-      "date": "ca 100",
+      "date": "c. 100",
       "title": "Linear algebra foundations",
       "description": "Chinese mathematicians in 'Nine Chapters on Mathematical Art' develop systematic methods for solving linear equations, foundational to linear algebra.",
       "link": "https://en.wikipedia.org/wiki/The_Nine_Chapters_on_the_Mathematical_Art"
     },
     {
       "type": "industry",
-      "date": "ca -200",
+      "date": "c. -200",
       "title": "Compass invented",
       "description": "Magnetic compass invented in China for divination and feng shui practices, later revolutionizing navigation and maritime exploration.",
       "link": "https://en.wikipedia.org/wiki/History_of_the_compass"
     },
     {
       "type": "religion",
-      "date": "ca 30",
+      "date": "c. 30",
       "title": "Christianity begins",
       "description": "Death and resurrection of Jesus Christ, leading to the spread of Christianity throughout the Roman Empire.",
       "link": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus"
     },
     {
       "type": "information",
-      "date": "ca 105",
+      "date": "c. 105",
       "title": "Paper invented",
       "description": "Paper invented in China by Cai Lun, revolutionizing information storage and transmission.",
       "link": "https://en.wikipedia.org/wiki/Cai_Lun"
     },
     {
       "type": "science",
-      "date": "ca 150",
+      "date": "c. 150",
       "title": "Ptolemaic model",
       "description": "Ptolemy creates comprehensive geocentric model of the universe, dominating astronomical thought for over 1,400 years until Copernicus.",
       "link": "https://en.wikipedia.org/wiki/Geocentric_model"
     },
     {
       "type": "information",
-      "date": "ca 500",
+      "date": "c. 500",
       "title": "Hindu-Arabic numerals",
       "description": "Hindu-Arabic numeral system with zero and decimal notation developed in India, revolutionizing mathematics and enabling complex calculations.",
       "link": "https://en.wikipedia.org/wiki/Hindu%E2%80%93Arabic_numeral_system"
     },
     {
       "type": "science",
-      "date": "ca 1020",
+      "date": "c. 1020",
       "title": "Scientific method founded",
       "description": "Ibn al-Haytham develops the modern scientific method with systematic experimentation and verification.",
       "link": "https://en.wikipedia.org/wiki/Ibn_al-Haytham"
@@ -265,7 +265,7 @@ const timelineData = {
     },
     {
       "type": "economics",
-      "date": "ca 800",
+      "date": "c. 800",
       "title": "Banking system invented",
       "description": "Hawala system developed in Islamic world enables long-distance money transfer without physical movement of cash, based on trust networks among merchants.",
       "link": "https://en.wikipedia.org/wiki/Hawala"
@@ -286,7 +286,7 @@ const timelineData = {
     },
     {
       "type": "industry",
-      "date": "ca 900",
+      "date": "c. 900",
       "title": "Gunpowder invented",
       "description": "Gunpowder invented in China by alchemists, revolutionizing warfare, mining, and construction technology.",
       "link": "https://en.wikipedia.org/wiki/History_of_gunpowder"
@@ -321,14 +321,14 @@ const timelineData = {
     },
     {
       "type": "industry",
-      "date": "ca 1275",
+      "date": "c. 1275",
       "title": "Mechanical clock invented",
       "hidden": true,
       "description": "First mechanical clocks with verge escapement mechanism built in medieval Europe, revolutionizing timekeeping and enabling precise scheduling."
     },
     {
       "type": "economics",
-      "date": "ca 1300",
+      "date": "c. 1300",
       "title": "Double-entry bookkeeping",
       "description": "Double-entry bookkeeping system developed in Italian city-states, revolutionizing accounting and enabling modern capitalism.",
       "link": "https://en.wikipedia.org/wiki/Double-entry_bookkeeping"
@@ -347,7 +347,7 @@ const timelineData = {
     },
     {
       "type": "information",
-      "date": "ca 1440",
+      "date": "c. 1440",
       "title": "Printing Press",
       "description": "Gutenberg's printing press revolutionizes the mass production of books and spread of knowledge.",
       "link": "https://en.wikipedia.org/wiki/Printing_press"

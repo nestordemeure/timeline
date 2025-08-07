@@ -47,7 +47,7 @@ class Timeline {
     parseDate(dateStr) {
         if (typeof dateStr === 'number') return dateStr;
 
-        let cleanDate = dateStr.toString().replace('ca ', '');
+        let cleanDate = dateStr.toString().replace('c. ', '');
         return parseInt(cleanDate);
     }
 
@@ -57,11 +57,11 @@ class Timeline {
             return dateStr < 0 ? `${Math.abs(dateStr)} BC` : `${dateStr} AD`;
         }
 
-        const isApprox = dateStr.toString().includes('ca');
+        const isApprox = dateStr.toString().includes('c.');
         const year = this.parseDate(dateStr);
         const formatted = year < 0 ? `${Math.abs(year)} BC` : `${year} AD`;
 
-        return isApprox ? `ca ${formatted}` : formatted;
+        return isApprox ? `c. ${formatted}` : formatted;
     }
 
     getTypeColor(typeName) {
