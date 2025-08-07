@@ -37,4 +37,3 @@ It features specialized navigation to smooth out the historical experience:
 ## TODO
 
 * move `data.js` to an actual json
-* make links specific

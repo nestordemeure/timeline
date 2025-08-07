@@ -97,7 +97,7 @@ const timelineData = {
       "date": "c. -3200",
       "title": "Writing invented",
       "description": "First writing systems developed in Mesopotamia and Egypt, marking the beginning of recorded history.",
-      "link": "https://en.wikipedia.org/wiki/History_of_writing"
+      "link": "https://en.wikipedia.org/wiki/History_of_writing#Proto-writing"
     },
     {
       "type": "politics",
@@ -111,7 +111,7 @@ const timelineData = {
       "date": "c. -1500",
       "title": "Iron smelting invented",
       "description": "Hittites in Anatolia develop iron smelting technology, creating stronger metals that revolutionize tools, weapons, and agriculture.",
-      "link": "https://en.wikipedia.org/wiki/Ferrous_metallurgy"
+      "link": "https://en.wikipedia.org/wiki/Ferrous_metallurgy#History"
     },
     {
       "type": "religion",
@@ -144,7 +144,7 @@ const timelineData = {
       "date": "c. -600",
       "title": "Invention of Money",
       "description": "First coins minted in Lydia, revolutionizing trade and commerce.",
-      "link": "https://en.wikipedia.org/wiki/History_of_coins"
+      "link": "https://en.wikipedia.org/wiki/History_of_coins#Origins"
     },
     {
       "type": "science",
@@ -165,14 +165,14 @@ const timelineData = {
       "date": "c. -500",
       "title": "Buddhism founded",
       "description": "Siddhartha Gautama (Buddha) achieves enlightenment and begins teaching, founding Buddhism and influencing millions.",
-      "link": "https://en.wikipedia.org/wiki/The_Buddha"
+      "link": "https://en.wikipedia.org/wiki/The_Buddha#Enlightenment"
     },
     {
       "type": "religion",
       "date": "c. -500",
       "title": "Judaism codified",
       "description": "Torah compilation during Babylonian exile codifies Jewish law and beliefs, establishing foundational texts of Judaism.",
-      "link": "https://en.wikipedia.org/wiki/Babylonian_captivity"
+      "link": "https://en.wikipedia.org/wiki/Babylonian_captivity#Biblical_and_religious_significance"
     },
     {
       "type": "politics",
@@ -200,14 +200,14 @@ const timelineData = {
       "date": "c. -200",
       "title": "Compass invented",
       "description": "Magnetic compass invented in China for divination and feng shui practices, later revolutionizing navigation and maritime exploration.",
-      "link": "https://en.wikipedia.org/wiki/History_of_the_compass"
+      "link": "https://en.wikipedia.org/wiki/History_of_the_compass#Ancient_China"
     },
     {
       "type": "religion",
       "date": "c. 30",
       "title": "Christianity begins",
       "description": "Death and resurrection of Jesus Christ, leading to the spread of Christianity throughout the Roman Empire.",
-      "link": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus"
+      "link": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus#Resurrection"
     },
     {
       "type": "information",
@@ -221,7 +221,7 @@ const timelineData = {
       "date": "c. 150",
       "title": "Ptolemaic model",
       "description": "Ptolemy creates comprehensive geocentric model of the universe, dominating astronomical thought for over 1,400 years until Copernicus.",
-      "link": "https://en.wikipedia.org/wiki/Geocentric_model"
+      "link": "https://en.wikipedia.org/wiki/Geocentric_model#Ptolemaic_system"
     },
     {
       "type": "information",
@@ -282,14 +282,14 @@ const timelineData = {
       "date": 794,
       "title": "Paper revolution in Baghdad",
       "description": "First paper mill established in Baghdad using Chinese techniques, making cheaper paper and revolutionizing book production in the Islamic world.",
-      "link": "https://en.wikipedia.org/wiki/History_of_paper"
+      "link": "https://en.wikipedia.org/wiki/History_of_paper#Islamic_world"
     },
     {
       "type": "industry",
       "date": "c. 900",
       "title": "Gunpowder invented",
       "description": "Gunpowder invented in China by alchemists, revolutionizing warfare, mining, and construction technology.",
-      "link": "https://en.wikipedia.org/wiki/History_of_gunpowder"
+      "link": "https://en.wikipedia.org/wiki/History_of_gunpowder#Early_history"
     },
     {
       "type": "science",
@@ -350,7 +350,7 @@ const timelineData = {
       "date": "c. 1440",
       "title": "Printing Press",
       "description": "Gutenberg's printing press revolutionizes the mass production of books and spread of knowledge.",
-      "link": "https://en.wikipedia.org/wiki/Printing_press"
+      "link": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg's_press"
     },
     {
       "type": "religion",
@@ -371,7 +371,7 @@ const timelineData = {
       "date": 1582,
       "title": "First secular state established",
       "description": "Mughal Emperor Akbar formally establishes Din-i Ilahi and implements Sulh-i Kul (universal peace), creating the first secular government that separates religion from state administration and promotes religious tolerance.",
-      "link": "https://en.wikipedia.org/wiki/Akbar"
+      "link": "https://en.wikipedia.org/wiki/Akbar#Religious_policy"
     },
     {
       "type": "title",
@@ -397,7 +397,7 @@ const timelineData = {
       "date": 1608,
       "title": "Telescope invented",
       "description": "Hans Lippershey invents the telescope; Galileo and Kepler soon use it to discover Jupiter's moons and prove planetary motion laws.",
-      "link": "https://en.wikipedia.org/wiki/History_of_the_telescope"
+      "link": "https://en.wikipedia.org/wiki/History_of_the_telescope#Invention"
     },
     {
       "type": "science",
@@ -425,7 +425,7 @@ const timelineData = {
       "date": 1789,
       "title": "Modern chemistry founded",
       "description": "Lavoisier publishes 'Elements of Chemistry', the first modern chemistry textbook, establishing conservation of mass and systematic chemical nomenclature.",
-      "link": "https://en.wikipedia.org/wiki/Antoine_Lavoisier"
+      "link": "https://en.wikipedia.org/wiki/Antoine_Lavoisier#Chemical_revolution"
     },
     {
       "type": "politics",
@@ -446,7 +446,7 @@ const timelineData = {
       "date": 1796,
       "title": "First Vaccine",
       "description": "Edward Jenner develops the first vaccine against smallpox, founding the field of immunology.",
-      "link": "https://en.wikipedia.org/wiki/Edward_Jenner"
+      "link": "https://en.wikipedia.org/wiki/Edward_Jenner#Smallpox_vaccine"
     },
     {
       "type": "science",
@@ -460,7 +460,7 @@ const timelineData = {
       "date": 1803,
       "title": "Atomic theory",
       "description": "John Dalton proposes that elements consist of indivisible atoms with characteristic weights, founding modern chemistry.",
-      "link": "https://en.wikipedia.org/wiki/John_Dalton"
+      "link": "https://en.wikipedia.org/wiki/John_Dalton#Atomic_theory"
     },
     {
       "type": "information",
@@ -507,14 +507,14 @@ const timelineData = {
       "date": 1828,
       "title": "Organic chemistry founded",
       "description": "Friedrich Wöhler synthesizes urea from inorganic compounds, proving organic molecules can be created artificially and founding organic chemistry.",
-      "link": "https://en.wikipedia.org/wiki/Friedrich_W%C3%B6hler"
+      "link": "https://en.wikipedia.org/wiki/Friedrich_W%C3%B6hler#Synthesis_of_urea"
     },
     {
       "type": "information",
       "date": 1844,
       "title": "Telegraph System",
       "description": "Samuel Morse demonstrates the first long-distance telegraph line, enabling near-instantaneous long-distance communication.",
-      "link": "https://en.wikipedia.org/wiki/Electrical_telegraph"
+      "link": "https://en.wikipedia.org/wiki/Electrical_telegraph#Morse_system"
     },
     {
       "type": "science",
@@ -528,7 +528,7 @@ const timelineData = {
       "date": 1865,
       "title": "Laws of entropy",
       "description": "Rudolf Clausius formulates the second law of thermodynamics and introduces the concept of entropy, fundamentally changing our understanding of energy.",
-      "link": "https://en.wikipedia.org/wiki/Rudolf_Clausius"
+      "link": "https://en.wikipedia.org/wiki/Rudolf_Clausius#Thermodynamics"
     },
     {
       "type": "science",
@@ -549,28 +549,28 @@ const timelineData = {
       "date": 1869,
       "title": "Periodic table",
       "description": "Mendeleev organizes chemical elements by atomic weight, predicting undiscovered elements and founding modern chemistry.",
-      "link": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev"
+      "link": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev#Periodic_table"
     },
     {
       "type": "information",
       "date": 1876,
       "title": "Telephone Invented",
       "description": "Alexander Graham Bell patents the telephone, revolutionizing voice communication over distances.",
-      "link": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell"
+      "link": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell#Telephone"
     },
     {
       "type": "information",
       "date": 1895,
       "title": "Radio invented",
       "description": "Marconi develops the first practical wireless telegraph system, enabling long-distance radio communication and earning the 1909 Nobel Prize.",
-      "link": "https://en.wikipedia.org/wiki/Guglielmo_Marconi"
+      "link": "https://en.wikipedia.org/wiki/Guglielmo_Marconi#Wireless_telegraphy"
     },
     {
       "type": "industry",
       "date": 1879,
       "title": "Electric Power Grid",
       "description": "Edison develops the first practical electric power distribution system, bringing electricity to homes and businesses.",
-      "link": "https://en.wikipedia.org/wiki/Pearl_Street_Station"
+      "link": "https://en.wikipedia.org/wiki/Pearl_Street_Station#Operation"
     },
     {
       "type": "title",
@@ -603,7 +603,7 @@ const timelineData = {
       "date": 1928,
       "title": "Antibiotics discovered",
       "description": "Alexander Fleming discovers penicillin, revolutionizing the treatment of bacterial infections.",
-      "link": "https://en.wikipedia.org/wiki/Alexander_Fleming"
+      "link": "https://en.wikipedia.org/wiki/Alexander_Fleming#Discovery_of_penicillin"
     },
     {
       "type": "science",
@@ -638,14 +638,14 @@ const timelineData = {
       "date": 1947,
       "title": "Transistor invented",
       "description": "Bell Labs invents the transistor, the fundamental building block that enables all modern electronics and computers.",
-      "link": "https://en.wikipedia.org/wiki/History_of_the_transistor"
+      "link": "https://en.wikipedia.org/wiki/History_of_the_transistor#Invention"
     },
     {
       "type": "information",
       "date": 1948,
       "title": "Information Theory",
       "description": "Claude Shannon publishes 'A Mathematical Theory of Communication', establishing information theory and laying the mathematical foundation for the digital age.",
-      "link": "https://en.wikipedia.org/wiki/Claude_Shannon"
+      "link": "https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory"
     },
     {
       "type": "title",
@@ -664,7 +664,7 @@ const timelineData = {
       "date": 1955,
       "title": "Operational weather prediction",
       "description": "First operational computerized weather forecasting begins using IBM 701, proving computers can solve complex mathematical models for practical use.",
-      "link": "https://en.wikipedia.org/wiki/Numerical_weather_prediction"
+      "link": "https://en.wikipedia.org/wiki/Numerical_weather_prediction#History"
     },
     {
       "type": "science",
@@ -692,7 +692,7 @@ const timelineData = {
       "date": 1983,
       "title": "Mobile Phone Network",
       "description": "First commercial cellular network launches, enabling portable wireless communication and transforming personal connectivity.",
-      "link": "https://en.wikipedia.org/wiki/1G"
+      "link": "https://en.wikipedia.org/wiki/1G#History"
     },
     {
       "type": "information",
