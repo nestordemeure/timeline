@@ -24,8 +24,9 @@ It features specialized navigation to smooth out the historical experience:
 
 **Add content**: Edit [`data.js`](data.js) arrays:
 - Event types: `name`, `fullName`, `color`
-- Events: `type`, `date`, `title`, `description`, optional `hidden: true`, optional `link: "URL"`
+- Events: `type`, `date`, `title`, `description`, optional `hidden: true`, optional `link: "URL"`, optional `undated: true`
 - Era titles: `type: "title"` for section headers
+- Undated events: Set `undated: true` to display events without date markers or timeline positioning
 
 **Configure**: Edit [`data.js`](data.js) config object:
 - `fontFamily`: CSS font family for timeline text
@@ -36,4 +37,6 @@ It features specialized navigation to smooth out the historical experience:
 
 ## TODO
 
-* move `data.js` to an actual json
+title shold have no backround
+
+check all links in data.js, taking a look at the full corresponding wikipedia page, and checking if a section of that page might be a better or more specific fit for the topic we are talking about than the one linked to. Note that some link might be pointing to non existing sections, that's fine, loading the page willstill work, you will only need to point to an existing section or the overall page when fixing the link.

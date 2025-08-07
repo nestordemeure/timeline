@@ -86,11 +86,9 @@ const timelineData = {
       "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
     },
     {
-      "type": "industry",
-      "date": "c. -3000",
-      "title": "Bronze working invented",
-      "description": "Mesopotamians develop copper-tin alloys creating bronze, a harder and more durable metal enabling better tools, weapons, and agricultural implements.",
-      "link": "https://en.wikipedia.org/wiki/Bronze_Age"
+      "type": "title",
+      "date": -3200,
+      "title": "Dawn of Civilization"
     },
     {
       "type": "information",
@@ -98,6 +96,13 @@ const timelineData = {
       "title": "Writing invented",
       "description": "First writing systems developed in Mesopotamia and Egypt, marking the beginning of recorded history.",
       "link": "https://en.wikipedia.org/wiki/History_of_writing#Proto-writing"
+    },
+    {
+      "type": "industry",
+      "date": "c. -3000",
+      "title": "Bronze working invented",
+      "description": "Mesopotamians develop copper-tin alloys creating bronze, a harder and more durable metal enabling better tools, weapons, and agricultural implements.",
+      "link": "https://en.wikipedia.org/wiki/Bronze_Age"
     },
     {
       "type": "politics",
@@ -227,7 +232,7 @@ const timelineData = {
       "type": "information",
       "date": "c. 500",
       "title": "Hindu-Arabic numerals",
-      "description": "Hindu-Arabic numeral system with zero and decimal notation developed in India, revolutionizing mathematics and enabling complex calculations.",
+      "description": "Hindu-Arabic numeral system with zero and positional notation developed in India, revolutionizing mathematics and enabling complex calculations.",
       "link": "https://en.wikipedia.org/wiki/Hindu%E2%80%93Arabic_numeral_system"
     },
     {
@@ -728,6 +733,19 @@ const timelineData = {
       "title": "ChatGPT Launch",
       "description": "OpenAI releases ChatGPT, making advanced conversational AI accessible to the public and sparking the modern AI revolution.",
       "link": "https://en.wikipedia.org/wiki/ChatGPT"
-    }
+    },
+    {
+      "type": "title",
+      "date": 2100,
+      "title": "Future Times"
+    },
+    {
+      "type": "science",
+      "date": 2100,
+      "title": "Technological Convergence",
+      "undated": true,
+      "description": "The convergence of AI, nanotechnology, quantum computing, and robotics begins transforming human civilization, ushering in an era of unprecedented technological integration and societal change.",
+      "link": "https://en.wikipedia.org/wiki/Technological_convergence"
+    },
   ]
 };

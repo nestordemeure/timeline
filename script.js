@@ -113,13 +113,14 @@ class Timeline {
             };
         });
 
-        // Apply collision detection
+        // Apply collision detection to all events together
         this.resolveCollisions(eventData);
 
         // Render events with adjusted positions
         eventData.forEach(eventInfo => {
             const eventElement = document.createElement('div');
-            eventElement.className = `event ${eventInfo.side} ${eventInfo.type}`;
+            const undatedClass = eventInfo.undated ? ' undated' : '';
+            eventElement.className = `event ${eventInfo.side} ${eventInfo.type}${undatedClass}`;
             eventElement.style.left = `${eventInfo.finalPosition}px`;
 
             const color = this.getTypeColor(eventInfo.type);
