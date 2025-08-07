@@ -60,7 +60,7 @@ body {
     position: fixed;
     top: calc(180px + 200px);
     left: 0;
-    right: 36px;
+    right: 16px;
     height: 8px;
     background: linear-gradient(90deg, #333 0%, #666 50%, #666 100%);
     transform: translateY(-4px);
@@ -69,7 +69,7 @@ body {
 
 .timeline-arrow {
     position: fixed;
-    right: 20px;
+    right: 0;
     top: calc(180px + 200px);
     transform: translateY(-50%);
     width: 0;
@@ -78,6 +78,7 @@ body {
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     z-index: -1;
+    filter: drop-shadow(0 0 4px rgba(102, 102, 102, 0.3));
 }
 
 .time-marker {
