@@ -37,3 +37,5 @@ It features specialized navigation to smooth out the historical experience:
 ## TODO
 
 * move `data.js` to an actual json
+* clicking on the plot should center me on where i click, unless its too close to an edge
+* events should be optionally clickeable, linking to wikipedia articles or sections of articles where possible
