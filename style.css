@@ -162,11 +162,11 @@ body {
 }
 
 .event.above .event-content {
-    bottom: 30px;
+    bottom: 50px;
 }
 
 .event.below .event-content {
-    top: 30px;
+    top: 50px;
 }
 
 .event-date {
@@ -178,11 +178,11 @@ body {
 }
 
 .event.above .event-date {
-    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .event.below .event-date {
-    margin-bottom: 40px;
+    margin-top: 40px;
 }
 
 .event-title {
