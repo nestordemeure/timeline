@@ -9,6 +9,7 @@ class Timeline {
         this.legend = document.getElementById('legend');
         this.timelineContainer = document.querySelector('.timeline-container');
         this.scrollbarOverlay = document.getElementById('scrollbar-overlay');
+        this.customScrollbar = null;
 
         this.init();
     }
@@ -20,6 +21,7 @@ class Timeline {
         this.renderLegend();
         this.renderEvents();
         this.setupScrollListener();
+        this.initCustomScrollbar();
     }
 
     setInitialTitle() {
@@ -164,8 +166,7 @@ class Timeline {
             return ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
         });
 
-        // Render event indicators on scrollbar
-        this.renderEventIndicators();
+        // Note: Event indicators now handled by custom scrollbar
     }
 
     resolveCollisions(eventData) {
@@ -268,29 +269,6 @@ class Timeline {
         this.timelineContainer.addEventListener('scroll', () => {
             this.updateCurrentTitle();
         });
-
-        // Make scrollbar area clickable for instant navigation
-        document.addEventListener('click', (e) => {
-            // Check if click is in the scrollbar area
-            const containerRect = this.timelineContainer.getBoundingClientRect();
-            const isInScrollbarArea = e.clientY >= containerRect.bottom - 24 &&
-                e.clientY <= containerRect.bottom &&
-                e.clientX >= containerRect.left &&
-                e.clientX <= containerRect.right;
-
-            if (isInScrollbarArea) {
-                const clickX = e.clientX - containerRect.left;
-                const containerWidth = this.timelineContainer.clientWidth;
-                const scrollableWidth = this.timelineContainer.scrollWidth;
-
-                // Calculate target scroll position based on click position
-                const clickRatio = clickX / containerWidth;
-                const maxScrollLeft = scrollableWidth - containerWidth;
-                const targetScrollLeft = clickRatio * maxScrollLeft;
-
-                this.timelineContainer.scrollLeft = targetScrollLeft;
-            }
-        });
     }
 
     computeScrollingFactor() {
@@ -382,27 +360,11 @@ class Timeline {
     }
 
 
-    renderEventIndicators() {
-        // Calculate the scroll container dimensions
-        const containerWidth = this.timelineContainer.clientWidth;
-        const scrollableWidth = this.timelineContainer.scrollWidth;
-
-        // Find the actual leftmost and rightmost event positions
-        const minEventPos = Math.min(...this.eventPositions);
-        const maxEventPos = Math.max(...this.eventPositions);
-
-        this.eventPositions.forEach(eventPosition => {
-            // Map event position proportionally across the scrollbar width
-            // Leave a small margin to avoid creating additional scrollbars
-            const scrollbarWidth = containerWidth - 2; // Small margin
-            const scrollbarPosition = ((eventPosition - minEventPos) / (maxEventPos - minEventPos)) * scrollbarWidth;
-
-            const indicator = document.createElement('div');
-            indicator.className = 'event-indicator';
-            indicator.style.left = `${scrollbarPosition}px`;
-
-            this.timelineContainer.appendChild(indicator);
-        });
+    initCustomScrollbar() {
+        if (this.customScrollbar) {
+            this.customScrollbar.destroy();
+        }
+        this.customScrollbar = new CustomScrollbar(this);
     }
 }
 

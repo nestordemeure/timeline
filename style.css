@@ -228,41 +228,63 @@ body {
     color: #ccc;
 }
 
+/* Hide default scrollbar */
 .timeline-container::-webkit-scrollbar {
-    height: 24px;
+    display: none;
 }
 
-.timeline-container::-webkit-scrollbar-track {
-    background: #1a1a1a;
+.timeline-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.timeline-container::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 4px;
-}
-
-.timeline-container::-webkit-scrollbar-thumb:hover {
-    background: #666;
-}
-
-.event-indicator {
-    position: absolute;
-    bottom: 0;
-    width: 1px;
-    height: 24px;
-    background-color: #808080;
-    pointer-events: none;
-    z-index: 200;
-}
-
-.scrollbar-overlay {
+/* Custom scrollbar styles */
+.custom-scrollbar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     height: 24px;
-    pointer-events: none;
     z-index: 300;
+    pointer-events: all;
+}
+
+.scrollbar-track {
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #444;
+    border-radius: 4px;
+    cursor: grab;
+    transition: background-color 0.2s ease;
+    min-width: 20px;
+}
+
+.scrollbar-thumb:hover {
+    background: #666;
+}
+
+.scrollbar-thumb:active {
+    cursor: grabbing;
+    background: #777;
+}
+
+.scrollbar-event-indicator {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
 }
 
 @media (max-width: 768px) {
