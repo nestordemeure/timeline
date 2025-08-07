@@ -283,7 +283,7 @@ body {
     top: 0;
     width: 1px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: #808080;
     pointer-events: none;
 }
 
@@ -291,17 +291,16 @@ body {
     .timeline {
         padding: 0 50px;
     }
-    
+
     .event-content {
         max-width: 150px;
     }
-    
+
     .legend {
         gap: 15px;
     }
-    
+
     .legend-text {
         font-size: 0.8rem;
     }
 }
-
