@@ -276,6 +276,21 @@ class CustomScrollbar {
     updateScrollFromScrollbar(scrollbarPosition) {
         // Since thumb width is variable, we pass the raw position on the track
         const timelinePosition = this.scrollbarToTimeline(scrollbarPosition);
+        
+        // During dragging, update the thumb position directly without triggering scroll events
+        if (this.isDragging) {
+            // Calculate thumb width for proper positioning
+            const containerWidth = this.container.clientWidth;
+            const leftEdgePos = this.timelineToScrollbar(timelinePosition);
+            const rightEdgePos = this.timelineToScrollbar(timelinePosition + containerWidth);
+            const newThumbWidth = rightEdgePos - leftEdgePos;
+            const minThumbWidth = 20;
+            
+            // Update thumb position and width directly
+            this.scrollbarThumb.style.width = `${Math.max(minThumbWidth, newThumbWidth)}px`;
+            this.scrollbarThumb.style.left = `${scrollbarPosition}px`;
+        }
+        
         this.container.scrollLeft = timelinePosition;
     }
 
