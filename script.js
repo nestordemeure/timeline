@@ -119,7 +119,7 @@ class Timeline {
         // Render events with adjusted positions
         eventData.forEach(eventInfo => {
             const eventElement = document.createElement('div');
-            eventElement.className = `event ${eventInfo.side}`;
+            eventElement.className = `event ${eventInfo.side} ${eventInfo.type}`;
             eventElement.style.left = `${eventInfo.finalPosition}px`;
 
             const color = this.getTypeColor(eventInfo.type);
