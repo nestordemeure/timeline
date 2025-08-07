@@ -74,10 +74,10 @@ body {
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 16px solid #666;
+    border-left: 16px solid #333;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
-    z-index: 200;
+    z-index: -1;
 }
 
 .time-marker {
