@@ -151,6 +151,26 @@ body {
     z-index: 10;
 }
 
+.event-marker::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1px;
+    z-index: -1;
+    background-color: inherit;
+}
+
+.event.above .event-marker::after {
+    height: 50px;
+    transform: translateX(-50%) translateY(-100%);
+}
+
+.event.below .event-marker::after {
+    height: 50px;
+    transform: translateX(-50%);
+}
+
 .event-content {
     max-width: 400px;
     min-width: 267px;
@@ -175,6 +195,8 @@ body {
     text-align: center;
     padding: 4px 8px;
     white-space: nowrap;
+    z-index: 10;
+    position: relative;
 }
 
 .event.above .event-date {
