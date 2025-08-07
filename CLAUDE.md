@@ -27,6 +27,7 @@ Clean separation of concerns across four main files:
 - All content editable through `data.js` without touching logic
 - **IMPORTANT**: Any new events/titles added to `data.js` must be inserted in chronological order by date
 - **IMPORTANT**: Any new events must be fact-checked online for date and description accuracy before adding
+- **IMPORTANT**: Optional URLs added to events should point to reputable sources (Wikipedia is best) and be as specific as possible (Wikipedia sections are better than Wikipedia articles)
 - **IMPORTANT**: Never use Playwright MCP tools unless explicitly requested by user for testing
 - Follow existing patterns for new event types or timeline modifications
 - Configuration changes (fonts, colors, scaling) handled through data.js config object

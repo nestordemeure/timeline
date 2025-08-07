@@ -37,5 +37,5 @@ It features specialized navigation to smooth out the historical experience:
 ## TODO
 
 * move `data.js` to an actual json
-* take screnshot and have model discuss it
-  * have model add whimsy
+* have model add whimsy?
+* make links specific

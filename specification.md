@@ -24,7 +24,7 @@ Each event is characterized by:
 * A title (expected to be one line or less)
 * An optional description paragraph
 * An optional `hidden: true` flag to exclude from display while preserving in dataset
-* An optional `link: "URL"` field for clickable references to reputable sources (preferably Wikipedia)
+* An optional `link: "URL"` field for clickable references to reputable sources (Wikipedia is preferred; use specific sections rather than general articles when possible)
 
 ### Event Types
 
