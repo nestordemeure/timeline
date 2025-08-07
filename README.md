@@ -24,7 +24,7 @@ It features specialized navigation to smooth out the historical experience:
 
 **Add content**: Edit [`data.js`](data.js) arrays:
 - Event types: `name`, `fullName`, `color`
-- Events: `type`, `date`, `title`, `description`, optional `hidden: true`
+- Events: `type`, `date`, `title`, `description`, optional `hidden: true`, optional `link: "URL"`
 - Era titles: `type: "title"` for section headers
 
 **Configure**: Edit [`data.js`](data.js) config object:
@@ -38,4 +38,3 @@ It features specialized navigation to smooth out the historical experience:
 
 * move `data.js` to an actual json
 * clicking on the plot should center me on where i click, unless its too close to an edge
-* events should be optionally clickeable, linking to wikipedia articles or sections of articles where possible

@@ -124,10 +124,20 @@ class Timeline {
 
             const color = this.getTypeColor(eventInfo.type);
 
+            const titleContent = eventInfo.link 
+                ? `<div class="event-title" style="cursor: pointer;" onclick="window.open('${eventInfo.link}', '_blank')">${eventInfo.title}</div>`
+                : `<div class="event-title">${eventInfo.title}</div>`;
+            
+            const descriptionContent = eventInfo.description 
+                ? (eventInfo.link 
+                    ? `<div class="event-description" style="cursor: pointer;" onclick="window.open('${eventInfo.link}', '_blank')">${eventInfo.description}</div>`
+                    : `<div class="event-description">${eventInfo.description}</div>`)
+                : '';
+
             eventElement.innerHTML = `
                 <div class="event-content">
-                    <div class="event-title">${eventInfo.title}</div>
-                    ${eventInfo.description ? `<div class="event-description">${eventInfo.description}</div>` : ''}
+                    ${titleContent}
+                    ${descriptionContent}
                 </div>
                 <div class="event-marker" style="background-color: ${color}"></div>
                 <div class="event-date">${this.formatDate(eventInfo.date)}</div>

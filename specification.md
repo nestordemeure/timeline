@@ -24,6 +24,7 @@ Each event is characterized by:
 * A title (expected to be one line or less)
 * An optional description paragraph
 * An optional `hidden: true` flag to exclude from display while preserving in dataset
+* An optional `link: "URL"` field for clickable references to reputable sources (preferably Wikipedia)
 
 ### Event Types
 
@@ -63,6 +64,7 @@ Events are displayed with colored circular markers on the timeline. Each event s
 * The date on one side of the marker
 * The title (in bold) and optional description on the other side
 * Events alternate above and below the timeline to prevent overlap and create visual rhythm
+* When an event has a link field, the title and description become clickable (maintaining visual appearance)
 
 ### Era Transitions
 When scrolling past a title's date, it smoothly fades in as the new main title at the top. The transition has a subtle animation - fade out the old title, change the text, then fade in the new one.
