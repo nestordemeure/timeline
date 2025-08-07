@@ -34,7 +34,3 @@ It features specialized navigation to smooth out the historical experience:
 - `defaultTitle`: Title displayed before scrolling begins
 - `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
 - `eventSpacing`: Minimal distance between text blocks
-
-## TODO
-
-check all links in data.js, taking a look at the full corresponding wikipedia page, and checking if a section of that page might be a better or more specific fit for the topic we are talking about than the one linked to. Note that some link might be pointing to non existing sections, that's fine, loading the page willstill work, you will only need to point to an existing section or the overall page when fixing the link.

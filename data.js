@@ -95,14 +95,14 @@ const timelineData = {
       "date": "c. -3200",
       "title": "Writing invented",
       "description": "First writing systems developed in Mesopotamia and Egypt, marking the beginning of recorded history.",
-      "link": "https://en.wikipedia.org/wiki/History_of_writing#Proto-writing"
+      "link": "https://en.wikipedia.org/wiki/History_of_writing#Bronze_Age"
     },
     {
       "type": "industry",
       "date": "c. -3000",
       "title": "Bronze working invented",
       "description": "Mesopotamians develop copper-tin alloys creating bronze, a harder and more durable metal enabling better tools, weapons, and agricultural implements.",
-      "link": "https://en.wikipedia.org/wiki/Bronze_Age"
+      "link": "https://en.wikipedia.org/wiki/Bronze_Age#Mesopotamia"
     },
     {
       "type": "politics",
@@ -137,7 +137,7 @@ const timelineData = {
       "date": "c. -1200",
       "title": "Phoenician alphabet",
       "description": "Phoenicians develop the first true alphabet with individual letters for sounds, becoming the foundation for Greek, Latin, and modern alphabets.",
-      "link": "https://en.wikipedia.org/wiki/Phoenician_alphabet"
+      "link": "https://en.wikipedia.org/wiki/Phoenician_alphabet#Origin"
     },
     {
       "type": "title",
@@ -149,7 +149,7 @@ const timelineData = {
       "date": "c. -600",
       "title": "Invention of Money",
       "description": "First coins minted in Lydia, revolutionizing trade and commerce.",
-      "link": "https://en.wikipedia.org/wiki/History_of_coins#Origins"
+      "link": "https://en.wikipedia.org/wiki/History_of_coins#Early_coins"
     },
     {
       "type": "science",
@@ -170,21 +170,21 @@ const timelineData = {
       "date": "c. -500",
       "title": "Buddhism founded",
       "description": "Siddhartha Gautama (Buddha) achieves enlightenment and begins teaching, founding Buddhism and influencing millions.",
-      "link": "https://en.wikipedia.org/wiki/The_Buddha#Teaching_career"
+      "link": "https://en.wikipedia.org/wiki/The_Buddha#Ascetic_life_and_awakening"
     },
     {
       "type": "religion",
       "date": "c. -500",
       "title": "Judaism codified",
       "description": "Torah compilation during Babylonian exile codifies Jewish law and beliefs, establishing foundational texts of Judaism.",
-      "link": "https://en.wikipedia.org/wiki/Babylonian_captivity#Biblical_and_religious_significance"
+      "link": "https://en.wikipedia.org/wiki/Babylonian_captivity#Significance_for_Jewish_culture"
     },
     {
       "type": "politics",
       "date": "c. -508",
       "title": "Athenian Democracy",
       "description": "Birth of democracy in Athens, establishing the foundation for citizen participation in government.",
-      "link": "https://en.wikipedia.org/wiki/Athenian_democracy"
+      "link": "https://en.wikipedia.org/wiki/Athenian_democracy#Development"
     },
     {
       "type": "science",
@@ -240,7 +240,7 @@ const timelineData = {
       "date": "c. 1020",
       "title": "Scientific method founded",
       "description": "Ibn al-Haytham develops the modern scientific method with systematic experimentation and verification.",
-      "link": "https://en.wikipedia.org/wiki/Ibn_al-Haytham"
+      "link": "https://en.wikipedia.org/wiki/Ibn_al-Haytham#Scientific_method"
     },
     {
       "type": "title",
@@ -287,14 +287,14 @@ const timelineData = {
       "date": 794,
       "title": "Paper revolution in Baghdad",
       "description": "First paper mill established in Baghdad using Chinese techniques, making cheaper paper and revolutionizing book production in the Islamic world.",
-      "link": "https://en.wikipedia.org/wiki/History_of_paper#Islamic_world"
+      "link": "https://en.wikipedia.org/wiki/History_of_paper#Paper_mills"
     },
     {
       "type": "industry",
       "date": "c. 900",
       "title": "Gunpowder invented",
       "description": "Gunpowder invented in China by alchemists, revolutionizing warfare, mining, and construction technology.",
-      "link": "https://en.wikipedia.org/wiki/History_of_gunpowder#Early_history"
+      "link": "https://en.wikipedia.org/wiki/History_of_gunpowder#Chinese_beginnings"
     },
     {
       "type": "science",
