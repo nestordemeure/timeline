@@ -451,7 +451,7 @@ const timelineData = {
       "date": 1796,
       "title": "First Vaccine",
       "description": "Edward Jenner develops the first vaccine against smallpox, founding the field of immunology.",
-      "link": "https://en.wikipedia.org/wiki/Edward_Jenner#Smallpox_vaccine"
+      "link": "https://en.wikipedia.org/wiki/Edward_Jenner#Invention_of_the_vaccine"
     },
     {
       "type": "science",
