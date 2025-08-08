@@ -67,7 +67,7 @@ const timelineData = {
     {
       "type": "economics",
       "date": "c. -8000",
-      "title": "Agriculture revolution",
+      "title": "Agriculture Revolution",
       "hidden": true,
       "description": "Neolithic Revolution: humans transition from hunting-gathering to farming, enabling permanent settlements and population growth."
     },
@@ -93,14 +93,14 @@ const timelineData = {
     {
       "type": "information",
       "date": "c. -3200",
-      "title": "Writing invented",
+      "title": "Writing Invented",
       "description": "First writing systems developed in Mesopotamia and Egypt, marking the beginning of recorded history.",
       "link": "https://en.wikipedia.org/wiki/History_of_writing#Bronze_Age"
     },
     {
       "type": "industry",
       "date": "c. -3000",
-      "title": "Bronze working invented",
+      "title": "Bronze Working Invented",
       "description": "Mesopotamians develop copper-tin alloys creating bronze, a harder and more durable metal enabling better tools, weapons, and agricultural implements.",
       "link": "https://en.wikipedia.org/wiki/Bronze_Age#Mesopotamia"
     },
@@ -114,7 +114,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": "c. -1500",
-      "title": "Iron smelting invented",
+      "title": "Iron Smelting Invented",
       "description": "Hittites in Anatolia develop iron smelting technology, creating stronger metals that revolutionize tools, weapons, and agriculture.",
       "link": "https://en.wikipedia.org/wiki/Iron_Age#Iron_metallurgy"
     },
@@ -147,7 +147,7 @@ const timelineData = {
     {
       "type": "economics",
       "date": "c. -600",
-      "title": "Invention of Money",
+      "title": "Invention of money",
       "description": "First coins minted in Lydia, revolutionizing trade and commerce.",
       "link": "https://en.wikipedia.org/wiki/History_of_coins#Early_coins"
     },
@@ -161,7 +161,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": "c. -500",
-      "title": "Cast iron production",
+      "title": "Cast Iron Production",
       "hidden": true,
       "description": "Chinese develop blast furnace technology enabling cast iron production, creating stronger and more versatile metal products."
     },
@@ -203,7 +203,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": "c. -200",
-      "title": "Compass invented",
+      "title": "Compass Invented",
       "description": "Magnetic compass invented in China for divination and feng shui practices, later revolutionizing navigation and maritime exploration.",
       "link": "https://en.wikipedia.org/wiki/History_of_the_compass#Ancient_China"
     },
@@ -231,7 +231,7 @@ const timelineData = {
     {
       "type": "information",
       "date": "c. 500",
-      "title": "Hindu-Arabic numerals",
+      "title": "Hindu-Arabic Numerals",
       "description": "Hindu-Arabic numeral system with zero and positional notation developed in India, revolutionizing mathematics and enabling complex calculations.",
       "link": "https://en.wikipedia.org/wiki/Hindu%E2%80%93Arabic_numeral_system"
     },
@@ -271,7 +271,7 @@ const timelineData = {
     {
       "type": "economics",
       "date": "c. 800",
-      "title": "Banking system invented",
+      "title": "Banking System Invented",
       "description": "Hawala system developed in Islamic world enables long-distance money transfer without physical movement of cash, based on trust networks among merchants.",
       "link": "https://en.wikipedia.org/wiki/Hawala"
     },
@@ -292,7 +292,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": "c. 900",
-      "title": "Gunpowder invented",
+      "title": "Gunpowder Invented",
       "description": "Gunpowder invented in China by alchemists, revolutionizing warfare, mining, and construction technology.",
       "link": "https://en.wikipedia.org/wiki/History_of_gunpowder#Chinese_beginnings"
     },
@@ -306,7 +306,7 @@ const timelineData = {
     {
       "type": "information",
       "date": 868,
-      "title": "Woodblock printing invented",
+      "title": "Woodblock Printing Invented",
       "description": "Chinese print the Diamond Sutra, world's oldest dated printed book, using woodblock printing technology.",
       "link": "https://en.wikipedia.org/wiki/Diamond_Sutra"
     },
@@ -327,7 +327,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": "c. 1275",
-      "title": "Mechanical clock invented",
+      "title": "Mechanical Clock Invented",
       "hidden": true,
       "description": "First mechanical clocks with verge escapement mechanism built in medieval Europe, revolutionizing timekeeping and enabling precise scheduling."
     },
@@ -341,7 +341,7 @@ const timelineData = {
     {
       "type": "economics",
       "date": 1407,
-      "title": "Modern banking established",
+      "title": "Modern Banking Established",
       "description": "Banco di San Giorgio founded in Genoa as world's first modern public bank, pioneering debt management, deposit banking, and paper money systems.",
       "link": "https://en.wikipedia.org/wiki/Banco_di_San_Giorgio"
     },
@@ -400,7 +400,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 1608,
-      "title": "Telescope invented",
+      "title": "Telescope Invented",
       "description": "Hans Lippershey invents the telescope; Galileo and Kepler soon use it to discover Jupiter's moons and prove planetary motion laws.",
       "link": "https://en.wikipedia.org/wiki/History_of_the_telescope#Invention"
     },
@@ -414,7 +414,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": 1712,
-      "title": "Steam Engine",
+      "title": "Steam engine",
       "description": "Thomas Newcomen's steam engine marks the beginning of the Industrial Revolution.",
       "link": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine"
     },
@@ -428,7 +428,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 1789,
-      "title": "Modern chemistry founded",
+      "title": "Modern Chemistry Founded",
       "description": "Lavoisier publishes 'Elements of Chemistry', the first modern chemistry textbook, establishing conservation of mass and systematic chemical nomenclature.",
       "link": "https://en.wikipedia.org/wiki/Antoine_Lavoisier#Chemical_revolution"
     },
@@ -456,7 +456,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 1800,
-      "title": "Electric battery invented",
+      "title": "Electric Battery Invented",
       "description": "Volta creates the first reliable source of electric current, enabling electrochemistry and all future electrical research.",
       "link": "https://en.wikipedia.org/wiki/Voltaic_pile"
     },
@@ -470,7 +470,7 @@ const timelineData = {
     {
       "type": "information",
       "date": 1804,
-      "title": "Programmable machine",
+      "title": "Programmable Machine",
       "description": "Jacquard loom uses punch cards to automatically weave complex patterns, creating the first programmable machine and inspiring computer design.",
       "link": "https://en.wikipedia.org/wiki/Jacquard_machine"
     },
@@ -482,42 +482,42 @@ const timelineData = {
     {
       "type": "industry",
       "date": 1807,
-      "title": "Cheap paper production",
+      "title": "Cheap Paper Production",
       "hidden": true,
       "description": "Fourdrinier paper machine enables mass production of paper, making books and newspapers affordable for the masses."
     },
     {
       "type": "industry",
       "date": 1825,
-      "title": "First railway",
+      "title": "First Railway",
       "hidden": true,
       "description": "Stockton and Darlington Railway opens as world's first public steam railway, revolutionizing transportation and commerce."
     },
     {
       "type": "information",
       "date": 1839,
-      "title": "Photography invented",
+      "title": "Photography Invented",
       "hidden": true,
       "description": "Daguerre announces the daguerreotype process, enabling permanent capture and reproduction of visual images."
     },
     {
       "type": "information",
       "date": 1834,
-      "title": "First theory of computing",
+      "title": "First Theory of Computing",
       "description": "Charles Babbage designs the Analytical Engine, the first theoretical general-purpose computer with memory, control flow, and programmability.",
       "link": "https://en.wikipedia.org/wiki/Analytical_Engine"
     },
     {
       "type": "science",
       "date": 1828,
-      "title": "Organic chemistry founded",
+      "title": "Organic Chemistry Founded",
       "description": "Friedrich Wöhler synthesizes urea from inorganic compounds, proving organic molecules can be created artificially and founding organic chemistry.",
       "link": "https://en.wikipedia.org/wiki/Friedrich_W%C3%B6hler#Organic_chemistry"
     },
     {
       "type": "information",
       "date": 1844,
-      "title": "Telegraph System",
+      "title": "Telegraph system",
       "description": "Samuel Morse demonstrates the first long-distance telegraph line, enabling near-instantaneous long-distance communication.",
       "link": "https://en.wikipedia.org/wiki/Electrical_telegraph#Morse_system"
     },
@@ -531,49 +531,49 @@ const timelineData = {
     {
       "type": "science",
       "date": 1865,
-      "title": "Laws of entropy",
+      "title": "Laws of Entropy",
       "description": "Rudolf Clausius formulates the second law of thermodynamics and introduces the concept of entropy, fundamentally changing our understanding of energy.",
       "link": "https://en.wikipedia.org/wiki/Rudolf_Clausius#Thermodynamics"
     },
     {
       "type": "science",
       "date": 1865,
-      "title": "Laws of electromagnetism",
+      "title": "Laws of Electromagnetism",
       "description": "James Clerk Maxwell publishes unified theory of electromagnetic field, demonstrating that light, electricity, and magnetism are manifestations of the same phenomenon.",
       "link": "https://en.wikipedia.org/wiki/Maxwell%27s_equations"
     },
     {
       "type": "medicine",
       "date": 1867,
-      "title": "Germ theory of disease",
+      "title": "Germ Theory of Disease",
       "description": "Pasteur proves microorganisms cause disease, revolutionizing medicine and leading to antiseptic practices.",
       "link": "https://en.wikipedia.org/wiki/Germ_theory_of_disease"
     },
     {
       "type": "science",
       "date": 1869,
-      "title": "Periodic table",
+      "title": "Periodic Table",
       "description": "Mendeleev organizes chemical elements by atomic weight, predicting undiscovered elements and founding modern chemistry.",
       "link": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev#Periodic_table"
     },
     {
       "type": "information",
       "date": 1876,
-      "title": "Telephone Invented",
+      "title": "Telephone invented",
       "description": "Alexander Graham Bell patents the telephone, revolutionizing voice communication over distances.",
       "link": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell#Telephone"
     },
     {
       "type": "information",
       "date": 1895,
-      "title": "Radio invented",
+      "title": "Radio Invented",
       "description": "Marconi develops the first practical wireless telegraph system, enabling long-distance radio communication and earning the 1909 Nobel Prize.",
       "link": "https://en.wikipedia.org/wiki/Guglielmo_Marconi#Wireless_telegraphy"
     },
     {
       "type": "industry",
       "date": 1879,
-      "title": "Electric Power Grid",
+      "title": "Electric power grid",
       "description": "Edison develops the first practical electric power distribution system, bringing electricity to homes and businesses.",
       "link": "https://en.wikipedia.org/wiki/Pearl_Street_Station#Operation"
     },
@@ -585,70 +585,70 @@ const timelineData = {
     {
       "type": "science",
       "date": 1905,
-      "title": "Theory of relativity",
+      "title": "Theory of Relativity",
       "description": "Einstein publishes special relativity, revolutionizing our understanding of space, time, and energy with E=mc².",
       "link": "https://en.wikipedia.org/wiki/Annus_mirabilis_papers"
     },
     {
       "type": "industry",
       "date": 1909,
-      "title": "Artificial fertilizers",
+      "title": "Artificial Fertilizers",
       "description": "Fritz Haber develops the Haber-Bosch process for synthesizing ammonia, enabling mass production of fertilizers and supporting global population growth.",
       "link": "https://en.wikipedia.org/wiki/Haber_process"
     },
     {
       "type": "industry",
       "date": 1913,
-      "title": "Assembly Line",
+      "title": "Assembly line",
       "description": "Henry Ford introduces the moving assembly line for automobile production, revolutionizing manufacturing efficiency.",
       "link": "https://en.wikipedia.org/wiki/Assembly_line"
     },
     {
       "type": "medicine",
       "date": 1928,
-      "title": "Antibiotics discovered",
+      "title": "Antibiotics Discovered",
       "description": "Alexander Fleming discovers penicillin, revolutionizing the treatment of bacterial infections.",
       "link": "https://en.wikipedia.org/wiki/Alexander_Fleming#Discovery_of_penicillin"
     },
     {
       "type": "science",
       "date": 1938,
-      "title": "Splitting the atom",
+      "title": "Splitting the Atom",
       "description": "Otto Hahn and Fritz Strassmann achieve nuclear fission, splitting uranium atoms and ushering in the nuclear age.",
       "link": "https://en.wikipedia.org/wiki/Nuclear_fission"
     },
     {
       "type": "medicine",
       "date": 1940,
-      "title": "Antibiotics mass production",
+      "title": "Antibiotics Mass Production",
       "description": "Mass production of penicillin begins during WWII, saving millions of lives and establishing modern pharmaceutical manufacturing.",
       "link": "https://en.wikipedia.org/wiki/Penicillin#Mass_production"
     },
     {
       "type": "science",
       "date": 1943,
-      "title": "First Neural Network Model",
+      "title": "First neural network model",
       "description": "McCulloch and Pitts create the first mathematical model of neural networks, laying the foundation for artificial intelligence.",
       "link": "https://en.wikipedia.org/wiki/McCulloch%E2%80%93Pitts_neuron"
     },
     {
       "type": "information",
       "date": 1946,
-      "title": "First computer",
+      "title": "First Computer",
       "description": "ENIAC, the first programmable electronic general-purpose digital computer, is formally dedicated at the University of Pennsylvania.",
       "link": "https://en.wikipedia.org/wiki/ENIAC"
     },
     {
       "type": "information",
       "date": 1947,
-      "title": "Transistor invented",
+      "title": "Transistor Invented",
       "description": "Bell Labs invents the transistor, the fundamental building block that enables all modern electronics and computers.",
       "link": "https://en.wikipedia.org/wiki/History_of_the_transistor#Invention"
     },
     {
       "type": "information",
       "date": 1948,
-      "title": "Information Theory",
+      "title": "Information theory",
       "description": "Claude Shannon publishes 'A Mathematical Theory of Communication', establishing information theory and laying the mathematical foundation for the digital age.",
       "link": "https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory"
     },
@@ -660,77 +660,77 @@ const timelineData = {
     {
       "type": "medicine",
       "date": 1953,
-      "title": "DNA structure discovered",
+      "title": "DNA Structure Discovered",
       "description": "Watson and Crick discover the double helix structure of DNA, unlocking the secrets of heredity.",
       "link": "https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid"
     },
     {
       "type": "science",
       "date": 1955,
-      "title": "Operational weather prediction",
+      "title": "Operational Weather Prediction",
       "description": "First operational computerized weather forecasting begins using IBM 701, proving computers can solve complex mathematical models for practical use.",
       "link": "https://en.wikipedia.org/wiki/Numerical_weather_prediction#History"
     },
     {
       "type": "science",
       "date": 1958,
-      "title": "Perceptron Algorithm",
+      "title": "Perceptron algorithm",
       "description": "Frank Rosenblatt develops the perceptron, the first practical neural network algorithm capable of learning from data.",
       "link": "https://en.wikipedia.org/wiki/Perceptron"
     },
     {
       "type": "information",
       "date": 1969,
-      "title": "Internet created",
+      "title": "Internet Created",
       "description": "ARPANET, the precursor to the Internet, is established, connecting computers across vast distances.",
       "link": "https://en.wikipedia.org/wiki/ARPANET"
     },
     {
       "type": "information",
       "date": 1977,
-      "title": "Personal Computer Revolution",
+      "title": "Personal computer revolution",
       "description": "Apple II and other personal computers bring computing power to homes and small businesses, democratizing access to technology.",
       "link": "https://en.wikipedia.org/wiki/Apple_II"
     },
     {
       "type": "information",
       "date": 1983,
-      "title": "Mobile Phone Network",
+      "title": "Mobile phone network",
       "description": "First commercial cellular network launches in the US, enabling portable wireless communication and transforming personal connectivity.",
       "link": "https://en.wikipedia.org/wiki/1G#History"
     },
     {
       "type": "information",
       "date": 1998,
-      "title": "Google Founded",
+      "title": "Google founded",
       "description": "Larry Page and Sergey Brin launch Google, revolutionizing internet search and organizing the world's information.",
       "link": "https://en.wikipedia.org/wiki/Google"
     },
     {
       "type": "medicine",
       "date": 2003,
-      "title": "Human Genome Project completed",
+      "title": "Human Genome Project Completed",
       "description": "Complete mapping of human DNA is finished, revolutionizing medicine and our understanding of genetics.",
       "link": "https://en.wikipedia.org/wiki/Human_Genome_Project"
     },
     {
       "type": "medicine",
       "date": 2012,
-      "title": "CRISPR Gene Editing",
+      "title": "CRISPR gene editing",
       "description": "CRISPR-Cas9 gene editing technology developed by Charpentier and Doudna, enabling precise genetic modifications and revolutionizing biotechnology.",
       "link": "https://en.wikipedia.org/wiki/CRISPR"
     },
     {
       "type": "science",
       "date": 2019,
-      "title": "Quantum Supremacy",
+      "title": "Quantum supremacy",
       "description": "Google achieves quantum supremacy, demonstrating quantum computers can outperform classical computers.",
       "link": "https://en.wikipedia.org/wiki/Quantum_supremacy"
     },
     {
       "type": "information",
       "date": 2022,
-      "title": "ChatGPT Launch",
+      "title": "ChatGPT launch",
       "description": "OpenAI releases ChatGPT, making advanced conversational AI accessible to the public and sparking the modern AI revolution.",
       "link": "https://en.wikipedia.org/wiki/ChatGPT"
     },
@@ -742,7 +742,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 2100,
-      "title": "Technological Convergence",
+      "title": "Technological convergence",
       "undated": true,
       "description": "The convergence of AI, nanotechnology, quantum computing, and robotics begins transforming human civilization, ushering in an era of unprecedented technological integration and societal change.",
       "link": "https://en.wikipedia.org/wiki/Technological_convergence"
