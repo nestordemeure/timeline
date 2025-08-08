@@ -41,9 +41,11 @@ It features specialized navigation to smooth out the historical experience:
 
 * double-check all links
 
-**placement:**
-if i were to redo the placement algorithm, i would have it be placement(time) + event_size(including side margings)*nb_events_before/2 (division to take events below us into account; but we might want to use integer division such that we only count events on our side of the line)
-
-event would be spread a bit more, and still stretch chronology, but their placement would be predictable, regular, and have a limited impact on the scrolling and dating of things: placing something as a function of its date would be instantly easier.
-
-cutting the need for our custom scrollbar logic, for adjustments to title placements, for our last event being further in the future than we might want, etc
+* redo placement algorithm
+  * cut the obstacle avoidance code, I am aware it will cause events to collide, that is fine for now, we will fix it
+  * introduce functions to convert from year to horizontal pixel position on screen, and vice-versa (the scroolbar code already has functions doing that, cut them, we will replace them)
+    * the convertion works as follows:
+      a year is mapped to a pixel with a linear mapping as previously
+      but, to that we add the width of an event, plus one margin (the parameter in data.js), multiplied by the number of non-title events previously on that side of the timeline (above or below); that can be computed based on the number of non title events with a date strictly inferior to the date being considered
+    * the goal is to have simple, reproducible and deterministic, formulas to place and locate dated objects on screen
+    * those functions will be used to place events on screen, decide when to display a title, and convert between scroolbar positions and on-screen positions
