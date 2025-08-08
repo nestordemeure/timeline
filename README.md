@@ -46,6 +46,6 @@ It features specialized navigation to smooth out the historical experience:
   * introduce functions to convert from year to horizontal pixel position on screen, and vice-versa (the scroolbar code already has functions doing that, cut them, we will replace them)
     * the convertion works as follows:
       a year is mapped to a pixel with a linear mapping as previously
-      but, to that we add the width of an event, plus one margin (the parameter in data.js), multiplied by the number of non-title events previously on that side of the timeline (above or below); that can be computed based on the number of non title events with a date strictly inferior to the date being considered
-    * the goal is to have simple, reproducible and deterministic, formulas to place and locate dated objects on screen
+      but, to that we add the width of an event, plus one margin (the parameter in data.js), multiplied by the number of non-title events previously on that side of the timeline (above or below) if the thing placed were an event; that can be computed based on the number of non-title events with a date strictly inferior to the date being considered
+    * the goal is to have simple, reproducible and deterministic, formulas to place and locate dated objects on screen (whereas the obstacle avoidance code had us put together ad-hoc solutions)
     * those functions will be used to place events on screen, decide when to display a title, and convert between scroolbar positions and on-screen positions
