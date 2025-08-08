@@ -53,14 +53,14 @@ const timelineData = {
     {
       "type": "science",
       "date": "c. -400000",
-      "title": "Domestication of fire",
+      "title": "Domestication of Fire",
       "hidden": true,
       "description": "Control of fire becomes widespread among early humans, revolutionizing cooking, protection, and tool-making capabilities."
     },
     {
       "type": "information",
       "date": "c. -40000",
-      "title": "First cave art",
+      "title": "First Cave Art",
       "hidden": true,
       "description": "Earliest known cave paintings created in Indonesia and Europe, marking the beginning of symbolic artistic expression."
     },
@@ -74,14 +74,14 @@ const timelineData = {
     {
       "type": "industry",
       "date": "c. -5000",
-      "title": "The loom invented",
+      "title": "The Loom Invented",
       "hidden": true,
       "description": "Early looms developed for weaving textiles, revolutionizing clothing production and trade in ancient civilizations."
     },
     {
       "type": "industry",
       "date": "c. -3500",
-      "title": "Wheel invented",
+      "title": "Wheel Invented",
       "hidden": true,
       "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
     },
@@ -135,7 +135,7 @@ const timelineData = {
     {
       "type": "information",
       "date": "c. -1200",
-      "title": "Phoenician alphabet",
+      "title": "Phoenician Alphabet",
       "description": "Phoenicians develop the first true alphabet with individual letters for sounds, becoming the foundation for Greek, Latin, and modern alphabets.",
       "link": "https://en.wikipedia.org/wiki/Phoenician_alphabet#Origin"
     },
@@ -147,14 +147,14 @@ const timelineData = {
     {
       "type": "economics",
       "date": "c. -600",
-      "title": "Invention of money",
+      "title": "Invention of Money",
       "description": "First coins minted in Lydia, revolutionizing trade and commerce.",
       "link": "https://en.wikipedia.org/wiki/History_of_coins#Early_coins"
     },
     {
       "type": "science",
       "date": "c. -600",
-      "title": "Babylonian astronomy",
+      "title": "Babylonian Astronomy",
       "description": "Babylonians develop systematic astronomical observations, creating the zodiac and tracking planetary cycles with mathematical precision.",
       "link": "https://en.wikipedia.org/wiki/Babylonian_astronomy"
     },
@@ -168,14 +168,14 @@ const timelineData = {
     {
       "type": "religion",
       "date": "c. -500",
-      "title": "Buddhism founded",
+      "title": "Buddhism Founded",
       "description": "Siddhartha Gautama (Buddha) achieves enlightenment and begins teaching, founding Buddhism and influencing millions.",
       "link": "https://en.wikipedia.org/wiki/The_Buddha#Ascetic_life_and_awakening"
     },
     {
       "type": "religion",
       "date": "c. -500",
-      "title": "Judaism codified",
+      "title": "Judaism Codified",
       "description": "Torah compilation during Babylonian exile codifies Jewish law and beliefs, establishing foundational texts of Judaism.",
       "link": "https://en.wikipedia.org/wiki/Babylonian_captivity#Significance_for_Jewish_culture"
     },
@@ -196,7 +196,7 @@ const timelineData = {
     {
       "type": "science",
       "date": "c. 100",
-      "title": "Linear algebra foundations",
+      "title": "Linear Algebra Foundations",
       "description": "Chinese mathematicians in 'Nine Chapters on Mathematical Art' develop systematic methods for solving linear equations, foundational to linear algebra.",
       "link": "https://en.wikipedia.org/wiki/The_Nine_Chapters_on_the_Mathematical_Art"
     },
@@ -210,21 +210,21 @@ const timelineData = {
     {
       "type": "religion",
       "date": "c. 30",
-      "title": "Christianity begins",
+      "title": "Christianity Begins",
       "description": "Death and resurrection of Jesus Christ, leading to the spread of Christianity throughout the Roman Empire.",
       "link": "https://en.wikipedia.org/wiki/Early_Christianity#Origins"
     },
     {
       "type": "information",
       "date": "c. 105",
-      "title": "Paper invented",
+      "title": "Paper Invented",
       "description": "Paper invented in China by Cai Lun, revolutionizing information storage and transmission.",
       "link": "https://en.wikipedia.org/wiki/Cai_Lun"
     },
     {
       "type": "science",
       "date": "c. 150",
-      "title": "Ptolemaic model",
+      "title": "Ptolemaic Model",
       "description": "Ptolemy creates comprehensive geocentric model of the universe, dominating astronomical thought for over 1,400 years until Copernicus.",
       "link": "https://en.wikipedia.org/wiki/Geocentric_model#Ptolemaic_system"
     },
@@ -238,7 +238,7 @@ const timelineData = {
     {
       "type": "science",
       "date": "c. 1020",
-      "title": "Scientific method founded",
+      "title": "Scientific Method Founded",
       "description": "Ibn al-Haytham develops the modern scientific method with systematic experimentation and verification.",
       "link": "https://en.wikipedia.org/wiki/Ibn_al-Haytham#Scientific_method"
     },
@@ -250,21 +250,21 @@ const timelineData = {
     {
       "type": "religion",
       "date": 622,
-      "title": "Islam founded",
+      "title": "Islam Founded",
       "description": "Prophet Muhammad's Hijra marks the beginning of the Islamic calendar and the spread of Islam.",
       "link": "https://en.wikipedia.org/wiki/Hijrah"
     },
     {
       "type": "politics",
       "date": 622,
-      "title": "First fundamental human rights charter",
+      "title": "First Fundamental Human Rights Charter",
       "description": "Constitution of Medina establishes the first written document guaranteeing religious freedom, freedom of conscience, and equal rights for all citizens regardless of religion in a pluralistic society.",
       "link": "https://en.wikipedia.org/wiki/Constitution_of_Medina"
     },
     {
       "type": "medicine",
       "date": 707,
-      "title": "First hospital system",
+      "title": "First Hospital System",
       "description": "Caliph Al-Walid establishes the first bimaristan in Damascus, creating organized medical care with specialized wards, patient records, and free treatment regardless of background.",
       "link": "https://en.wikipedia.org/wiki/Bimaristan"
     },
@@ -278,14 +278,14 @@ const timelineData = {
     {
       "type": "science",
       "date": 825,
-      "title": "Algebra founded",
+      "title": "Algebra Founded",
       "description": "Al-Khwarizmi publishes 'Al-Jabr', systematically solving linear and quadratic equations and founding algebra as an independent mathematical discipline.",
       "link": "https://en.wikipedia.org/wiki/Al-Jabr"
     },
     {
       "type": "information",
       "date": 794,
-      "title": "Paper revolution in Baghdad",
+      "title": "Paper Revolution in Baghdad",
       "description": "First paper mill established in Baghdad using Chinese techniques, making cheaper paper and revolutionizing book production in the Islamic world.",
       "link": "https://en.wikipedia.org/wiki/History_of_paper#Paper_mills"
     },
@@ -334,7 +334,7 @@ const timelineData = {
     {
       "type": "economics",
       "date": "c. 1300",
-      "title": "Double-entry bookkeeping",
+      "title": "Double-Entry Bookkeeping",
       "description": "Double-entry bookkeeping system developed in Italian city-states, revolutionizing accounting and enabling modern capitalism.",
       "link": "https://en.wikipedia.org/wiki/Double-entry_bookkeeping"
     },
@@ -367,14 +367,14 @@ const timelineData = {
     {
       "type": "science",
       "date": 1543,
-      "title": "Heliocentric model",
+      "title": "Heliocentric Model",
       "description": "Copernicus publishes 'On the Revolutions of Celestial Spheres', proving Earth orbits the Sun and revolutionizing astronomy.",
       "link": "https://en.wikipedia.org/wiki/De_revolutionibus_orbium_coelestium"
     },
     {
       "type": "politics",
       "date": 1582,
-      "title": "First secular state established",
+      "title": "First Secular State Established",
       "description": "Mughal Emperor Akbar formally establishes Din-i Ilahi and implements Sulh-i Kul (universal peace), creating the first secular government that separates religion from state administration and promotes religious tolerance.",
       "link": "https://en.wikipedia.org/wiki/Akbar#Religious_policy"
     },
@@ -386,14 +386,14 @@ const timelineData = {
     {
       "type": "science",
       "date": 1654,
-      "title": "Probability theory",
+      "title": "Probability Theory",
       "description": "Pascal and Fermat develop probability theory through correspondence about gambling problems, founding mathematical statistics.",
       "link": "https://en.wikipedia.org/wiki/Probability_theory#History"
     },
     {
       "type": "science",
       "date": 1665,
-      "title": "Calculus invented",
+      "title": "Calculus Invented",
       "description": "Newton and Leibniz independently develop calculus, providing mathematical tools for analyzing continuous change and motion.",
       "link": "https://en.wikipedia.org/wiki/Calculus#History"
     },
@@ -407,21 +407,21 @@ const timelineData = {
     {
       "type": "science",
       "date": 1687,
-      "title": "Laws of motion and gravity",
+      "title": "Laws of Motion and Gravity",
       "description": "Newton's Principia mathematically describes universal gravitation and laws of motion, unifying terrestrial and celestial mechanics.",
       "link": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
     },
     {
       "type": "industry",
       "date": 1712,
-      "title": "Steam engine",
+      "title": "Steam Engine",
       "description": "Thomas Newcomen's steam engine marks the beginning of the Industrial Revolution.",
       "link": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine"
     },
     {
       "type": "politics",
       "date": 1748,
-      "title": "Separation of powers theory",
+      "title": "Separation of Powers Theory",
       "hidden": true,
       "description": "Montesquieu publishes 'The Spirit of the Laws', theorizing division of government into executive, legislative, and judicial branches to prevent tyranny."
     },
@@ -463,7 +463,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 1803,
-      "title": "Atomic theory",
+      "title": "Atomic Theory",
       "description": "John Dalton proposes that elements consist of indivisible atoms with characteristic weights, founding modern chemistry.",
       "link": "https://en.wikipedia.org/wiki/John_Dalton#Atomic_theory"
     },
@@ -517,7 +517,7 @@ const timelineData = {
     {
       "type": "information",
       "date": 1844,
-      "title": "Telegraph system",
+      "title": "Telegraph System",
       "description": "Samuel Morse demonstrates the first long-distance telegraph line, enabling near-instantaneous long-distance communication.",
       "link": "https://en.wikipedia.org/wiki/Electrical_telegraph#Morse_system"
     },
@@ -559,7 +559,7 @@ const timelineData = {
     {
       "type": "information",
       "date": 1876,
-      "title": "Telephone invented",
+      "title": "Telephone Invented",
       "description": "Alexander Graham Bell patents the telephone, revolutionizing voice communication over distances.",
       "link": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell#Telephone"
     },
@@ -573,7 +573,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": 1879,
-      "title": "Electric power grid",
+      "title": "Electric Power Grid",
       "description": "Edison develops the first practical electric power distribution system, bringing electricity to homes and businesses.",
       "link": "https://en.wikipedia.org/wiki/Pearl_Street_Station#Operation"
     },
@@ -599,7 +599,7 @@ const timelineData = {
     {
       "type": "industry",
       "date": 1913,
-      "title": "Assembly line",
+      "title": "Assembly Line",
       "description": "Henry Ford introduces the moving assembly line for automobile production, revolutionizing manufacturing efficiency.",
       "link": "https://en.wikipedia.org/wiki/Assembly_line"
     },
@@ -627,7 +627,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 1943,
-      "title": "First neural network model",
+      "title": "First Neural Network Model",
       "description": "McCulloch and Pitts create the first mathematical model of neural networks, laying the foundation for artificial intelligence.",
       "link": "https://en.wikipedia.org/wiki/McCulloch%E2%80%93Pitts_neuron"
     },
@@ -648,7 +648,7 @@ const timelineData = {
     {
       "type": "information",
       "date": 1948,
-      "title": "Information theory",
+      "title": "Information Theory",
       "description": "Claude Shannon publishes 'A Mathematical Theory of Communication', establishing information theory and laying the mathematical foundation for the digital age.",
       "link": "https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory"
     },
@@ -674,7 +674,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 1958,
-      "title": "Perceptron algorithm",
+      "title": "Perceptron Algorithm",
       "description": "Frank Rosenblatt develops the perceptron, the first practical neural network algorithm capable of learning from data.",
       "link": "https://en.wikipedia.org/wiki/Perceptron"
     },
@@ -688,21 +688,21 @@ const timelineData = {
     {
       "type": "information",
       "date": 1977,
-      "title": "Personal computer revolution",
+      "title": "Personal Computer Revolution",
       "description": "Apple II and other personal computers bring computing power to homes and small businesses, democratizing access to technology.",
       "link": "https://en.wikipedia.org/wiki/Apple_II"
     },
     {
       "type": "information",
       "date": 1983,
-      "title": "Mobile phone network",
+      "title": "Mobile Phone Network",
       "description": "First commercial cellular network launches in the US, enabling portable wireless communication and transforming personal connectivity.",
       "link": "https://en.wikipedia.org/wiki/1G#History"
     },
     {
       "type": "information",
       "date": 1998,
-      "title": "Google founded",
+      "title": "Google Founded",
       "description": "Larry Page and Sergey Brin launch Google, revolutionizing internet search and organizing the world's information.",
       "link": "https://en.wikipedia.org/wiki/Google"
     },
@@ -716,21 +716,21 @@ const timelineData = {
     {
       "type": "medicine",
       "date": 2012,
-      "title": "CRISPR gene editing",
+      "title": "CRISPR Gene Editing",
       "description": "CRISPR-Cas9 gene editing technology developed by Charpentier and Doudna, enabling precise genetic modifications and revolutionizing biotechnology.",
       "link": "https://en.wikipedia.org/wiki/CRISPR"
     },
     {
       "type": "science",
       "date": 2019,
-      "title": "Quantum supremacy",
+      "title": "Quantum Supremacy",
       "description": "Google achieves quantum supremacy, demonstrating quantum computers can outperform classical computers.",
       "link": "https://en.wikipedia.org/wiki/Quantum_supremacy"
     },
     {
       "type": "information",
       "date": 2022,
-      "title": "ChatGPT launch",
+      "title": "ChatGPT Launch",
       "description": "OpenAI releases ChatGPT, making advanced conversational AI accessible to the public and sparking the modern AI revolution.",
       "link": "https://en.wikipedia.org/wiki/ChatGPT"
     },
@@ -742,7 +742,7 @@ const timelineData = {
     {
       "type": "science",
       "date": 2100,
-      "title": "Technological convergence",
+      "title": "Technological Convergence",
       "undated": true,
       "description": "The convergence of AI, nanotechnology, quantum computing, and robotics begins transforming human civilization, ushering in an era of unprecedented technological integration and societal change.",
       "link": "https://en.wikipedia.org/wiki/Technological_convergence"

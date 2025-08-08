@@ -21,7 +21,7 @@ The code is split across six files with clear separation of responsibilities:
 Each event is characterized by:
 * A type (see event types below)
 * A date (year, can be negative for BC, can have `c.` prefix for approximation)
-* A title (expected to be one line or less)
+* A title (expected to be one line or less, must use Title Case Capitalization)
 * An optional description paragraph
 * An optional `hidden: true` flag to exclude from display while preserving in dataset
 * An optional `link: "URL"` field for clickable references to reputable sources (Wikipedia is preferred; use specific sections rather than general articles when possible)
