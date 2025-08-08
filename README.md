@@ -50,3 +50,5 @@ It features specialized navigation to smooth out the historical experience:
       * the goal is to have simple, reproducible and deterministic, formulas to place and locate dated objects on screen (whereas the obstacle avoidance code had us put together ad-hoc solutions)
       * feel free to discuss design and tradeoffs with me.
     * those functions will be used to place events on screen, decide when to display a title, and convert between scroolbar positions and on-screen positions
+
+* no original title?
