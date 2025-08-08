@@ -335,8 +335,7 @@ body {
     left: 0;
     right: 0;
     height: 20px;
-    pointer-events: auto;
-    cursor: pointer;
+    pointer-events: none;
     z-index: 300;
 }
 

@@ -10,14 +10,14 @@ See [this page](https://www.historicaltechtree.com/) for an alternative, signifi
  The code is organized as follows:
  - [`index.html`](index.html) - HTML structure
  - [`style.css`](style.css) - Styling and layout
- - [`script.js`](script.js) - Timeline class, clickable scrollbar overlay, and interactions
+ - [`script.js`](script.js) - Timeline class, scrollbar overlay indicators, and interactions
  - [`scroll.js`](scroll.js) - Dynamic scroll speed scaling for adaptive navigation
  - [`data.js`](data.js) - All timeline data and configuration
 
  It features specialized navigation to smooth out the historical experience:
  - Events are positioned deterministically by date with even spacing
  - Dynamic speed scaling accelerates through empty millennia for consistent navigation
- - Native scrollbar is styled with clickable event lines for quick navigation
+ - Native scrollbar is styled with proportionally sized event lines for visual reference
 
 ## Usage
 

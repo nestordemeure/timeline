@@ -93,6 +93,7 @@ class Timeline {
         this.maxDate = maxDate;
         this.dateRange = dateRange;
         this.timelineWidth = timelineWidth;
+        this.eventFullWidth = eventFullWidth;
 
         const dateToPixel = (date) =>
             ((date - minDate) / dateRange) * (baseTimelineWidth - 200) + 100;
@@ -212,15 +213,11 @@ class Timeline {
             const indicator = document.createElement('div');
             indicator.className = 'scrollbar-event-line';
             const position = (eventInfo.finalPosition / totalWidth) * overlayWidth;
+            const width = Math.max(1, (this.eventFullWidth / totalWidth) * overlayWidth);
             indicator.style.left = `${position}px`;
+            indicator.style.width = `${width}px`;
             overlay.appendChild(indicator);
         });
-
-        overlay.onclick = (e) => {
-            const maxScrollLeft = this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth;
-            const target = (e.offsetX / overlayWidth) * maxScrollLeft;
-            this.timelineContainer.scrollLeft = target;
-        };
     }
 
     setupScrollListener() {
