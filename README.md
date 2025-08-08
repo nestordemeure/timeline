@@ -3,6 +3,8 @@
 Interactive horizontal timeline displaying historical events.
 Made to illustrate the exponential rate of human progress within a larger presentation.
 
+See [this page](https://www.historicaltechtree.com/) for an alternative, significantly more complete, take on a historical tech tree.
+
 ## Code
 
 The code is organized as follows:
