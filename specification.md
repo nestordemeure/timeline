@@ -6,12 +6,11 @@ This is an interactive horizontal timeline displaying the progression of human c
 
 The code is kept concise and focused. No premature optimization - we handle the problems we actually encounter.
 
-The code is split across six files with clear separation of responsibilities:
+The code is split across five files with clear separation of responsibilities:
 * `index.html` - HTML structure with containers for title, timeline, and legend
 * `style.css` - Dark theme styling and responsive layout
 * `script.js` - Timeline class handling rendering and interactions
 * `scroll.js` - Dynamic scroll speed scaling based on event density
-* `scrollbar.js` - Custom scrollbar with chronological position mapping
 * `data.js` - All timeline data plus configuration parameters
 
 ## Data Structure
@@ -77,12 +76,12 @@ Below the timeline is a legend showing each event type as a colored circle follo
 ### Positioning System
 Events are positioned using a pixel-per-year scale (minimum 3 pixels per year). The timeline dynamically sizes itself based on the date range of all events.
 
-### Collision Detection
-Since events alternate above/below but can still overlap horizontally, the system implements two-pass collision detection:
-1. **Forward pass**: Push overlapping events rightward with minimum padding
-2. **Backward pass**: Pull events back toward their original chronological positions when possible
+### Deterministic Placement
+Events alternate above and below the timeline, and their horizontal positions are computed deterministically:
 
-This ensures events stay as close as possible to their actual historical positions while remaining readable.
+`position = date_to_pixel(event) + floor(events_before / 2) * event_width`
+
+`events_before` is the count of earlier events sharing the same pixel position. The formula spaces events predictably without requiring collision detection.
 
 ### Adaptive Scrolling
 The timeline implements intelligent scrolling that adapts to event density:
@@ -96,7 +95,7 @@ This ensures consistent navigation effort - the same amount of scrolling moves y
 
 ## Scrolling System
 
-The timeline implements a sophisticated two-part scrolling system:
+The timeline implements a two-part scrolling system with adaptive speed and a native scrollbar overlay:
 
 ### Dynamic Speed Scaling (`scroll.js`)
 Automatically adjusts scroll speed based on proximity to historical events:
@@ -107,18 +106,11 @@ Automatically adjusts scroll speed based on proximity to historical events:
 
 Formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
 
-### Chronological Scrollbar (`scrollbar.js`)
-Custom scrollbar where position represents chronological time rather than pixel distance:
-* **Chronological Mapping**: Scrollbar position corresponds to historical dates, not timeline pixels
-* **Bi-directional Interpolation**: Converts between timeline scroll position and chronological dates
-* **Variable Thumb Size**: Thumb width reflects event density in the visible viewport
-* **Event Indicators**: Visual markers show historical event distribution across full timeline
-* **Interactive Navigation**: Click-to-jump and drag-to-scrub through historical periods
-
-The scrollbar uses interpolation between adjacent events to maintain chronological accuracy:
-- Maps viewport position to chronological dates using event boundaries
-- Calculates thumb position and size based on date ranges rather than pixel positions  
-- Handles edge cases (before first event, after last event, identical event positions)
+### Native Scrollbar Overlay
+The browser's native scrollbar is used for navigation while an overlay provides context:
+* **Event Lines**: Thin markers along the scrollbar track show where events occur across the timeline
+* **Pixel-Based Positioning**: Scroll position corresponds directly to timeline pixels with no chronological remapping
+* **Visual Only**: The overlay does not support click-to-jump or drag interactions beyond standard scrolling
 
 ### Additional Features
 * **Time Markers**: Adaptive interval markers (5 to 1000 years) appear in empty areas to provide temporal reference
