@@ -312,8 +312,8 @@ body {
 }
 
 /* Native scrollbar styling */
-.timeline-container::-webkit-scrollbar {
-    height: 24px;
+ .timeline-container::-webkit-scrollbar {
+    height: 48px;
 }
 
 .timeline-container::-webkit-scrollbar-track {
@@ -322,7 +322,7 @@ body {
 
 .timeline-container::-webkit-scrollbar-thumb {
     background: rgba(102, 102, 102, 0.7);
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .timeline-container {
@@ -334,7 +334,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 24px;
+    height: 48px;
     pointer-events: auto;
     z-index: 300;
 }
@@ -343,7 +343,7 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 1px;
+    min-width: 1px;
     background-color: #808080;
     pointer-events: none;
 }

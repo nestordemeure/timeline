@@ -84,8 +84,8 @@ class Timeline {
         const dateRange = maxDate - minDate;
         const pixelsPerYear = 3;
         const baseTimelineWidth = Math.max(5000, dateRange * pixelsPerYear);
-        const eventFullWidth = 267 + this.data.config.eventSpacing;
-        const extraWidth = Math.floor((this.events.length - 1) / 2) * eventFullWidth;
+        const eventSpacing = this.data.config.eventSpacing;
+        const extraWidth = Math.floor((this.events.length - 1) / 2) * eventSpacing;
         const timelineWidth = baseTimelineWidth + extraWidth;
 
         this.eventsContainer.style.width = `${timelineWidth}px`;
@@ -94,7 +94,7 @@ class Timeline {
         this.maxDate = maxDate;
         this.dateRange = dateRange;
         this.timelineWidth = timelineWidth;
-        this.eventFullWidth = eventFullWidth;
+        this.eventSpacing = eventSpacing;
 
         const dateToPixel = (date) =>
             ((date - minDate) / dateRange) * (baseTimelineWidth - 200) + 100;
@@ -118,8 +118,8 @@ class Timeline {
 
             group.forEach((event, idx) => {
                 const globalIndex = processed + idx;
-                const pairOffset = Math.floor(processed / 2) + Math.floor(idx / 2);
-                const finalPosition = basePosition + pairOffset * eventFullWidth;
+                const pairOffset = Math.floor(globalIndex / 2) * eventSpacing;
+                const finalPosition = basePosition + pairOffset;
 
                 eventData.push({
                     ...event,
@@ -222,16 +222,19 @@ class Timeline {
         overlay.innerHTML = '';
 
         const scrollbarHeight = this.timelineContainer.offsetHeight - this.timelineContainer.clientHeight;
-        overlay.style.height = `${scrollbarHeight || 24}px`;
+        overlay.style.height = `${scrollbarHeight || 48}px`;
 
         const overlayWidth = overlay.clientWidth;
         const totalWidth = this.timelineWidth;
+        const eventCardWidth = 267 + this.eventSpacing;
 
         this.eventData.forEach(eventInfo => {
             const indicator = document.createElement('div');
             indicator.className = 'scrollbar-event-line';
             const position = (eventInfo.finalPosition / totalWidth) * overlayWidth;
+            const width = Math.max(1, (eventCardWidth / totalWidth) * overlayWidth);
             indicator.style.left = `${position}px`;
+            indicator.style.width = `${width}px`;
             overlay.appendChild(indicator);
         });
     }
@@ -242,7 +245,7 @@ class Timeline {
             const rect = this.scrollbarOverlay.getBoundingClientRect();
             const ratio = (e.clientX - rect.left) / rect.width;
             const target = ratio * (this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth);
-            this.timelineContainer.scrollTo({ left: target, behavior: 'smooth' });
+            this.timelineContainer.scrollTo({ left: target });
         });
     }
 

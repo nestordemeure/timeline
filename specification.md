@@ -74,7 +74,7 @@ Below the timeline is a legend showing each event type as a colored circle follo
 ## Timeline Mechanics
 
 ### Positioning System
-Events are positioned using a pixel-per-year scale (minimum 3 pixels per year). The timeline dynamically sizes itself based on the date range of all events. Events sharing the same date are grouped so their paired entries align. Each event's final position is computed as `date_to_pixel(event date) + (number of previous non-title events // 2) * event width including margin`.
+Events are positioned using a pixel-per-year scale (minimum 3 pixels per year). The timeline dynamically sizes itself based on the date range of all events. Events sharing the same date are grouped so their paired entries align. Each event's final position is computed as `date_to_pixel(event date) + (number of previous non-title events // 2) * eventSpacing`, where `eventSpacing` is a configurable margin (default 0).
 
 ### Adaptive Scrolling
 The timeline implements intelligent scrolling that adapts to event density:
@@ -100,7 +100,7 @@ Automatically adjusts scroll speed based on proximity to historical events:
 Formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
 
 ### Scrollbar Indicators
-The native scrollbar is styled for a thicker appearance. A fixed overlay displays 1px lines marking each event's final position. Clicking anywhere on the bar smoothly scrolls the timeline to the corresponding point.
+The native scrollbar is styled for an extra-thick (48px) appearance with a rectangular thumb. A fixed overlay displays lines scaled to each event's width (minimum 1px) at their final positions. Clicking anywhere on the bar jumps instantly to the corresponding point.
 
 ### Additional Features
 * **Time Markers**: Adaptive interval markers (5 to 1000 years) appear in empty areas to provide temporal reference
