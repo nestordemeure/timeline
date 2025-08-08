@@ -301,7 +301,7 @@ const timelineData = {
       "date": 859,
       "title": "First University",
       "description": "University of Al-Qarawiyyin founded in Fez, Morocco by Fatima al-Fihri, recognized as world's oldest continuously operating university.",
-      "link": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin#History"
+      "link": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin"
     },
     {
       "type": "information",
@@ -355,7 +355,7 @@ const timelineData = {
       "date": "c. 1440",
       "title": "Printing Press",
       "description": "Gutenberg's printing press revolutionizes the mass production of books and spread of knowledge.",
-      "link": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg's_press"
+      "link": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg%27s_press"
     },
     {
       "type": "religion",
@@ -512,7 +512,7 @@ const timelineData = {
       "date": 1828,
       "title": "Organic chemistry founded",
       "description": "Friedrich Wöhler synthesizes urea from inorganic compounds, proving organic molecules can be created artificially and founding organic chemistry.",
-      "link": "https://en.wikipedia.org/wiki/Friedrich_W%C3%B6hler#Synthesis_of_urea"
+      "link": "https://en.wikipedia.org/wiki/Friedrich_W%C3%B6hler#Organic_chemistry"
     },
     {
       "type": "information",

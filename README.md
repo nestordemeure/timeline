@@ -34,3 +34,7 @@ It features specialized navigation to smooth out the historical experience:
 - `defaultTitle`: Title displayed before scrolling begins
 - `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
 - `eventSpacing`: Minimal distance between text blocks
+
+## TODO
+
+* double-check all links
