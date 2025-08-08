@@ -313,7 +313,7 @@ body {
 
 /* Native scrollbar styling */
 .timeline-container::-webkit-scrollbar {
-    height: 20px;
+    height: 24px;
 }
 
 .timeline-container::-webkit-scrollbar-track {
@@ -334,8 +334,8 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 20px;
-    pointer-events: none;
+    height: 24px;
+    pointer-events: auto;
     z-index: 300;
 }
 

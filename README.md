@@ -17,7 +17,7 @@ See [this page](https://www.historicaltechtree.com/) for an alternative, signifi
  It features specialized navigation to smooth out the historical experience:
  - Events are positioned deterministically by date with even spacing
  - Dynamic speed scaling accelerates through empty millennia for consistent navigation
- - Native scrollbar is styled with proportionally sized event lines for visual reference
+ - Thick native scrollbar hosts 1px event lines; clicking the bar smoothly scrolls to that position
 
 ## Usage
 

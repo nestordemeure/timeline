@@ -19,6 +19,7 @@ class Timeline {
         this.processData();
         this.renderLegend();
         this.renderEvents();
+        this.setupScrollbarClick();
         this.setupScrollListener();
         window.addEventListener('resize', () => this.renderScrollbarIndicators());
     }
@@ -101,20 +102,37 @@ class Timeline {
 
         this.renderTimeMarkers(minDate, maxDate, dateRange, baseTimelineWidth);
 
-        const eventData = this.events.map((event, index) => {
-            const eventDate = this.parseDate(event.date);
-            const basePosition = dateToPixel(eventDate);
-            const offset = Math.floor(index / 2) * eventFullWidth;
-            const finalPosition = basePosition + offset;
+        let processed = 0;
+        const eventData = [];
+        let i = 0;
+        while (i < this.events.length) {
+            const currentDate = this.parseDate(this.events[i].date);
+            const basePosition = dateToPixel(currentDate);
 
-            return {
-                ...event,
-                index,
-                basePosition,
-                finalPosition,
-                side: index % 2 === 0 ? 'above' : 'below'
-            };
-        });
+            const group = [];
+            let j = i;
+            while (j < this.events.length && this.parseDate(this.events[j].date) === currentDate) {
+                group.push(this.events[j]);
+                j++;
+            }
+
+            group.forEach((event, idx) => {
+                const globalIndex = processed + idx;
+                const pairOffset = Math.floor(processed / 2) + Math.floor(idx / 2);
+                const finalPosition = basePosition + pairOffset * eventFullWidth;
+
+                eventData.push({
+                    ...event,
+                    index: globalIndex,
+                    basePosition,
+                    finalPosition,
+                    side: globalIndex % 2 === 0 ? 'above' : 'below'
+                });
+            });
+
+            processed += group.length;
+            i = j;
+        }
 
         eventData.forEach(eventInfo => {
             const eventElement = document.createElement('div');
@@ -204,7 +222,7 @@ class Timeline {
         overlay.innerHTML = '';
 
         const scrollbarHeight = this.timelineContainer.offsetHeight - this.timelineContainer.clientHeight;
-        overlay.style.height = `${scrollbarHeight || 20}px`;
+        overlay.style.height = `${scrollbarHeight || 24}px`;
 
         const overlayWidth = overlay.clientWidth;
         const totalWidth = this.timelineWidth;
@@ -213,10 +231,18 @@ class Timeline {
             const indicator = document.createElement('div');
             indicator.className = 'scrollbar-event-line';
             const position = (eventInfo.finalPosition / totalWidth) * overlayWidth;
-            const width = Math.max(1, (this.eventFullWidth / totalWidth) * overlayWidth);
             indicator.style.left = `${position}px`;
-            indicator.style.width = `${width}px`;
             overlay.appendChild(indicator);
+        });
+    }
+
+    setupScrollbarClick() {
+        if (!this.scrollbarOverlay) return;
+        this.scrollbarOverlay.addEventListener('click', (e) => {
+            const rect = this.scrollbarOverlay.getBoundingClientRect();
+            const ratio = (e.clientX - rect.left) / rect.width;
+            const target = ratio * (this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth);
+            this.timelineContainer.scrollTo({ left: target, behavior: 'smooth' });
         });
     }
 
