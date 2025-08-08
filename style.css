@@ -335,7 +335,8 @@ body {
     left: 0;
     right: 0;
     height: 20px;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     z-index: 300;
 }
 
@@ -345,6 +346,7 @@ body {
     bottom: 0;
     width: 1px;
     background-color: #808080;
+    pointer-events: none;
 }
 
 @media (max-width: 768px) {

@@ -100,7 +100,7 @@ Automatically adjusts scroll speed based on proximity to historical events:
 Formula: `1 + sqrt((closestDistance - targetScrollDistance) / targetScrollDistance) * scrollFactor`
 
 ### Scrollbar Indicators
-The native scrollbar is styled for a thicker appearance. A fixed overlay displays non-interactive lines marking each event's final position, providing quick chronological context without custom scrollbar logic.
+The native scrollbar is styled for a thicker appearance. A fixed overlay displays clickable lines marking each event's final position, allowing jumps along the timeline without custom scrollbar logic.
 
 ### Additional Features
 * **Time Markers**: Adaptive interval markers (5 to 1000 years) appear in empty areas to provide temporal reference
@@ -113,3 +113,4 @@ All behavior is controlled through the `config` object in `data.js`:
 * `baseFontSize` - Base font size for all timeline elements
 * `defaultTitle` - Title shown before any era titles are reached
 * `targetScrollDistance` / `scrollFactor` - Control adaptive scrolling behavior
+* `eventSpacing` - Extra horizontal space between event text blocks (default 0)

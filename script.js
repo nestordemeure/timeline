@@ -201,6 +201,10 @@ class Timeline {
         if (!this.scrollbarOverlay) return;
         const overlay = this.scrollbarOverlay;
         overlay.innerHTML = '';
+
+        const scrollbarHeight = this.timelineContainer.offsetHeight - this.timelineContainer.clientHeight;
+        overlay.style.height = `${scrollbarHeight || 20}px`;
+
         const overlayWidth = overlay.clientWidth;
         const totalWidth = this.timelineWidth;
 
@@ -211,6 +215,12 @@ class Timeline {
             indicator.style.left = `${position}px`;
             overlay.appendChild(indicator);
         });
+
+        overlay.onclick = (e) => {
+            const maxScrollLeft = this.timelineContainer.scrollWidth - this.timelineContainer.clientWidth;
+            const target = (e.offsetX / overlayWidth) * maxScrollLeft;
+            this.timelineContainer.scrollLeft = target;
+        };
     }
 
     setupScrollListener() {
