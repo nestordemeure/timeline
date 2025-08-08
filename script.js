@@ -9,7 +9,6 @@ class Timeline {
         this.legend = document.getElementById('legend');
         this.timelineContainer = document.querySelector('.timeline-container');
         this.scrollbarOverlay = document.getElementById('scrollbar-overlay');
-        this.customScrollbar = null;
 
         this.init();
     }
@@ -21,7 +20,7 @@ class Timeline {
         this.renderLegend();
         this.renderEvents();
         this.setupScrollListener();
-        this.initCustomScrollbar();
+        window.addEventListener('resize', () => this.renderScrollbarIndicators());
     }
 
     setInitialTitle() {
@@ -78,45 +77,44 @@ class Timeline {
                 </div>
             `).join('');
     }
-
     renderEvents() {
         const minDate = this.parseDate(this.events[0].date);
         const maxDate = this.parseDate(this.events[this.events.length - 1].date);
         const dateRange = maxDate - minDate;
         const pixelsPerYear = 3;
-        const timelineWidth = Math.max(5000, dateRange * pixelsPerYear);
+        const baseTimelineWidth = Math.max(5000, dateRange * pixelsPerYear);
+        const eventFullWidth = 267 + this.data.config.eventSpacing;
+        const extraWidth = Math.floor((this.events.length - 1) / 2) * eventFullWidth;
+        const timelineWidth = baseTimelineWidth + extraWidth;
 
         this.eventsContainer.style.width = `${timelineWidth}px`;
 
-        // Store timeline info for scroll calculations
         this.minDate = minDate;
         this.maxDate = maxDate;
         this.dateRange = dateRange;
         this.timelineWidth = timelineWidth;
 
-        // Render time markers
-        this.renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth);
+        const dateToPixel = (date) =>
+            ((date - minDate) / dateRange) * (baseTimelineWidth - 200) + 100;
+        this.dateToPixel = dateToPixel;
 
-        // Calculate initial positions and create event data with collision info
+        this.renderTimeMarkers(minDate, maxDate, dateRange, baseTimelineWidth);
+
         const eventData = this.events.map((event, index) => {
             const eventDate = this.parseDate(event.date);
-            const basePosition = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
+            const basePosition = dateToPixel(eventDate);
+            const offset = Math.floor(index / 2) * eventFullWidth;
+            const finalPosition = basePosition + offset;
 
             return {
                 ...event,
                 index,
                 basePosition,
-                finalPosition: basePosition,
-                side: index % 2 === 0 ? 'above' : 'below',
-                width: 267, // min-width from CSS
-                height: 150 // min-height from CSS
+                finalPosition,
+                side: index % 2 === 0 ? 'above' : 'below'
             };
         });
 
-        // Apply collision detection to all events together
-        this.resolveCollisions(eventData);
-
-        // Render events with adjusted positions
         eventData.forEach(eventInfo => {
             const eventElement = document.createElement('div');
             const undatedClass = eventInfo.undated ? ' undated' : '';
@@ -125,12 +123,12 @@ class Timeline {
 
             const color = this.getTypeColor(eventInfo.type);
 
-            const titleContent = eventInfo.link 
+            const titleContent = eventInfo.link
                 ? `<div class="event-title" style="cursor: pointer;" onclick="window.open('${eventInfo.link}', '_blank')">${eventInfo.title}</div>`
                 : `<div class="event-title">${eventInfo.title}</div>`;
-            
-            const descriptionContent = eventInfo.description 
-                ? (eventInfo.link 
+
+            const descriptionContent = eventInfo.description
+                ? (eventInfo.link
                     ? `<div class="event-description" style="cursor: pointer;" onclick="window.open('${eventInfo.link}', '_blank')">${eventInfo.description}</div>`
                     : `<div class="event-description">${eventInfo.description}</div>`)
                 : '';
@@ -147,94 +145,17 @@ class Timeline {
             this.eventsContainer.appendChild(eventElement);
         });
 
-        // Store event data for title adjustment calculations
         this.eventData = eventData;
 
         this.titles.forEach(title => {
             const titleDate = this.parseDate(title.date);
-            const basePosition = ((titleDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
-            
-            // Find nearby events to calculate average shift
-            const nearbyEvents = eventData.filter(event => {
-                const distance = Math.abs(event.basePosition - basePosition);
-                return distance <= 500; // Within 500px range
-            });
-            
-            if (nearbyEvents.length > 0) {
-                // Calculate average shift of nearby events
-                const totalShift = nearbyEvents.reduce((sum, event) => 
-                    sum + (event.finalPosition - event.basePosition), 0);
-                const avgShift = totalShift / nearbyEvents.length;
-                title.position = basePosition + avgShift;
-            } else {
-                title.position = basePosition;
-            }
+            title.position = dateToPixel(titleDate);
         });
 
-        // Store event positions for scrolling factor calculations
-        this.eventPositions = this.events.map(event => {
-            const eventDate = this.parseDate(event.date);
-            return ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
-        });
+        this.eventPositions = eventData.map(e => e.finalPosition);
 
-        // Note: Event indicators now handled by custom scrollbar
+        this.renderScrollbarIndicators();
     }
-
-    resolveCollisions(eventData) {
-        const padding = this.data.config.eventSpacing; // space between content areas
-
-        // Separate events by side (above/below)
-        const aboveEvents = eventData.filter(e => e.side === 'above').sort((a, b) => a.basePosition - b.basePosition);
-        const belowEvents = eventData.filter(e => e.side === 'below').sort((a, b) => a.basePosition - b.basePosition);
-
-        // Resolve collisions for each side separately
-        this.resolveCollisionsForSide(aboveEvents, padding);
-        this.resolveCollisionsForSide(belowEvents, padding);
-    }
-
-    resolveCollisionsForSide(events, padding) {
-        if (events.length === 0) return;
-
-        // Content area is the visible text area (excluding element padding)
-        // event-content has 30px padding on each side, so content width = total width - 60px
-        const contentPadding = 30; // CSS padding from .event-content
-        const contentWidth = events[0].width - (2 * contentPadding);
-
-        // First pass: push events to the right to avoid overlaps
-        for (let i = 1; i < events.length; i++) {
-            const current = events[i];
-            const previous = events[i - 1];
-
-            // Calculate content area boundaries (not full element boundaries)
-            const previousContentEnd = previous.finalPosition + contentWidth / 2;
-            const currentContentStart = current.finalPosition - contentWidth / 2;
-
-            // Add user-specified spacing between content areas
-            if (currentContentStart < previousContentEnd + padding) {
-                current.finalPosition = previousContentEnd + padding + contentWidth / 2;
-            }
-        }
-
-        // Second pass: try to pull events back towards their original positions
-        for (let i = events.length - 2; i >= 0; i--) {
-            const current = events[i];
-            const next = events[i + 1];
-
-            // Calculate content area boundaries
-            const nextContentStart = next.finalPosition - contentWidth / 2;
-            const maxPosition = nextContentStart - padding - contentWidth / 2;
-
-            if (current.finalPosition > maxPosition) {
-                current.finalPosition = maxPosition;
-            }
-
-            // Don't pull back beyond the original position
-            if (current.finalPosition < current.basePosition) {
-                current.finalPosition = current.basePosition;
-            }
-        }
-    }
-
     renderTimeMarkers(minDate, maxDate, dateRange, timelineWidth) {
         const getMarkerInterval = (range) => {
             if (range <= 50) return 5;
@@ -273,6 +194,22 @@ class Timeline {
             const eventPosition = ((eventDate - minDate) / dateRange) * (timelineWidth - 200) + 100;
             const distance = Math.abs(markerPosition - eventPosition);
             return distance < minDistance;
+        });
+    }
+
+    renderScrollbarIndicators() {
+        if (!this.scrollbarOverlay) return;
+        const overlay = this.scrollbarOverlay;
+        overlay.innerHTML = '';
+        const overlayWidth = overlay.clientWidth;
+        const totalWidth = this.timelineWidth;
+
+        this.eventData.forEach(eventInfo => {
+            const indicator = document.createElement('div');
+            indicator.className = 'scrollbar-event-line';
+            const position = (eventInfo.finalPosition / totalWidth) * overlayWidth;
+            indicator.style.left = `${position}px`;
+            overlay.appendChild(indicator);
         });
     }
 
@@ -368,14 +305,6 @@ class Timeline {
                 this.titleHeader.style.opacity = '1';
             }, 150);
         }
-    }
-
-
-    initCustomScrollbar() {
-        if (this.customScrollbar) {
-            this.customScrollbar.destroy();
-        }
-        this.customScrollbar = new CustomScrollbar(this);
     }
 }
 
