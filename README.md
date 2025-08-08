@@ -40,4 +40,10 @@ It features specialized navigation to smooth out the historical experience:
 ## TODO
 
 * double-check all links
-* replace dawn of civilization with bronze age and iron age?
+
+**placement:**
+if i were to redo the placement algorithm, i would have it be placement(time) + event_size(including side margings)*nb_events_before/2 (division to take events below us into account; but we might want to use integer division such that we only count events on our side of the line)
+
+event would be spread a bit more, and still stretch chronology, but their placement would be predictable, regular, and have a limited impact on the scrolling and dating of things: placing something as a function of its date would be instantly easier.
+
+cutting the need for our custom scrollbar logic, for adjustments to title placements, for our last event being further in the future than we might want, etc

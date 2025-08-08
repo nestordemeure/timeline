@@ -51,6 +51,13 @@ const timelineData = {
       "title": "Prehistory"
     },
     {
+      "type": "industry",
+      "date": "c. -3300000",
+      "title": "First Stone Tools",
+      "hidden": true,
+      "description": "Earliest known stone tools created by human ancestors in Africa, marking the beginning of technology and tool use that would define human development."
+    },
+    {
       "type": "science",
       "date": "c. -400000",
       "title": "Domestication of Fire",
@@ -86,16 +93,16 @@ const timelineData = {
       "description": "The wheel is invented in Mesopotamia, revolutionizing transportation, pottery, and mechanical devices."
     },
     {
-      "type": "title",
-      "date": -3200,
-      "title": "Dawn of Civilization"
-    },
-    {
       "type": "information",
       "date": "c. -3200",
       "title": "Writing Invented",
       "description": "First writing systems developed in Mesopotamia and Egypt, marking the beginning of recorded history.",
       "link": "https://en.wikipedia.org/wiki/History_of_writing#Bronze_Age"
+    },
+    {
+      "type": "title",
+      "date": -3000,
+      "title": "Bronze Age"
     },
     {
       "type": "industry",
@@ -110,6 +117,11 @@ const timelineData = {
       "title": "Code of Hammurabi",
       "description": "One of the earliest and most complete legal codes, establishing laws and punishments in ancient Babylon.",
       "link": "https://en.wikipedia.org/wiki/Code_of_Hammurabi"
+    },
+    {
+      "type": "title",
+      "date": -1500,
+      "title": "Iron Age"
     },
     {
       "type": "industry",
@@ -737,7 +749,7 @@ const timelineData = {
     {
       "type": "title",
       "date": 2100,
-      "title": "Future Times"
+      "title": "Future"
     },
     {
       "type": "science",
