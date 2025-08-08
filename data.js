@@ -749,7 +749,7 @@ const timelineData = {
     {
       "type": "title",
       "date": 2100,
-      "title": "Future"
+      "title": "The Future"
     },
     {
       "type": "science",
