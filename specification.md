@@ -75,14 +75,28 @@ Below the timeline is a legend showing each event type as a colored circle follo
 ## Timeline Mechanics
 
 ### Positioning System
-Events are positioned using a pixel-per-year scale (minimum 3 pixels per year). The timeline dynamically sizes itself based on the date range of all events.
+Events are positioned using a deterministic mathematical formula that balances historical accuracy with visual readability:
 
-### Collision Detection
-Since events alternate above/below but can still overlap horizontally, the system implements two-pass collision detection:
-1. **Forward pass**: Push overlapping events rightward with minimum padding
-2. **Backward pass**: Pull events back toward their original chronological positions when possible
+```
+pixel_position = linear_mapping(date) + ((events_before + collisions) * event_size) / 4
+```
 
-This ensures events stay as close as possible to their actual historical positions while remaining readable.
+**Components**:
+- `linear_mapping(date)`: Base position using 3 pixels per year chronological scale
+- `events_before`: Count of non-title events occurring strictly before this date
+- `collisions`: Count of collision events (events sharing dates with others) up to this date
+- `event_size`: Fixed event width (400px) plus configurable margin (`eventSpacing`)
+
+**Design Philosophy**:
+This approach prioritizes **fixed space allocation** and **historically representative positioning** over perfect collision avoidance. Each event receives consistent spacing based on its chronological position and the density of surrounding events.
+
+**Trade-offs**:
+- ✅ **Deterministic**: Same input always produces same output, no randomness
+- ✅ **Historically accurate**: Positions closely reflect actual historical timing  
+- ✅ **Scalable**: Performance scales linearly with event count
+- ⚠️ **Collision tolerance**: Events at identical dates may visually overlap, especially with 3+ simultaneous events
+
+The algorithm adds collision spacing to reduce overlaps but cannot eliminate them entirely while maintaining historical positioning accuracy. This is an intentional design choice favoring chronological representation over perfect visual separation.
 
 ### Adaptive Scrolling
 The timeline implements intelligent scrolling that adapts to event density:
@@ -131,3 +145,4 @@ All behavior is controlled through the `config` object in `data.js`:
 * `baseFontSize` - Base font size for all timeline elements
 * `defaultTitle` - Title shown before any era titles are reached
 * `targetScrollDistance` / `scrollFactor` - Control adaptive scrolling behavior
+* `eventSpacing` - Minimum margin between events (affects collision spacing)
