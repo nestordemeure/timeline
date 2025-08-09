@@ -36,6 +36,7 @@ It features specialized navigation to smooth out the historical experience:
 - `defaultTitle`: Title displayed before scrolling begins
 - `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
 - `eventSpacing`: Minimal distance between text blocks
+- `fixedSizeScrollbar`: When `true`, scrollbar thumb uses fixed 20px size instead of proportional sizing
 
 ## Positioning Algorithm
 
@@ -61,4 +62,3 @@ This approach guarantees:
 
 * double-check all links
 * `eventSpacing` (in `data.js`) should be a minimum space between event, the actual margin would be computed from the eventspacing minus the current minimum space between two events on the same side of the bar (computed based on their date difference). That way the visible margin is less a function of the spacing between the events picked.
-* add an option (`fixedSizeScrollbar:true`) in `data.js` such that the scrollbar is a fixed (small) size. Ideally the smaller size it would get when scrolling on a variable size.

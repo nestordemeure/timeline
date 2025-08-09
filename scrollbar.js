@@ -120,7 +120,7 @@ class CustomScrollbar {
 
                 // We calculate position relative to the track, not the whole thumb travel area.
                 const scrollbarPosition = Math.max(0, Math.min(
-                    trackRect.width,
+                    trackRect.width - thumbWidth,
                     e.clientX - trackRect.left - this.dragOffset
                 ));
 
@@ -139,21 +139,40 @@ class CustomScrollbar {
             if (e.target === this.scrollbarThumb) return;
 
             const trackRect = this.scrollbarTrack.getBoundingClientRect();
-            const thumbWidth = this.scrollbarThumb.offsetWidth;
             const trackWidth = trackRect.width;
             
             // Calculate click position relative to track
             const rawClickPosition = e.clientX - trackRect.left;
             
-            // Center the thumb on the click position, but respect track boundaries
-            const halfThumbWidth = thumbWidth / 2;
-            const centeredPosition = Math.max(
-                halfThumbWidth,
-                Math.min(trackWidth - halfThumbWidth, rawClickPosition)
-            );
+            let scrollbarPosition;
             
-            // The scrollbar position is offset by half thumb width to center it
-            const scrollbarPosition = centeredPosition - halfThumbWidth;
+            if (this.timeline.data.config.fixedSizeScrollbar) {
+                // Fixed size scrollbar logic
+                const fixedThumbWidth = 20;
+                const halfThumbWidth = fixedThumbWidth / 2;
+                
+                // Center the thumb on the click position, but respect track boundaries
+                const centeredPosition = Math.max(
+                    halfThumbWidth,
+                    Math.min(trackWidth - halfThumbWidth, rawClickPosition)
+                );
+                
+                // The scrollbar position is offset by half thumb width to center it
+                scrollbarPosition = centeredPosition - halfThumbWidth;
+            } else {
+                // Variable size scrollbar logic (original behavior)
+                const thumbWidth = this.scrollbarThumb.offsetWidth;
+                const halfThumbWidth = thumbWidth / 2;
+                
+                // Center the thumb on the click position, but respect track boundaries
+                const centeredPosition = Math.max(
+                    halfThumbWidth,
+                    Math.min(trackWidth - halfThumbWidth, rawClickPosition)
+                );
+                
+                // The scrollbar position is offset by half thumb width to center it
+                scrollbarPosition = centeredPosition - halfThumbWidth;
+            }
 
             this.updateScrollFromScrollbar(scrollbarPosition);
         });
@@ -171,21 +190,80 @@ class CustomScrollbar {
     }
 
     updateScrollFromScrollbar(scrollbarPosition) {
-        // Since thumb width is variable, we pass the raw position on the track
-        const timelinePosition = this.scrollbarToTimeline(scrollbarPosition);
+        let timelinePosition;
         
-        // During dragging, update the thumb position directly without triggering scroll events
-        if (this.isDragging) {
-            // Calculate thumb width for proper positioning
+        if (this.timeline.data.config.fixedSizeScrollbar) {
+            // Fixed size scrollbar logic - reverse the sliding window calculation
+            const fixedThumbWidth = 20;
             const containerWidth = this.container.clientWidth;
-            const leftEdgePos = this.timelineToScrollbar(timelinePosition);
-            const rightEdgePos = this.timelineToScrollbar(timelinePosition + containerWidth);
-            const newThumbWidth = rightEdgePos - leftEdgePos;
-            const minThumbWidth = 20;
+            const maxScroll = this.container.scrollWidth - containerWidth;
             
-            // Update thumb position and width directly
-            this.scrollbarThumb.style.width = `${Math.max(minThumbWidth, newThumbWidth)}px`;
-            this.scrollbarThumb.style.left = `${scrollbarPosition}px`;
+            // Convert thumb left edge to center position
+            const thumbCenterPos = scrollbarPosition + fixedThumbWidth / 2;
+            
+            // Convert center position to timeline position
+            const representedTimelinePos = this.scrollbarToTimeline(thumbCenterPos);
+            
+            // Reverse the adjusted progress calculation  
+            const transitionDistance = containerWidth * 0.5; // Half screen for transition
+            
+            if (maxScroll <= 2 * transitionDistance) {
+                // Simple case: use linear reverse calculation
+                if (maxScroll > 0) {
+                    const factor = 1 + containerWidth / maxScroll;
+                    timelinePosition = representedTimelinePos / factor;
+                } else {
+                    timelinePosition = representedTimelinePos;
+                }
+            } else {
+                // Complex case: need to determine which section we're in
+                
+                // Section 1: First half screen (adjustedProgress = 0 to 0.5)
+                // representedPos = currentScroll + (currentScroll / transitionDistance) * 0.5 * containerWidth
+                // representedPos = currentScroll * (1 + 0.5 * containerWidth / transitionDistance)
+                // Since transitionDistance = containerWidth * 0.5: representedPos = currentScroll * (1 + 1) = currentScroll * 2
+                let candidateScroll = representedTimelinePos / 2;
+                if (candidateScroll >= 0 && candidateScroll <= transitionDistance) {
+                    timelinePosition = candidateScroll;
+                }
+                // Section 3: Last half screen (adjustedProgress = 0.5 to 1.0)
+                else if (candidateScroll >= maxScroll - transitionDistance) {
+                    // representedPos = currentScroll + (0.5 + lastScreenProgress * 0.5) * containerWidth
+                    // where lastScreenProgress = (currentScroll - (maxScroll - transitionDistance)) / transitionDistance
+                    // After substitution and simplification: representedPos = currentScroll * 2 + 0.5 * containerWidth - (maxScroll - transitionDistance)
+                    // currentScroll = (representedPos - 0.5 * containerWidth + (maxScroll - transitionDistance)) / 2
+                    timelinePosition = (representedTimelinePos - 0.5 * containerWidth + (maxScroll - transitionDistance)) / 2;
+                }
+                // Section 2: Middle section (adjustedProgress = 0.5)
+                else {
+                    // representedPos = currentScroll + 0.5 * containerWidth
+                    timelinePosition = representedTimelinePos - 0.5 * containerWidth;
+                }
+            }
+            
+            // During dragging, update the thumb position directly
+            if (this.isDragging) {
+                this.scrollbarThumb.style.width = `${fixedThumbWidth}px`;
+                this.scrollbarThumb.style.left = `${scrollbarPosition}px`;
+            }
+        } else {
+            // Variable size scrollbar logic (original behavior)
+            // Since thumb width is variable, we pass the raw position on the track
+            timelinePosition = this.scrollbarToTimeline(scrollbarPosition);
+            
+            // During dragging, update the thumb position directly without triggering scroll events
+            if (this.isDragging) {
+                // Calculate thumb width for proper positioning
+                const containerWidth = this.container.clientWidth;
+                const leftEdgePos = this.timelineToScrollbar(timelinePosition);
+                const rightEdgePos = this.timelineToScrollbar(timelinePosition + containerWidth);
+                const newThumbWidth = rightEdgePos - leftEdgePos;
+                const minThumbWidth = 20;
+                
+                // Update thumb position and width directly
+                this.scrollbarThumb.style.width = `${Math.max(minThumbWidth, newThumbWidth)}px`;
+                this.scrollbarThumb.style.left = `${scrollbarPosition}px`;
+            }
         }
         
         this.container.scrollLeft = timelinePosition;
@@ -194,21 +272,68 @@ class CustomScrollbar {
     updateThumbPosition() {
         const currentScroll = this.container.scrollLeft;
         const containerWidth = this.container.clientWidth;
+        const trackWidth = this.scrollbarTrack.clientWidth;
 
-        // Calculate the scrollbar positions for the left and right edges of the viewport.
-        const leftEdgePos = this.timelineToScrollbar(currentScroll);
-        const rightEdgePos = this.timelineToScrollbar(currentScroll + containerWidth);
+        if (this.timeline.data.config.fixedSizeScrollbar) {
+            // Fixed size scrollbar logic
+            const fixedThumbWidth = 20; // Use the minimum thumb width as the fixed size
+            
+            // Calculate the scroll progress, but transition to center after one screen
+            const maxScroll = this.container.scrollWidth - containerWidth;
+            let adjustedProgress;
+            
+            const transitionDistance = containerWidth * 0.5; // Half screen for transition
+            
+            if (maxScroll <= 2 * transitionDistance) {
+                // If timeline is short, use simple linear progress
+                adjustedProgress = maxScroll > 0 ? currentScroll / maxScroll : 0;
+            } else {
+                // Transition to center after half screen, stay center until last half screen
+                if (currentScroll <= transitionDistance) {
+                    // First half screen: progress from 0 to 0.5
+                    adjustedProgress = (currentScroll / transitionDistance) * 0.5;
+                } else if (currentScroll >= maxScroll - transitionDistance) {
+                    // Last half screen: progress from 0.5 to 1
+                    const lastScreenProgress = (currentScroll - (maxScroll - transitionDistance)) / transitionDistance;
+                    adjustedProgress = 0.5 + (lastScreenProgress * 0.5);
+                } else {
+                    // Middle section: stay at 0.5 (center)
+                    adjustedProgress = 0.5;
+                }
+            }
+            
+            // Calculate which part of the viewport the thumb should represent
+            const viewportOffset = adjustedProgress * containerWidth;
+            const representedPosition = currentScroll + viewportOffset;
+            
+            // Convert to scrollbar position
+            const scrollbarPos = this.timelineToScrollbar(representedPosition);
+            
+            // Position the thumb so its center is at this scrollbar position
+            let thumbLeft = scrollbarPos - fixedThumbWidth / 2;
+            
+            // Constrain thumb to track boundaries
+            thumbLeft = Math.max(0, Math.min(trackWidth - fixedThumbWidth, thumbLeft));
+            
+            this.scrollbarThumb.style.width = `${fixedThumbWidth}px`;
+            this.scrollbarThumb.style.left = `${thumbLeft}px`;
+        } else {
+            // Variable size scrollbar logic (original behavior)
+            // Calculate the scrollbar positions for the left and right edges of the viewport.
+            const leftEdgePos = this.timelineToScrollbar(currentScroll);
+            const rightEdgePos = this.timelineToScrollbar(currentScroll + containerWidth);
 
-        // The thumb's width is the difference between the two edges.
-        const newThumbWidth = rightEdgePos - leftEdgePos;
+            // The thumb's width is the difference between the two edges.
+            const newThumbWidth = rightEdgePos - leftEdgePos;
 
-        // Use a minimum width to ensure the thumb is always grabbable.
-        const minThumbWidth = 20;
+            // Use a minimum width to ensure the thumb is always grabbable.
+            const minThumbWidth = 20;
 
-        this.scrollbarThumb.style.width = `${Math.max(minThumbWidth, newThumbWidth)}px`;
+            this.scrollbarThumb.style.width = `${Math.max(minThumbWidth, newThumbWidth)}px`;
 
-        // The thumb's position is the position of the left edge.
-        this.scrollbarThumb.style.left = `${leftEdgePos}px`;
+            // The thumb's position is the position of the left edge.
+            this.scrollbarThumb.style.left = `${leftEdgePos}px`;
+        }
     }
 
     destroy() {
