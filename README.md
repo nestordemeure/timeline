@@ -28,7 +28,6 @@ It features specialized navigation to smooth out the historical experience:
 - Event types: `name`, `fullName`, `color`
 - Events: `type`, `date`, `title`, `description`, optional `hidden: true`, optional `link: "URL"`, optional `undated: true`
 - Era titles: `type: "title"` for section headers
-- Undated events: Set `undated: true` to display events without date markers or timeline positioning
 
 **Configure**: Edit [`data.js`](data.js) config object:
 - `fontFamily`: CSS font family for timeline text
@@ -37,26 +36,6 @@ It features specialized navigation to smooth out the historical experience:
 - `targetScrollDistance`, `scrollFactor`: Control scrolling speed adaptation
 - `eventSpacing`: Minimal distance between text blocks
 - `fixedSizeScrollbar`: When `true`, scrollbar thumb uses fixed 20px size instead of proportional sizing
-
-## Positioning Algorithm
-
-Events are positioned using a deterministic mathematical formula:
-```
-pixel = linear_mapping(date) + ((events_before + collisions) * event_size) / 4
-```
-
-Where:
-- `linear_mapping(date)`: Proportional position based on chronological date
-- `events_before`: Count of non-title events occurring before this date
-- `collisions`: Count of collision events (events sharing dates with others) up to this date
-- `event_size`: Event width (400px) plus margin (`eventSpacing` config)
-
-This approach guarantees:
-- **Fixed space allocation**: Each event gets consistent spacing based on its chronological position
-- **Historically representative positions**: Event positions closely reflect actual historical timing
-- **Deterministic placement**: Same input always produces same output, no randomness
-
-**Trade-offs**: Events at identical dates may visually overlap, especially with 3+ simultaneous events. The algorithm adds collision spacing but cannot eliminate all overlaps while maintaining historical accuracy.
 
 ## TODO
 
