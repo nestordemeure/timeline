@@ -5,7 +5,7 @@ const timelineData = {
     "defaultTitle": "A Timeline of Human Progress",
     "targetScrollDistance": 3500,
     "scrollFactor": 10,
-    "eventSpacing": 0
+    "eventSpacing": 5
   },
   "types": [
     {

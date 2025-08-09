@@ -71,8 +71,22 @@ class Timeline {
             event.type !== 'title' && this.parseDate(event.date) < parsedDate
         ).length;
 
-        // Add spacing adjustment (floored division on eventsBeforeCount)
-        const spacingAdjustment = (eventsBeforeCount / 2) * (this.eventSize / 2.0);
+        // Count collision groups (dates with 2+ events, up to target date)
+        const seenDates = new Set();
+        let collisionCount = 0;
+        for (const event of this.events.filter(e => e.type !== 'title')) {
+            const eventDate = this.parseDate(event.date);
+            if (eventDate <= parsedDate) {
+                if (seenDates.has(eventDate)) {
+                    collisionCount++;
+                } else {
+                    seenDates.add(eventDate);
+                }
+            }
+        }
+
+        // Calculate spacing: normal events + extra margin for collisions
+        const spacingAdjustment = ((eventsBeforeCount + collisionCount) * this.eventSize) / 4
 
         return linearPosition + spacingAdjustment;
     }
