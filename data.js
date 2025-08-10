@@ -166,9 +166,9 @@ const timelineData = {
     },
     {
       "type": "religion",
-      "date": "c. -551",
+      "date": "c. -520",
       "title": "Confucianism Founded",
-      "description": "Confucius develops ethical and philosophical system emphasizing morality, social relationships, and governance, profoundly shaping East Asian culture.",
+      "description": "Confucius begins teaching ethical and philosophical system emphasizing morality, social relationships, and governance, profoundly shaping East Asian culture.",
       "link": "https://en.wikipedia.org/wiki/Confucius"
     },
     {
