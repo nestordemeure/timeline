@@ -153,9 +153,23 @@ const timelineData = {
       "link": "https://en.wikipedia.org/wiki/Phoenician_alphabet#Origin"
     },
     {
+      "type": "religion",
+      "date": "c. -1000",
+      "title": "Zoroastrianism Founded",
+      "description": "Zoroaster establishes Zoroastrianism in ancient Persia, developing concepts of good vs evil, judgment after death, and ethical dualism that influence later religions.",
+      "link": "https://en.wikipedia.org/wiki/Zoroaster"
+    },
+    {
       "type": "title",
       "date": -800,
       "title": "Antiquity"
+    },
+    {
+      "type": "religion",
+      "date": "c. -551",
+      "title": "Confucianism Founded",
+      "description": "Confucius develops ethical and philosophical system emphasizing morality, social relationships, and governance, profoundly shaping East Asian culture.",
+      "link": "https://en.wikipedia.org/wiki/Confucius"
     },
     {
       "type": "economics",
@@ -198,6 +212,13 @@ const timelineData = {
       "title": "Athenian Democracy",
       "description": "Birth of democracy in Athens, establishing the foundation for citizen participation in government.",
       "link": "https://en.wikipedia.org/wiki/Athenian_democracy#Development"
+    },
+    {
+      "type": "religion",
+      "date": "c. -400",
+      "title": "Tao Te Ching Compiled",
+      "description": "Foundational Taoist text compiled, establishing philosophical principles of harmony with the natural order (Tao) that influence Chinese culture.",
+      "link": "https://en.wikipedia.org/wiki/Tao_Te_Ching"
     },
     {
       "type": "science",
